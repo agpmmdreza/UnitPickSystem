@@ -1,0 +1,18 @@
+.flagContainer {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.flag {
+  width: 22px;
+  height: auto;
+  border-radius: 2px;
+  margin-right: 8px;
+  margin-left: 10px;
+}
+
+.text {
+  font-weight: 500;
+}

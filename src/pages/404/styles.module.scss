@@ -1,0 +1,20 @@
+@import "styles/functions.scss";
+@import "styles/mixins.scss";
+
+.pageContainer {
+  min-height: 100vh;
+  @include flex-center();
+}
+
+.pageContent {
+  align-items: center;
+  @include flex-column();
+}
+
+.pageText {
+  margin-top: 0.8rem;
+}
+
+.btnStyle {
+  margin-top: 1rem;
+}

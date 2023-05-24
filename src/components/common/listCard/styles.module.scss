@@ -1,0 +1,62 @@
+@import "styles/functions.scss";
+
+.listCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+
+  padding: 0 30px;
+
+  &__head {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    width: 10%;
+  }
+
+  &__number {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background: colorFromRgb(primary-main);
+    border-radius: 5px;
+    font-weight: 900;
+    font-size: 20px;
+
+    color: colorFromRgb(white);
+  }
+
+  &__title {
+    flex: 0 0 auto;
+    font-weight: 600;
+    font-size: 18px;
+    color: colorFromRgb(secondary-main);
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    &Dark {
+      color: colorFromRgb(secondary-main);
+    }
+
+    color: colorFromRgb(gray-text);
+  }
+
+  &__delete {
+    svg {
+      path {
+        stroke: #f74b4a !important;
+      }
+    }
+  }
+}

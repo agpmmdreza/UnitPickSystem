@@ -1,0 +1,93 @@
+@import "styles/functions.scss";
+@import "styles/mixins.scss";
+
+.card {
+  padding: 20px;
+  background-color: colorFromRgba(gray-text, 10);
+  border-radius: 5px;
+}
+
+.card__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card__info {
+  display: flex;
+  // flex: 0 0 auto;
+}
+
+.card__title {
+  font-weight: 700;
+  font-size: 24px;
+  color: colorFromRgb(secondary-main);
+  @include disable-select;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.card__id {
+  font-weight: 600;
+  font-size: 14px;
+  color: colorFromRgb(gray-text);
+  @include disable-select;
+}
+
+.card__avatar {
+  margin-right: 10px;
+}
+
+.card__type {
+  display: block;
+  color: colorFromRgb(gray-text);
+  font-weight: 500;
+  @include disable-select;
+}
+
+.card__date {
+  color: colorFromRgb(primary-main);
+  display: block;
+  font-weight: 500;
+  @include disable-select;
+}
+
+.card__content {
+  margin-top: 20px;
+}
+
+.card__message {
+  color: colorFromRgb(gray-text);
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 0;
+  @include disable-select;
+  text-overflow: ellipsis;
+  text-align: justify;
+  overflow: hidden;
+  // max-height: 5.4em;
+  line-height: 1.8em;
+}
+
+.textOverflow {
+  white-space: nowrap;
+}
+
+.card__flag {
+  & > div {
+    display: inline;
+    margin-left: 8px;
+  }
+}
+
+.card__icon {
+  margin-right: 8px;
+
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+}

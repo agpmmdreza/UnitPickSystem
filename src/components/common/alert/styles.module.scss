@@ -1,0 +1,32 @@
+@import "styles/functions.scss";
+
+.alert {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 25px;
+  // width: 90vh;
+  max-width: 1600px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    color: colorFromRgb(secondary-main);
+  }
+
+  &__text {
+    max-width: 750px;
+    font-weight: 500;
+    font-size: 16px;
+    color: colorFromRgb(gray-text);
+    white-space: pre-wrap;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+}

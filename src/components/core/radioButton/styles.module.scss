@@ -1,0 +1,52 @@
+@import "styles/functions.scss";
+
+.radio {
+  display: flex;
+
+  &__input {
+    display: none;
+    &:checked + label {
+      .select {
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50px;
+        transform: translate(-50%, -50%);
+        background-color: colorFromRgb(primary-main);
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 16px;
+    color: colorFromRgb(secondary-main);
+    flex: 0 0 auto;
+  }
+
+  &__circle {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 2px solid colorFromRgb(primary-main);
+    border-radius: 300px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex: 0 0 auto;
+  }
+
+  &__inside {
+  }
+}

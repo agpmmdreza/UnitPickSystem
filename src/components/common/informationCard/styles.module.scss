@@ -1,0 +1,28 @@
+@import "styles/functions.scss";
+
+.informationCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: colorFromRgb(secondary-main);
+
+  &__head {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 18px;
+
+    color: colorFromRgb(secondary-main);
+  }
+}
+
+.fw {
+  width: 100%;
+  position: relative;
+}

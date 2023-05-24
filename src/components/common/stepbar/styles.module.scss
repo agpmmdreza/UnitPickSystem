@@ -1,0 +1,57 @@
+@import "styles/functions.scss";
+
+.stepbar {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  height: 56px;
+
+  &__item {
+    height: 100%;
+    text-align: center;
+    padding: 0 20px;
+    width: 100%;
+    background-color: colorFromRgb(secondary-background);
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: polygon(88% 0, 100% 50%, 88% 100%, 0% 100%, 10% 50%, 0% 0%);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    color: colorFromRgb(secondary-main);
+  }
+  &__itemBack {
+    max-width: 250px;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    padding: 1px;
+    clip-path: polygon(88% 0, 100% 50%, 88% 100%, 0% 100%, 10% 50%, 0% 0%);
+    background-color: #d2d6dc;
+    box-shadow: 0 1px 2px rgba(55, 65, 81, 0.08);
+    transition: all 0.3s ease-in-out;
+  }
+  &__lastItem {
+    clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 10% 50%, 0% 0%);
+  }
+
+  &__firstItem {
+    clip-path: polygon(88% 0, 100% 50%, 88% 100%, 0% 100%, 0 50%, 0% 0%);
+  }
+
+  &__itemBackS {
+    background-color: colorFromRgb(primary-main);
+  }
+
+  &__itemSelected {
+    background: #ffefdb;
+    color: colorFromRgb(primary-main);
+  }
+
+  &__itemFinished {
+    background-color: colorFromRgb(primary-main);
+    color: colorFromRgb(light-text);
+  }
+}

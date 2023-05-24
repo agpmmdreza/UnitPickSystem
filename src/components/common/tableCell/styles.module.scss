@@ -1,0 +1,80 @@
+@import "styles/functions";
+@import "styles/mixins.scss";
+
+.actionCellDropdownMenu {
+  min-width: 170px;
+}
+.countryCell {
+  &__title {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.125rem;
+    color: color(secondary-main);
+  }
+  &__flag {
+    height: 0.875rem;
+    width: 1.25rem;
+    margin-right: pxToRem(6);
+  }
+}
+
+.resetPasswordCell {
+  font-weight: 500;
+  font-size: 0.85rem;
+  line-height: 1.125rem;
+  color: #47cbff;
+  text-decoration: underline;
+}
+
+.profileCell {
+  font-weight: 500;
+  font-size: 0.85rem;
+  line-height: 1.125rem;
+  &:not(:disabled) {
+    color: #47cbff !important;
+  }
+}
+.actionButton {
+  align-self: center;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  & svg {
+    margin-right: 0 !important;
+  }
+}
+.actionButton:hover {
+  background-color: color(gray-very-light);
+}
+.border {
+  border-top: 1px solid color(gray-lighter);
+}
+.tableChip {
+  [class~="chip-text"] {
+    font-weight: 500;
+    font-size: 13px;
+    white-space: nowrap;
+    @include disable-select;
+  }
+}
+.textDecorationNone {
+  text-decoration: none !important;
+  background-color: aqua;
+}
+.disableMenuItem {
+  cursor: not-allowed;
+}
+.phone {
+  filter: blur(3px);
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    filter: none;
+  }
+}
+
+.phoneSelected {
+  filter: none;
+}
+.divider {
+  border-top: 1px solid color(gray-lighter);
+  margin: 2px 4px;
+}

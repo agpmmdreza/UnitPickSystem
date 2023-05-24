@@ -1,0 +1,149 @@
+@import "styles/functions.scss";
+
+.inputContainer {
+  display: flex;
+  flex-flow: row;
+  border-radius: space(radius);
+  background-color: colorFromRgb(secondary-background);
+  &[data-size="small"] {
+    max-height: space(height-small);
+    min-height: space(height-small);
+  }
+
+  &[data-size="normal"] {
+    max-height: space(height-normal);
+    min-height: space(height-normal);
+  }
+
+  &[data-size="big"] {
+    max-height: space(height-big);
+    min-height: space(height-big);
+  }
+
+  &[data-disabled="true"] {
+    opacity: 80%;
+  }
+}
+
+.selectBox {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: space(radius) 0 0 space(radius);
+  background-color: colorFromRgb(secondary-background);
+  /*padding: space(pd-y);*/
+  border: 2px solid transparent;
+  color: colorFromRgb(secondary-main);
+  gap: 5px;
+  padding-left: 15px;
+
+  cursor: pointer;
+  min-width: 2.75rem;
+  white-space: nowrap;
+  [class~="margin"] {
+    margin-left: space(mg-1);
+  }
+
+  .iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.sep {
+  width: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .inside {
+    background-color: colorFromRgb(gray-text);
+    width: 2px;
+    height: 25px;
+  }
+}
+
+.inputBox {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 space(radius) space(radius) 0;
+  background-color: colorFromRgb(secondary-background);
+  padding: space(pd-y) space(pd-x);
+  border: 2px solid transparent;
+  &[data-validation="none"]:focus-within {
+    border-color: rgba(color(primary-main), 0.8);
+  }
+  width: 100%;
+}
+
+.menuStyle {
+  top: space(height-big); //TODO: consider it in various types
+  left: -2px;
+  max-height: 13em;
+  overflow-y: auto;
+  background-color: colorFromRgb(secondary-background);
+  border-radius: space(radius);
+  color: color(dark-main);
+  padding: 5px;
+  z-index: space(z-index);
+  box-shadow: 0 0 20px rgba(color(gray-text), 0.6);
+  min-width: 260px;
+  max-width: fit-content;
+}
+
+.menuItem {
+  border-radius: space(radius);
+  cursor: pointer;
+  color: colorFromRgb(secondary-main);
+
+  &:hover {
+    background-color: rgba(color(gray-text), 0.2);
+    transition: time(default);
+  }
+  padding: 4px 0;
+  [class~="margin"] {
+    margin-left: space(mg-1);
+  }
+}
+
+.input {
+  min-width: 0;
+  width: inherit;
+  background-color: transparent;
+  border: none;
+  flex-grow: 1;
+  color: colorFromRgb(gray-text);
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: rgba(color(gray-text), 0.6);
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[mask-type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+.inputHeadIcon {
+  margin-right: space(mg-between);
+
+  &[data-variant="bold"] > path {
+    fill: rgba(color(gray-text), 0.6);
+  }
+
+  &[data-variant="linear"] > path {
+    stroke: rgba(color(gray-text), 0.6);
+  }
+}

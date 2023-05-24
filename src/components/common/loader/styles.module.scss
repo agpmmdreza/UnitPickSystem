@@ -1,0 +1,30 @@
+@import "styles/functions.scss";
+
+.loader {
+  svg {
+    animation: bounce 1s ease-in-out;
+    animation-iteration-count: infinite;
+    path {
+      fill: colorFromRgb(primary-main);
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    opacity: 1;
+    scale: 1.5;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.6;
+    scale: 0.9;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    scale: 1.5;
+    transform: translateY(0);
+  }
+}

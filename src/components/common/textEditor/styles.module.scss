@@ -1,0 +1,176 @@
+@import "styles/functions.scss";
+
+.textEditor {
+  width: 100%;
+  background-color: colorFromRgb(secondary-background);
+  // max-width: 1100px;
+  border-radius: 5px;
+
+  &__buttons {
+    background-color: transparent;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    color: colorFromRgb(secondary-main);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+
+    svg {
+      path {
+        fill: colorFromRgb(secondary-main);
+      }
+    }
+
+    &:hover {
+      background-color: colorFromRgba(gray-text, 10);
+    }
+  }
+
+  &__menu {
+    min-height: 60px;
+    border-bottom: 2px solid colorFromRgba(gray-text, 10);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 40px;
+    flex-wrap: wrap;
+    row-gap: 20px;
+  }
+
+  &__menuGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__arrow {
+    width: 16px;
+  }
+
+  &__editor {
+    min-height: 250px;
+    padding: 20px;
+    display: flex;
+
+    blockquote {
+      margin: 0 1rem 1rem 1rem !important;
+    }
+
+    :global .ProseMirror {
+      border: none;
+      outline: none;
+      color: colorFromRgb(secondary-main);
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    :global .ProseMirror-focused {
+      border: none;
+      outline: none;
+    }
+  }
+
+  &__colorInput {
+    width: 0;
+    height: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    visibility: hidden;
+  }
+
+  &__title {
+    font-size: 16px;
+    width: 200px;
+    margin: 5px 5px 16px;
+  }
+
+  &__input {
+    border: 2px solid colorFromRgba(primary-main, 80);
+  }
+
+  &__subMenuOpenContainer {
+    height: 60px;
+  }
+  &__subMenuContainer {
+    &[is-open="true"] {
+      height: 60px;
+    }
+    &[is-open="false"] {
+      height: 0;
+    }
+  }
+
+  &__subMenu {
+    width: 100%;
+    height: 0;
+    background-color: colorFromRgba(gray-text, 10);
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    padding-left: 10%;
+  }
+
+  &__dropdown {
+    overflow: auto;
+    max-height: 200px;
+  }
+
+  &__subMenuItem {
+    display: none;
+
+    &:hover {
+      background-color: colorFromRgba(gray-text, 50);
+    }
+  }
+
+  .menuOpen {
+    height: 100%;
+    display: flex;
+    &__subMenuItem {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.active {
+  background-color: colorFromRgba(gray-text, 50);
+}
+
+.disable {
+  cursor: default;
+
+  svg {
+    path {
+      fill: colorFromRgba(gray-text, 80);
+    }
+  }
+}
+
+.alignRight {
+  direction: rtl;
+}
+
+.alignLeft {
+  direction: ltr;
+}
+
+.mn {
+  margin-right: -40px;
+}
+
+.w {
+  width: 200px;
+}

@@ -1,0 +1,108 @@
+@import "styles/functions.scss";
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.chipBox {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  border-radius: space(radius);
+  border: 2px solid transparent;
+  padding: 0 space(pd-x);
+  transition: time(default);
+  background-color: colorFromRgb(secondary-background);
+  cursor: pointer;
+  [class~="text"] {
+    color: rgba(color(gray-text), 0.6);
+  }
+  [class~="mg-1"] {
+    margin: space(mg-1);
+  }
+
+  &[data-size="small"] {
+    min-height: space(height-small);
+  }
+
+  &[data-size="normal"] {
+    min-height: space(height-normal);
+  }
+
+  &[data-size="big"] {
+    min-height: space(height-big);
+  }
+
+  &[data-disabled="true"] {
+    background-color: rgba(color(gray-text), 0.2);
+  }
+}
+
+.inputHeadIcon {
+  margin-right: space(mg-between);
+
+  &[data-variant="bold"] > path {
+    fill: rgba(color(gray-text), 0.6);
+  }
+
+  &[data-variant="linear"] > path {
+    stroke: rgba(color(gray-text), 0.6);
+  }
+}
+
+.inputTailIcon {
+  margin-left: space(mg-between);
+  transition: time(default);
+  width: 25px;
+  &[data-variant="bold"] > path {
+    fill: colorFromRgb(secondary-main);
+  }
+
+  &[data-variant="linear"] > path {
+    stroke: colorFromRgb(secondary-main);
+  }
+}
+
+.menuContainer {
+  background-color: colorFromRgb(secondary-background);
+  border-radius: space(radius);
+  max-height: 15em;
+  overflow-y: auto;
+  padding: space(pd-x);
+  position: absolute;
+  margin-top: space(mg-y);
+  width: 100%;
+  flex-direction: column;
+  transition: time(default);
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  &[data-open="true"] {
+    position: absolute;
+    opacity: 1;
+    transition: time(default);
+    z-index: space(z-index);
+    visibility: visible;
+  }
+  color: colorFromRgb(secondary-main);
+}
+
+.menuItem {
+  border-radius: space(radius);
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(color(gray-text), 0.2);
+  }
+  margin-top: space(mg-1);
+  padding: space(pd-y) space(pd-x);
+}
+
+.noOption {
+  padding: space(pd-x);
+  display: flex;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,93 @@
+@import "styles/functions.scss";
+@import "styles/mixins.scss";
+
+.card {
+  &__container {
+    display: flex;
+    color: white;
+    border-radius: space(radius);
+    @include disable-select;
+    align-items: center;
+    &[data-color="green"] {
+      background-color: #b2f446;
+    }
+    &[data-color="orange"] {
+      background-color: #ffd964;
+    }
+    &[data-color="blue"] {
+      background-color: color(primary-main);
+    }
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  &__count {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+}
+.messageCard {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    border-radius: space(radius);
+    border: 1px solid #bcbcbc50;
+    background-color: color(paper-light);
+    padding: 12px;
+    background-image: linear-gradient(
+      color(gray-main) 0%,
+      color(paper-light) 50%
+    );
+  }
+  &__dateTime {
+    color: color(paper-light);
+    size: 12px;
+    font-weight: 500;
+    @include disable-select;
+  }
+  &__menu {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-right: 0px;
+    margin-left: auto;
+    & svg {
+      margin-right: 0 !important;
+    }
+    & circle {
+      fill: white;
+    }
+  }
+  &__menu:hover {
+    background-color: color(primary-lightest);
+  }
+  &__avatarContainer {
+    display: inline-flex;
+    margin-top: 65px;
+    &__country {
+      bottom: 0;
+      left: -15px;
+      position: absolute;
+    }
+  }
+  &__name {
+    color: color(primary-main);
+    font-weight: 700;
+    margin-top: 1rem;
+    @include disable-select;
+  }
+  &__email {
+    color: #bcbcbc;
+    font-size: 14px;
+    margin-top: 0.25rem;
+    @include disable-select;
+  }
+  &__button {
+    margin-top: 2rem;
+    width: 100%;
+    font-weight: 500;
+    margin-bottom: 8px;
+    @include disable-select;
+  }
+}

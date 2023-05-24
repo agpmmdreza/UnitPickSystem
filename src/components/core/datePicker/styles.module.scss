@@ -1,0 +1,17 @@
+@import "styles/functions.scss";
+
+.datePicker {
+  [class~="react-datepicker__triangle"] {
+    transform: translate(100px, 0px) !important;
+  }
+  [class~="react-datepicker__day--today"] {
+    color: color(primary-main);
+    border-bottom: 1px solid color(primary-main);
+  }
+  [class~="react-datepicker__day--selected"] {
+    border-radius: 0.3rem !important;
+    background-color: #216ba5 !important;
+    color: #fff !important;
+    border-bottom: 0;
+  }
+}

@@ -1,0 +1,13 @@
+@import "styles/functions.scss";
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    color: colorFromRgb(secondary-main);
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}

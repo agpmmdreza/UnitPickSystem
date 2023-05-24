@@ -1,0 +1,75 @@
+@import "styles/functions.scss";
+@import "styles/mixins.scss";
+
+.container {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px 5px;
+}
+
+.pItemContainer {
+  @include flex-row;
+  @include flex-center;
+  border-radius: space(radius);
+  border: 1px solid color(gray-light);
+  background-color: color(paper-light);
+  color: color(gray-dark);
+  transition: time(default);
+  padding: 10px 10px;
+  min-width: 46px;
+  min-height: 46px;
+  font-size: pxToRem(15);
+  line-height: 1;
+
+  @include disable-select;
+
+  & > svg > path {
+    fill: color(gray-dark);
+  }
+
+  &[data-selected="true"] {
+    background-color: color(gray-dark);
+    color: color(paper-light);
+    font-weight: 500;
+    transition: time(default);
+
+    & > svg > path {
+      fill: color(paper-light);
+    }
+  }
+
+  &[data-button="true"] {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: pxToRem(12);
+    min-width: 34px;
+    min-height: 34px;
+  }
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pageInfo {
+  color: inherit;
+}
+
+.pageSelect {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+
+  &:focus {
+    outline: none;
+  }
+}

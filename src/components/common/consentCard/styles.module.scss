@@ -1,0 +1,82 @@
+@import "styles/functions.scss";
+
+.consent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  color: colorFromRgb(secondary-main);
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__middle {
+    font-weight: 500;
+    font-size: 14px;
+    color: colorFromRgb(gray-text);
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  &__badge {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 12px;
+  }
+}
+
+.pos {
+  background-color: colorFromRgba(success, 10);
+  color: colorFromRgb(success);
+}
+
+.warn {
+  background-color: colorFromRgba(warning, 10);
+  color: colorFromRgb(warning);
+}
+
+.neg {
+  background-color: colorFromRgba(danger, 10);
+  color: colorFromRgb(danger);
+}

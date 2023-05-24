@@ -1,0 +1,16 @@
+@mixin grid {
+  display: grid;
+  gap: 25px;
+}
+
+.CardsContainer {
+  @include grid();
+  grid-template-columns: repeat(auto-fit, minmax(320px, 375px));
+}
+.messagesContainer {
+  @include grid();
+  grid-template-columns: repeat(auto-fit, minmax(275px, 300px));
+}
+.noDataText {
+  color: color(secondary-main);
+}

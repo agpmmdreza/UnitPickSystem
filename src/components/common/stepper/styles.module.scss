@@ -1,0 +1,132 @@
+@import "styles/functions.scss";
+@import "styles/mixins.scss";
+
+.stepper {
+  &__numericContainer {
+    display: flex;
+    align-items: center;
+
+    // gap: 10px;
+    position: relative;
+    padding-bottom: 75px;
+    padding-left: 50px;
+    padding-right: 50px;
+    overflow-x: auto;
+    margin-bottom: 25px;
+    @media (max-width: 768px) {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
+
+  &__basicContainer {
+    display: flex;
+    justify-content: center;
+
+    gap: 10px;
+  }
+
+  &__numericCircle {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: colorFromRgb(secondary-background);
+    border: 2px solid colorFromRgba(gray-text, 60);
+    color: colorFromRgb(gray-text);
+    font-size: 24px;
+    font-weight: 700;
+    width: 48px;
+    height: 48px;
+    transition: background-color 250ms linear;
+    @include disable-select;
+
+    & + span {
+      color: colorFromRgb(gray-text);
+    }
+  }
+
+  &__numericActive {
+    color: colorFromRgb(primary-main) !important;
+    border-color: colorFromRgb(primary-main) !important;
+    background-color: transparent;
+
+    & + span {
+      color: colorFromRgb(primary-main) !important;
+    }
+  }
+
+  &__numericCompleted {
+    background-color: colorFromRgb(primary-main);
+    color: colorFromRgb(light-text) !important;
+    border: none !important;
+
+    & + span {
+      color: colorFromRgb(primary-main) !important;
+    }
+  }
+
+  &__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    & span {
+      @include disable-select;
+      position: absolute;
+      width: max-content;
+      max-width: 135px;
+      text-align: center;
+      top: 45px;
+    }
+  }
+
+  &__connector {
+    height: 2px;
+    width: 30px;
+    background-color: colorFromRgba(gray-text, 60);
+    flex-grow: 1;
+    transition: background-color 200ms linear;
+    min-width: 100px;
+    // position: absolute;
+    // left: 10px;
+    // top: 20px;
+  }
+
+  &__connectorActive {
+    background-color: colorFromRgb(primary-main) !important;
+  }
+
+  &__label {
+    font-weight: 700;
+    margin-top: 15px;
+  }
+
+  &__circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: colorFromRgb(disabled-btn);
+    width: 17px;
+    height: 17px;
+    transition: background-color 200ms linear;
+  }
+
+  &__active {
+    background-color: colorFromRgb(primary-main) !important;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__content {
+    background-color: red;
+    transform: translateX(50px);
+    // transition: transform 0.5s ease-out;
+  }
+}

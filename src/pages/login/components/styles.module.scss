@@ -1,0 +1,279 @@
+@import "styles/functions.scss";
+@import "styles/mixins.scss";
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$formContainerPaddingLeft: 70px;
+$formContainerPaddingRight: 40px;
+$introductionPadding: 50px;
+$mobilePadding: 30px;
+$formContainerMaxWidth: 400px;
+$formMaxWidth: 365px;
+
+.loginContainer {
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  @media only screen and (max-width: $md) {
+    flex-direction: column;
+    background-image: linear-gradient(
+      colorFromRgb(primary-main) 0%,
+      #29a9e100 55%
+    );
+    :root [data-theme="dark"] & {
+      background-image: unset;
+    }
+  }
+  :root [data-theme="dark"] & {
+    background-color: #0d2338;
+  }
+}
+.introductionSection {
+  flex: 1 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: colorFromRgb(primary-main);
+  background-position: 0 center;
+  background-repeat: no-repeat;
+  background-size: auto 80%;
+
+  :root [data-theme="dark"] & {
+    background-color: #0f2b4a;
+  }
+
+  @media only screen and (min-width: calc($md + 1px)) {
+  }
+
+  @media only screen and (max-width: $md) {
+    background-size: auto 85%;
+
+    background-color: unset;
+    flex: unset;
+    :root [data-theme="dark"] & {
+      background-color: unset;
+    }
+  }
+}
+.introductionContainer {
+  padding: $introductionPadding;
+  @media only screen and (max-width: $md) {
+    padding: 45px $mobilePadding;
+    // width: 100%;
+    max-width: calc($formContainerMaxWidth + $mobilePadding + $mobilePadding);
+  }
+}
+.registered_trademark_symbol {
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  font-size: x-large;
+}
+.symbolContainer {
+  display: flex;
+  align-items: baseline;
+  margin-left: 10px;
+  margin-top: -10px;
+}
+.trademark_symbol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large;
+  //   margin-top: 5px;
+}
+.brand {
+  font-weight: 800;
+  font-size: 50px;
+}
+.introduction_text {
+  text-align: justify;
+  max-width: 360px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+}
+
+.formSection {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (max-width: $md) {
+    width: 100%;
+  }
+}
+.form_container {
+  // padding-top: 100px;
+  padding-bottom: 50px;
+  margin-top: 15%;
+  padding-left: $formContainerPaddingLeft;
+  padding-right: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  display: flex;
+  max-width: calc(
+    $formContainerMaxWidth + $formContainerPaddingLeft +
+      $formContainerPaddingRight
+  );
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  @media only screen and (max-width: $md) {
+    margin-top: 1rem;
+    padding: 0 $mobilePadding;
+    max-width: calc($formContainerMaxWidth + $mobilePadding + $mobilePadding);
+  }
+}
+.stepContainer {
+  @media only screen and (max-width: $md) {
+    /*  mobile screen   */
+    display: flex;
+  }
+  @media only screen and (min-width: ($md + 1)) {
+    /*  tablet and bigger screen  */
+    position: absolute;
+    left: calc(15px - $formContainerPaddingLeft);
+    top: 10px;
+  }
+}
+.stepCircleContainer {
+  @media only screen and (max-width: ($md )) {
+    /*  mobile screen   */
+    display: flex;
+    gap: 10px;
+    padding-bottom: 1rem;
+  }
+}
+.stepCircle {
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background-color: color(gray-lighter);
+  margin-bottom: 10px;
+}
+.currentStep {
+  background-color: colorFromRgb(primary-main);
+}
+
+.selectableStep {
+  cursor: pointer;
+}
+
+.form_title {
+  font-weight: 700;
+  font-size: 20px;
+  color: colorFromRgb(secondary-main);
+  :root [data-theme="dark"] & {
+    color: #fff;
+  }
+}
+.form_description {
+  font-size: 14px;
+  color: color(gray-main);
+  margin-top: 10px;
+}
+.form_formContainer {
+  // max-width: $formMaxWidth;
+  margin: 35px 0;
+}
+
+@mixin form_footer {
+  margin-top: auto;
+  font-weight: 400;
+  font-size: 14px;
+  color: #79899e;
+  :root [data-theme="dark"] & {
+    color: #d1dae7;
+  }
+}
+.desktop_footer {
+  display: block;
+  @include form_footer();
+  margin-top: 2rem;
+  @media only screen and (max-width: $md) {
+    display: none !important;
+  }
+}
+.mobile_footer {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  padding-top: 40px;
+  max-width: calc($formContainerMaxWidth + $mobilePadding + $mobilePadding);
+  width: 100%;
+  padding-left: $mobilePadding;
+  padding-right: $mobilePadding;
+  @include form_footer();
+  @media only screen and (max-width: $md) {
+    display: block !important;
+  }
+}
+
+/*--------------------------------------------------------------------------------------------*/
+.text {
+  font-size: 14px;
+  font-weight: 500;
+  color: colorFromRgb(secondary-main);
+  :root [data-theme="dark"] & {
+    color: white;
+  }
+}
+.label {
+  font-size: 14px;
+  color: colorFromRgb(secondary-main);
+  :root [data-theme="dark"] & {
+    color: white;
+  }
+}
+.link {
+  font-size: 14px;
+  color: colorFromRgb(primary-main);
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.link:hover {
+  color: colorFromRgb(primary-btn-hover) !important;
+}
+/*----------------------------------------------------------*/
+
+.verifyCodeInput {
+  & div {
+    // input:not([value=""]) {
+    //   background-color: colorFromRgba(primary-main, 20) !important;
+    // }
+
+    &:focus-within {
+      background-color: colorFromRgba(primary-main, 20) !important;
+      border: 1px solid colorFromRgb(primary-main) !important;
+    }
+  }
+}
+
+.verifyCodeInput > div {
+  @media (max-width: 450px) {
+    width: 55px !important;
+    height: 58px !important;
+  }
+  width: 70px !important;
+  max-width: 78px !important;
+  height: 70px !important;
+  max-height: 70px !important;
+  padding-left: 13px !important;
+  padding-right: 13px !important;
+}
+.verifyCodeInput > div > input {
+  color: colorFromRgb(secondary-main);
+  text-align: center;
+  font-size: 40px !important;
+  font-weight: 700 !important;
+}

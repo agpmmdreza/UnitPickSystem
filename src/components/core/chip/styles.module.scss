@@ -1,0 +1,597 @@
+@import "styles/functions.scss";
+@import "styles/mixins.scss";
+
+@function getRandomColor() {
+  $red: random(256)-1;
+  $green: random(256)-1;
+  $blue: random(256)-1;
+  @return rgb($red, $green, $blue);
+}
+// replace substring with another string
+// credits: https://css-tricks.com/snippets/sass/str-replace-function/
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+  @return $string;
+}
+
+:root [data-theme*="dark"] {
+  .chip {
+    // Main Color Chips for common usages
+    &[data-color="danger"] {
+      background-color: rgba(color(danger), 1);
+      color: #fff;
+    }
+
+    &[data-color="success"] {
+      background-color: rgba(color(success), 1);
+      color: #fff;
+    }
+
+    &[data-color="warning"] {
+      background-color: rgba(color(warning), 1);
+      color: #fff;
+    }
+
+    &[data-color="primary"] {
+      background-color: rgba(color(primary-main), 1);
+      color: #fff;
+    }
+
+    // Status Chips
+    &[data-color="active"] {
+      background-color: rgba(#61d215, 1);
+      color: #fff;
+    }
+
+    &[data-color="inactive"] {
+      background-color: rgba(#f74b4a, 1);
+      color: #fff;
+    }
+
+    &[data-color="pending"] {
+      background-color: rgba(#fec101, 1);
+      color: #fff;
+    }
+
+    // Role Chips
+    &[data-color="super-admin"] {
+      background-color: rgba(#cca829, 1);
+      color: #fff;
+    }
+
+    &[data-color="local-admin"] {
+      background-color: rgba(#564766, 1);
+      color: #fff;
+    }
+
+    &[data-color="cmo"] {
+      background-color: rgba(#ec91d8, 1);
+      color: #fff;
+    }
+
+    &[data-color="doctor"] {
+      background-color: rgba(#0c6291, 1);
+      color: #fff;
+    }
+
+    &[data-color="staff"] {
+      background-color: rgba(#cc2936, 1);
+      color: #fff;
+    }
+
+    &[data-color="patient"] {
+      background-color: rgba(#ab29cc, 1);
+      color: #fff;
+    }
+
+    // Doctor Schedule Types
+    &[data-color="scheduled time"] {
+      background-color: rgba(#295de1, 1);
+      color: #fff;
+    }
+
+    &[data-color="on demand time"] {
+      background-color: rgba(#61d215, 1);
+      color: #fff;
+    }
+
+    &[data-color="off time"] {
+      background-color: rgba(#f74b4a, 1);
+      color: #fff;
+    }
+
+    // HF Types
+
+    &[data-color="hospital"] {
+      background-color: rgba(#731dd8, 1);
+      color: #fff;
+    }
+
+    &[data-color="clinic"] {
+      background-color: rgba(#48a9a6, 1);
+      color: #fff;
+    }
+
+    &[data-color="home"] {
+      background-color: rgba(#f67e7d, 1);
+      color: #fff;
+    }
+
+    &[data-color="school"] {
+      background-color: rgba(#fabb04, 1);
+      color: #fff;
+    }
+
+    &[data-color="ambulance"] {
+      background-color: rgba(#91818a, 1);
+      color: #fff;
+    }
+
+    &[data-color="kiosk"] {
+      background-color: rgba(#c1666b, 1);
+      color: #fff;
+    }
+
+    &[data-color="virtual_HF"] {
+      background-color: rgba(#9893da, 1);
+      color: #fff;
+    }
+
+    &[data-color="virtual HF"] {
+      background-color: rgba(#9893da, 1);
+      color: #fff;
+    }
+
+    &[data-color="airport"] {
+      background-color: rgba(#c57cdb, 1);
+      color: #fff;
+    }
+
+    &[data-color="sport_center"] {
+      background-color: rgba(#4ac7c7, 1);
+      color: #fff;
+    }
+
+    &[data-color="retail"] {
+      background-color: rgba(#62a32d, 1);
+      color: #fff;
+    }
+
+    // Robot Types
+    &[data-color="tv-robot"] {
+      background-color: rgba(#028090, 1);
+      color: #fff;
+    }
+
+    &[data-color="home-robot"] {
+      background-color: rgba(#f67e7d, 1);
+      color: #fff;
+    }
+
+    &[data-color="kiosk-robot"] {
+      background-color: rgba(#c1666b, 1);
+      color: #fff;
+    }
+
+    &[data-color="hotel-robot"] {
+      background-color: rgba(#70ae6e, 1);
+      color: #fff;
+    }
+
+    &[data-color="clinic-robot"] {
+      background-color: rgba(#48a9a6, 1);
+      color: #fff;
+    }
+
+    &[data-color="hospital-robot"] {
+      background-color: rgba(#731dd8, 1);
+      color: #fff;
+    }
+
+    &[data-color="ambulance-robot"] {
+      background-color: rgba(#91818a, 1);
+      color: #fff;
+    }
+
+    &[data-color="virtual-hf-robot"] {
+      background-color: rgba(#9893da, 1);
+      color: #fff;
+    }
+
+    &[data-color="home-without-robot"] {
+      background-color: rgba(#989300, 1);
+      color: #fff;
+    }
+  }
+}
+
+:root [data-theme*="light"] {
+  .chip {
+    // Main Color Chips for common usages
+    &[data-color="danger"] {
+      background-color: rgba(color(danger), 0.1);
+      color: color(danger);
+    }
+
+    &[data-color="success"] {
+      background-color: rgba(color(success), 0.1);
+      color: color(success);
+    }
+
+    &[data-color="warning"] {
+      background-color: rgba(color(warning), 0.1);
+      color: color(warning);
+    }
+
+    &[data-color="primary"] {
+      background-color: rgba(color(primary-main), 0.1);
+      color: color(primary-main);
+    }
+
+    // Status Chips
+    &[data-color="active"] {
+      background-color: rgba(#61d215, 0.1);
+      color: #61d215;
+    }
+
+    &[data-color="inactive"] {
+      background-color: rgba(#f74b4a, 0.1);
+      color: #f74b4a;
+    }
+
+    &[data-color="pending"] {
+      background-color: rgba(#fec101, 0.1);
+      color: #fec101;
+    }
+
+    // Role Chips
+    &[data-color="super-admin"] {
+      background-color: rgba(#cca829, 0.1);
+      color: #cca829;
+    }
+
+    &[data-color="local-admin"] {
+      background-color: rgba(#564766, 0.1);
+      color: #564766;
+    }
+
+    &[data-color="cmo"] {
+      background-color: rgba(#ec91d8, 0.1);
+      color: #ec91d8;
+    }
+
+    &[data-color="doctor"] {
+      background-color: rgba(#0c6291, 0.1);
+      color: #0c6291;
+    }
+
+    &[data-color="staff"] {
+      background-color: rgba(#cc2936, 0.1);
+      color: #cc2936;
+    }
+
+    &[data-color="patient"] {
+      background-color: rgba(#ab29cc, 0.1);
+      color: #ab29cc;
+    }
+
+    // Doctor Schedule Chips
+    &[data-color="scheduled time"] {
+      background-color: rgba(#295de1, 0.1);
+      color: #295de1;
+    }
+
+    &[data-color="on demand time"] {
+      background-color: rgba(#61d215, 0.1);
+      color: #61d215;
+    }
+
+    &[data-color="off time"] {
+      background-color: rgba(#f74b4a, 0.1);
+      color: #f74b4a;
+    }
+
+    // HF Types
+    &[data-color="hospital"] {
+      background-color: rgba(#731dd8, 0.1);
+      color: #731dd8;
+    }
+
+    &[data-color="clinic"] {
+      background-color: rgba(#48a9a6, 0.1);
+      color: #48a9a6;
+    }
+
+    &[data-color="home"] {
+      background-color: rgba(#f67e7d, 0.1);
+      color: #f67e7d;
+    }
+
+    &[data-color="school"] {
+      background-color: rgba(#fabb04, 0.1);
+      color: #fabb04;
+    }
+
+    &[data-color="ambulance"] {
+      background-color: rgba(#91818a, 0.1);
+      color: #91818a;
+    }
+
+    &[data-color="kiosk"] {
+      background-color: rgba(#c1666b, 0.1);
+      color: #c1666b;
+    }
+
+    &[data-color="virtual_HF"] {
+      background-color: rgba(#9893da, 0.1);
+      color: #9893da;
+    }
+
+    &[data-color="airport"] {
+      background-color: rgba(#c57cdb, 0.1);
+      color: #c57cdb;
+    }
+
+    &[data-color="sport_center"] {
+      background-color: rgba(#4ac7c7, 0.1);
+      color: #4ac7c7;
+    }
+
+    &[data-color="retail"] {
+      background-color: rgba(#62a32d, 0.1);
+      color: #62a32d;
+    }
+
+    // Robot Types
+    &[data-color="tv-robot"] {
+      background-color: rgba(#028090, 0.1);
+      color: #028090;
+    }
+
+    &[data-color="home-robot"] {
+      background-color: rgba(#f67e7d, 0.1);
+      color: #f67e7d;
+    }
+
+    &[data-color="kiosk-robot"] {
+      background-color: rgba(#c1666b, 0.1);
+      color: #c1666b;
+    }
+
+    &[data-color="hotel-robot"] {
+      background-color: rgba(#70ae6e, 0.1);
+      color: #70ae6e;
+    }
+
+    &[data-color="clinic-robot"] {
+      background-color: rgba(#48a9a6, 0.1);
+      color: #48a9a6;
+    }
+
+    &[data-color="hospital-robot"] {
+      background-color: rgba(#731dd8, 0.1);
+      color: #731dd8;
+    }
+
+    &[data-color="ambulance-robot"] {
+      background-color: rgba(#91818a, 0.1);
+      color: #91818a;
+    }
+
+    &[data-color="virtual-hf-robot"] {
+      background-color: rgba(#9893da, 0.1);
+      color: #9893da;
+    }
+
+    &[data-color="home-without-robot"] {
+      background-color: rgba(#989300, .1);
+      color: #989300;
+    }
+  }
+}
+
+.chip {
+  border-radius: 5px;
+  padding: 4px 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-width: max-content;
+  margin: 0 auto;
+  min-width: 70px;
+  white-space: nowrap;
+  text-transform: capitalize;
+  @include disable-select;
+
+  &[data-color="error"] {
+    background-color: #ffe0e0;
+    :root [data-theme="dark"] & {
+      background-color: color(error-light);
+    }
+  }
+
+  &[data-color="green-light"] {
+    background-color: #e5ffdc;
+    :root [data-theme="dark"] & {
+      background-color: #0fc221;
+    }
+  }
+
+  &[data-color="green-dark"] {
+    background-color: #cdffcd;
+    :root [data-theme="dark"] & {
+      background-color: #007f00;
+    }
+  }
+
+  &[data-color="primary-light"] {
+    background-color: #29a9e11a;
+    :root [data-theme="dark"] & {
+      background-color: color(primary-main);
+    }
+  }
+
+  &[data-color="primary-dark"] {
+    background-color: #e5e1ff;
+    :root [data-theme="dark"] & {
+      background-color: #4f33fe;
+    }
+  }
+
+  &[data-color="gray-light"] {
+    background-color: #79899e1a;
+    :root [data-theme="dark"] & {
+      background-color: color(gray-very-light);
+    }
+  }
+  &[data-color="gray-dark"] {
+    background-color: #3341551a;
+    :root [data-theme="dark"] & {
+      background-color: color(gray-lighter);
+    }
+  }
+
+  [class~="chip-text"] {
+    // margin-left: space(mg-between);
+    font-weight: 500;
+    &[data-color="error"] {
+      color: #d30000;
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+    &[data-color="green-light"] {
+      color: #0fc221;
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+
+    &[data-color="green-dark"] {
+      color: #007f00;
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+
+    &[data-color="primary-light"] {
+      color: color(primary-main);
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+
+    &[data-color="primary-dark"] {
+      color: #4f33fe;
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+
+    &[data-color="gray-light"] {
+      color: color(gray-main);
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+    &[data-color="gray-dark"] {
+      color: color(secondary-main);
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+
+    // new text colors
+    &[data-color="primary"] {
+      color: colorFromRgb(primary-main);
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+    &[data-color="danger"] {
+      color: colorFromRgb(danger);
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+    &[data-color="success"] {
+      color: colorFromRgb(success);
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+    &[data-color="warning"] {
+      color: colorFromRgb(warning);
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+    &[data-color="random"] {
+      // color: color(warning);
+      :root [data-theme="dark"] & {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.badge {
+  border-radius: 50px;
+  padding: 5px;
+  &[data-color="error"] {
+    background-color: #d30000;
+    :root [data-theme="dark"] & {
+      background-color: #fff;
+    }
+  }
+
+  &[data-color="green-light"] {
+    background-color: #0fc221;
+    :root [data-theme="dark"] & {
+      background-color: #fff;
+    }
+  }
+
+  &[data-color="green-dark"] {
+    background-color: #007f00;
+    :root [data-theme="dark"] & {
+      background-color: #fff;
+    }
+  }
+
+  &[data-color="primary-light"] {
+    background-color: color(primary-main);
+    :root [data-theme="dark"] & {
+      background-color: #fff;
+    }
+  }
+
+  &[data-color="primary-dark"] {
+    background-color: #4f33fe;
+    :root [data-theme="dark"] & {
+      background-color: #fff;
+    }
+  }
+
+  &[data-color="gray-light"] {
+    background-color: color(gray-main);
+    :root [data-theme="dark"] & {
+      background-color: #fff;
+    }
+  }
+  &[data-color="gray-dark"] {
+    background-color: color(secondary-main);
+    :root [data-theme="dark"] & {
+      background-color: #fff;
+    }
+  }
+}

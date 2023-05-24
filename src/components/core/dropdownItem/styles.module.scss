@@ -1,0 +1,45 @@
+@import "styles/functions.scss";
+@import "styles/mixins.scss";
+
+.menuItem {
+  width: 100%;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 3px 7px;
+  border-radius: 4px;
+  min-width: 6.5rem;
+  margin-bottom: 0.125rem;
+  @include disable-select;
+  color: color(secondary-main);
+  font-size: 13px;
+  &[data-color="error"] {
+    color: color(error-light);
+  }
+  &[data-color="success"] {
+    color: color(success-dark);
+  }
+  &[data-color="primary"] {
+    color: color(primary-main);
+  }
+  &[data-color="warning"] {
+    color: color(warning-main);
+  }
+  * {
+    color: colorFromRgb(secondary-main);
+  }
+  & svg {
+    &[data-variant="bold"] {
+      & path {
+        fill: color(secondary-main);
+      }
+    }
+    &[data-variant="linear"] {
+      & path {
+        stroke: color(secondary-main);
+      }
+    }
+  }
+}
+.menuItem:hover {
+  background-color: color(gray-very-light);
+}

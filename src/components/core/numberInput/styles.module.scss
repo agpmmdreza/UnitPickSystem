@@ -1,0 +1,97 @@
+@import "styles/mixins.scss";
+@import "styles/functions.scss";
+.numberRoot {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: space(pd-y) space(pd-x);
+  //margin-top: space(pd-y);
+  border-radius: space(radius);
+  background-color: colorFromRgb(secondary-background);
+  color: colorFromRgb(gray-text);
+  @include disable-select;
+  @include sizes;
+  & > * {
+    @include disable-select;
+  }
+
+  &[data-disabled="true"] {
+    background-color: rgba(color(gray-text), 0.2);
+    .inputTailIcon {
+      &[data-variant="bold"] > path {
+        fill: colorFromRgb(gray-text);
+      }
+
+      &[data-variant="linear"] > path {
+        stroke: colorFromRgb(gray-text);
+      }
+    }
+  }
+}
+
+.numberInput {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-align: center;
+  width: 100%;
+  color: colorFromRgb(gray-text);
+  border-radius: 5px;
+  transition: 200ms;
+  margin-right: 5px;
+
+  &:focus {
+    transition: 200ms;
+    background-color: rgba(color(gray-text), 0.2);
+    border: none;
+    outline: none;
+  }
+}
+
+.periodInput {
+  cursor: pointer;
+  margin: 0px space(mg-between);
+  width: 25px;
+  color: rgba(color(gray-text), 0.6);
+}
+
+.arrow {
+  cursor: pointer;
+  margin: 3px;
+
+  &[data-disabled="true"] {
+    cursor: default;
+    & > path {
+      stroke: rgba(color(gray-text), 0.6);
+    }
+  }
+}
+
+.arrowsContainer {
+  display: inherit;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  svg path {
+    stroke: colorFromRgb(gray-text);
+  }
+}
+
+.inputHeadIcon {
+  width: 30px;
+  margin-right: space(mg-between);
+
+  &[data-variant="bold"] > path {
+    fill: rgba(color(gray-text), 0.6);
+  }
+
+  &[data-variant="linear"] > path {
+    stroke: rgba(color(gray-text), 0.6);
+  }
+}
+
+.arrowUp {
+  transform: rotateZ(180deg);
+}

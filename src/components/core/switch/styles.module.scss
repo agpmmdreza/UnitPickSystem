@@ -1,0 +1,45 @@
+@import "styles/functions.scss";
+
+.track {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  border-radius: space(radius-sm);
+  padding: space(mg-1);
+  cursor: pointer;
+  max-width: space(height-big);
+  min-width: space(height-big);
+  &[data-status="on"] {
+    background-color: rgb(color(primary-main));
+    border: 1px solid rgb(color(primary-main));
+    transition: time(default);
+  }
+
+  &[data-status="off"] {
+    background-color: color(paper-light);
+    border: 1px solid color(gray-light);
+    transition: time(default);
+  }
+  &[data-disabled="true"] {
+    opacity: 50%;
+    cursor: default;
+  }
+}
+
+.thumb {
+  border-radius: space(radius-lg);
+  width: 19px;
+  height: 19px;
+
+  &[data-status="on"] {
+    background-color: #fff;
+    transition: time(default);
+    transform: translateX(19px);
+  }
+
+  &[data-status="off"] {
+    background-color: color(gray-light);
+    transition: time(default);
+    transform: translateX(0);
+  }
+}

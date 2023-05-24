@@ -1,0 +1,77 @@
+@import "styles/functions.scss";
+
+.box {
+  max-width: 570px;
+  padding: 30px;
+  border-radius: space(radius);
+  color: color(paper-light);
+
+  &[data-color="info"] {
+    background-color: color(primary-main);
+  }
+
+  &[data-color="success"] {
+    background-color: color(success-main);
+  }
+
+  &[data-color="warning"] {
+    background-color: color(warning-main);
+  }
+
+  &[data-color="error"] {
+    background-color: color(error-main);
+  }
+
+  .closeIcon {
+    &[data-variant="bold"] > path {
+      fill: color(paper-light);
+    }
+    &[data-variant="linear"] > path {
+      stroke: color(paper-light);
+    }
+    cursor: pointer;
+    margin: 0 space(mg-between);
+  }
+}
+
+.popupIcon {
+  &[data-variant="bold"] > path {
+    fill: color(paper-light);
+  }
+
+  &[data-variant="linear"] > path {
+    stroke: color(paper-light);
+  }
+  margin: 0 space(mg-between);
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: space(z-index);
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoNews {
+  color: color(secondary-main);
+  font-size: 13px;
+  font-weight: 600;
+  margin: space(mg-between) 0;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 28px;
+}

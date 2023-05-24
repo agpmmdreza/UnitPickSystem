@@ -1,0 +1,30 @@
+@import "styles/functions";
+
+.main {
+  padding: pxToRem(16);
+  border-radius: space(radius);
+  color: color(primary);
+  border: 1px solid #ffffff;
+  background-color: color(paper-light);
+
+  &[data-variant="outlined"] {
+    &[data-color="success"] {
+      color: colorContrast(success);
+      background-color: color(success-main);
+    }
+
+    &[data-color="error"] {
+      color: colorContrast(error);
+      background-color: color(error-main);
+    }
+
+    &[data-color="warning"] {
+      color: colorContrast(warning);
+      background-color: color(warning-main);
+    }
+  }
+
+  &[data-variant="contained"] {
+    box-shadow: 0 4px 20px rgba(51, 65, 85, 0.2);
+  }
+}

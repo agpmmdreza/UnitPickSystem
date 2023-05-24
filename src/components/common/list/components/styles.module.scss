@@ -1,0 +1,61 @@
+@import "styles/functions.scss";
+@import "styles/mixins.scss";
+
+.card {
+  display: flex;
+  align-items: center;
+  background-color: colorFromRgb(secondary-background);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.cardTitle {
+  font-weight: 700;
+  font-size: 18px;
+  color: colorFromRgb(secondary-main);
+  align-self: center;
+  @include disable-select;
+}
+
+.columnLabel {
+  font-weight: 600;
+  color: colorFromRgb(secondary-main);
+  margin-right: 5px;
+  text-align: center;
+  @include disable-select;
+}
+
+.columnValue {
+  font-weight: 500;
+  color: colorFromRgb(gray-text);
+  @include disable-select;
+  // text-align: center;
+}
+
+.numberContainer {
+  background-color: colorFromRgb(primary-main);
+  width: 30px;
+  height: 30px;
+  // min-width: 30px;
+  // max-width: 30px;
+  //   height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 11px;
+  margin-right: 20px;
+  border-radius: 5px;
+  @include disable-select;
+}
+
+.numberLabel {
+  color: colorFromRgb(light-text);
+  font-weight: 900;
+  text-align: center;
+}
+
+.deleteIcon {
+  svg {
+    stroke: colorFromRgb(danger) !important;
+  }
+}

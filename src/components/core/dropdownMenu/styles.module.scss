@@ -1,0 +1,100 @@
+@import "styles/functions.scss";
+
+$animationDuration: 125ms;
+
+.dropdownMenu {
+  position: absolute;
+  padding: 10px 8px;
+  border-radius: space(radius);
+  border: 1px solid colorFromRgba(gray-text, 40);
+  box-shadow: 0 4px 20px 0 #33415533;
+  z-index: 1000;
+  background-color: colorFromRgb(secondary-background);
+  color: colorFromRgb(secondary-main);
+  display: none;
+  animation-name: dropdownScale;
+  animation-duration: $animationDuration;
+  animation-timing-function: ease;
+  animation-delay: 0ms;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+
+  &[data-anchor="bottom-start"] {
+    top: 0;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    transform-origin: left top;
+  }
+  &[data-anchor="bottom-end"] {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    transform-origin: right top;
+  }
+  &[data-anchor="bottom-center"] {
+    top: 0;
+    right: auto;
+    bottom: auto;
+    transform-origin: center top;
+  }
+  &[data-anchor="left-bottom"] {
+    top: 0;
+    right: 100%;
+    bottom: auto;
+    left: auto;
+    transform-origin: right top;
+  }
+  &[data-anchor="left-top"] {
+    top: auto;
+    right: 100%;
+    bottom: 0;
+    left: auto;
+    transform-origin: right bottom;
+  }
+  &[data-anchor="right-bottom"] {
+    top: 0;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    transform-origin: left top;
+  }
+  &[data-anchor="right-top"] {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    transform-origin: left bottom;
+  }
+  &[data-anchor="top-start"] {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    transform-origin: left bottom;
+  }
+  &[data-anchor="top-center"] {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    transform-origin: center bottom;
+  }
+  &[data-anchor="top-end"] {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    transform-origin: right bottom;
+  }
+}
+@keyframes dropdownScale {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}

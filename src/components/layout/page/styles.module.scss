@@ -1,0 +1,135 @@
+@import "styles/functions.scss";
+@import "styles/mixins.scss";
+
+/*------------page sizes------------*/
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$screenThreshold: $lg;
+$padding_x: 40px;
+
+.header {
+  padding-top: 27px;
+  padding-bottom: 27px;
+  padding-left: 20px;
+  padding-right: 30px;
+  display: flex;
+  justify-content: space-between;
+  background-color: colorFromRgb(secondary-background);
+
+  @media (max-width: $screenThreshold) {
+    flex-direction: row-reverse;
+    padding: 0 0;
+  }
+  & > .iconsGroupContainer svg {
+    width: 25px;
+    height: auto;
+  }
+
+  & > .iconsGroupContainer button:focus,
+  button {
+    cursor: pointer;
+    outline: none !important;
+    border: none;
+    background-color: transparent;
+  }
+}
+.titleContainer {
+  @media (max-width: $screenThreshold) {
+    margin-top: space(mobile-header-height);
+    border-top: 1px solid #bcbcbc80;
+    padding: 25px $padding_x;
+    justify-content: flex-start;
+    width: 100%;
+    @media print {
+      margin-top: 0 !important;
+    }
+  }
+}
+.iconsGroupContainer {
+  @media print {
+    display: none !important;
+  }
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  @media (max-width: $screenThreshold) {
+    height: space(mobile-header-height) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: colorFromRgb(secondary-background);
+    padding: 0 $padding_x;
+    z-index: 100;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: colorFromRgb(secondary-main);
+  padding: 0;
+  margin: 0;
+  @include disable-select;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $screenThreshold) {
+    font-size: 18px;
+  }
+
+  .titleCircleIcon {
+    width: 10px;
+    height: 10px;
+    background-color: colorFromRgb(primary-main);
+    margin-right: 8px;
+    border-radius: 50%;
+  }
+  .username {
+    color: colorFromRgb(primary-main);
+  }
+}
+
+.titleIcon {
+  margin-right: 10px;
+  width: 40px;
+  height: auto;
+
+  &[data-variant="bold"] > path {
+    fill: colorFromRgb(primary-main);
+  }
+
+  &[data-variant="linear"] > path {
+    stroke: colorFromRgb(primary-main);
+  }
+}
+.pageContentContainer {
+  padding-top: 40px;
+  padding-bottom: 50px;
+  padding-left: $padding_x;
+  padding-right: $padding_x;
+  background-color: colorFromRgb(primary-background);
+  overflow: hidden;
+  @media (max-width: $md) {
+    padding: 35px 30px;
+  }
+}
+
+.mainIconContainer {
+  background-color: colorFromRgba(gray-text, 10) !important;
+  border-radius: 5px;
+  width: 36px;
+  height: 36px;
+  margin-left: 10px;
+  padding: 6px;
+  @include flex-center();
+
+  .mainIcon {
+    path {
+      fill: colorFromRgb(primary-main);
+    }
+  }
+}

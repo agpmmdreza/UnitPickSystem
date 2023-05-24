@@ -1,0 +1,146 @@
+@import "./functions.scss";
+// TODO: Just import needed sections of bootstrap (Grid, Utils)
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+// @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.cdnfonts.com/css/barlow");
+
+html,
+body {
+  direction: rtl;
+  padding: 0;
+  margin: 0;
+  background-color: colorFromRgb(primary-background);
+  font-size: 15px;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+* {
+  @page {
+    zoom: 0.55 !important;
+  }
+}
+
+#root {
+  background-color: colorFromRgb(primary-background);
+  min-height: 100vh;
+
+  .Toastify__toast-theme--colored.Toastify__toast--info {
+    background-color: colorFromRgb(primary-main);
+  }
+  .Toastify__toast-theme--colored.Toastify__toast--success {
+    background-color: colorFromRgb(success);
+  }
+  .Toastify__toast-theme--colored.Toastify__toast--warning {
+    background-color: colorFromRgb(warning);
+  }
+  .Toastify__toast-theme--colored.Toastify__toast--error {
+    background-color: colorFromRgb(danger);
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Vazirmatn, sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #79899e;
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #79899e;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: color(gray-main);
+  -webkit-box-shadow: 0 0 0 1000px color(paper-light) inset;
+  box-shadow: 0 0 0 1000px color(paper-light) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+// RESET of fullcalendar title
+.fc-toolbar-title,
+.fc-daygrid-day-number,
+.fc-col-header-cell-cushion {
+  color: colorFromRgb(secondary-main);
+}
+
+.fc-button-group {
+  gap: 0.5em;
+}
+
+.fc-toolbar > * > :not(:first-child) {
+  margin-left: 0.5em !important;
+}
+
+.fc-today-button {
+  background-color: colorFromRgb(primary-main) !important;
+  text-transform: capitalize !important;
+}
+
+.fc-myCustomButton-button {
+  background-color: colorFromRgb(primary-main) !important;
+}
+
+.fc-prev-button,
+.fc-next-button {
+  background-color: colorFromRgba(gray-text, 10) !important;
+  border-radius: 5px;
+  padding: 5px !important;
+}
+
+.fc-icon {
+  color: colorFromRgb(secondary-main) !important;
+}
+
+.fc-h-event {
+  border: none !important;
+}
+
+.fc-popover-body {
+  overflow-y: auto;
+  max-height: 250px;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.tableSearchInput {
+  max-height: 40px !important;
+  min-height: 40px !important;
+
+  svg {
+    path {
+      stroke: colorFromRgb(gray-text) !important;
+    }
+  }
+
+  & > input::placeholder {
+    color: colorFromRgb(gray-text);
+    font-weight: 600;
+  }
+}

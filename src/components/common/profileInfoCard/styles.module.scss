@@ -1,0 +1,66 @@
+@import "styles/functions.scss";
+
+.profileCard {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 77px;
+  padding-left: 20px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  width: 100%;
+
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+    margin-right: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 16px;
+    color: colorFromRgb(secondary-main);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 15px;
+    color: colorFromRgb(gray-text);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    flex: 0 0 auto;
+    background-color: colorFromRgb(primary-main);
+
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: colorFromRgb(light-text) !important;
+        fill-opacity: 1;
+      }
+    }
+  }
+}

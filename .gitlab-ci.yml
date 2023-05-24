@@ -1,0 +1,77 @@
+image: alpine
+
+.docker_login: &docker_login |
+    docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+stages:
+    - build
+    - deploy
+    - deploy-runner
+
+build-app-development:
+    image: docker:23
+    stage: build
+    services:
+        - docker:23-dind
+    before_script:
+        - *docker_login
+    script:
+        - echo "$DEVELOPMENT_ENV" > .env
+        - docker build --pull -t "$CI_REGISTRY_IMAGE/app" -t "$CI_REGISTRY_IMAGE/app:$CI_PIPELINE_ID" -f ./docker/Dockerfile .
+        - docker push "$CI_REGISTRY_IMAGE/app"
+        - docker push "$CI_REGISTRY_IMAGE/app:$CI_PIPELINE_ID"
+    only:
+        - develop
+
+deploy development with runner:
+    stage: deploy-runner
+    before_script:
+        - *docker_login
+    script:
+        - cd docker/
+        - docker compose pull --quiet
+        - docker compose -f docker-compose.development.yml down && docker compose -f docker-compose.development.yml up -d
+        - sleep 10 && bash healthcheck.sh dev.leo360.tech
+        - docker system prune -a --force
+    environment:
+        name: production
+        url: https://dev.leo360.tech
+    tags:
+        - leo360-front-development
+    only:
+        - develop
+
+
+
+build-app-staging:
+    image: docker:23
+    stage: build
+    services:
+        - docker:23-dind
+    before_script:
+        - *docker_login
+    script:
+        - echo "$STAGING_ENV" > .env
+        - docker build --pull -t "$CI_REGISTRY_IMAGE/app" -t "$CI_REGISTRY_IMAGE/app:$CI_PIPELINE_ID" -f ./docker/Dockerfile .
+        - docker push "$CI_REGISTRY_IMAGE/app"
+        - docker push "$CI_REGISTRY_IMAGE/app:$CI_PIPELINE_ID"
+    only:
+        - staging
+
+deploy staging with runner:
+    stage: deploy-runner
+    before_script:
+        - *docker_login
+    script:
+        - cd docker/
+        - docker compose pull --quiet
+        - docker compose -f docker-compose.staging.yml down && docker compose -f docker-compose.staging.yml up -d
+        - sleep 10 && bash healthcheck.sh staging.leo360.tech
+        - docker system prune -a --force
+    environment:
+        name: production
+        url: https://staging.leo360.tech
+    tags:
+        - frontend-staging
+    only:
+        - staging

@@ -1,0 +1,58 @@
+@import "styles/functions.scss";
+
+.checkboxRoot {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+
+  &[data-checked="false"] {
+    background-color: colorFromRgb(secondary-background);
+    // border: 1.5px solid color(gray-lighter);
+    // border: 1.5px solid colorFromRgb(secondary-background);
+    border: 1.5px solid colorFromRgb(gray-text);
+    transition: time(default);
+
+    &:hover {
+      border-color: rgba(color(gray-dark), 0.6);
+      transition: time(default);
+    }
+  }
+
+  &[data-checked="true"] {
+    background-color: colorFromRgb(primary-main);
+    border: 1.5px solid colorFromRgb(primary-main);
+    transition: time(default);
+
+    &:hover {
+      border-color: colorFromRgb(primary-main);
+      transition: time(default);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &[data-checked="false"] > .icon {
+    stroke: colorFromRgb(light-text);
+    transition: time(default);
+  }
+
+  &[data-checked="true"] > .icon {
+    stroke: colorFromRgb(primary-contrast-text);
+    path {
+      stroke: colorFromRgb(light-text);
+    }
+    transition: time(default);
+  }
+
+  &[data-disabled="true"] {
+    opacity: 50%;
+    cursor: default;
+  }
+}
+
+.icon {
+  height: 100%;
+  width: 100%;
+}

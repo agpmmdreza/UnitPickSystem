@@ -1,0 +1,45 @@
+@import "styles/functions.scss";
+.box {
+  min-width: 50%;
+  background-color: color(paper-light);
+  padding: space(pd-x);
+  border-radius: space(radius);
+  .closeIcon {
+    &[data-variant="bold"] > path {
+      fill: color(error-main);
+    }
+    &[data-variant="linear"] > path {
+      stroke: color(error-light);
+    }
+    transition: time(default);
+    cursor: pointer;
+  }
+}
+
+.confirmText {
+  margin: space(pd-x);
+  margin-left: 30px;
+  align-items: flex-start;
+  [class~="title"] {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  [class~="text"] {
+    margin-top: 15px;
+    color: #79899e99;
+  }
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: space(z-index);
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
