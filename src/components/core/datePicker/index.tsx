@@ -1,4 +1,4 @@
-import {forwardRef, HTMLAttributes} from "react";
+import { forwardRef, HTMLAttributes } from "react";
 import RDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Input from "components/core/input";
@@ -58,6 +58,9 @@ const DatePicker = ({
         scrollableYearDropdown
         showYearDropdown
         yearDropdownItemNumber={100}
+        timeInputLabel="Time:"
+        dateFormat="yyyy-MM-dd HH:mm:ss"
+        showTimeInput
       />
     </div>
   );

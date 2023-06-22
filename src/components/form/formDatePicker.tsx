@@ -1,5 +1,5 @@
-import FormBaseElement, {IBaseProps, IFormikFieldProps} from "./base";
-import DatePicker, {IDatePickerProps} from "components/core/datePicker";
+import FormBaseElement, { IBaseProps, IFormikFieldProps } from "./base";
+import DatePicker, { IDatePickerProps } from "components/core/datePicker";
 
 // form component for warping date picker input
 function FormInput({

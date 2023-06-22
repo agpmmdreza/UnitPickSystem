@@ -1,18 +1,17 @@
 import Page from "components/layout/page";
 import { useMutation } from "react-query";
-import { addUser } from "api/users";
-import UserForm from "./userForm";
+import UserForm from "./majorForm";
+import { addMajor } from "api/majors";
 
 const AddUser = () => {
-  const { mutate } = useMutation(addUser);
+  const { mutate } = useMutation(addMajor);
 
   return (
-    <Page title="افزودن کاربر" type="inner" backTo="pop">
+    <Page title="افزودن رشته" type="inner" backTo="pop">
       <UserForm
         onSumbit={(values) => {
           mutate({
             ...values,
-            role: values.role.key,
           });
         }}
       />

@@ -10,7 +10,6 @@ import { useLocation } from "react-router";
 import {
   DoctorItems,
   PatientItems,
-  PrefrencesItems,
   SuperAdminItems,
 } from "constants/sidebarItems";
 
@@ -85,17 +84,6 @@ export function SidebarBase() {
         >
           {items.map((item, index) => (
             <SidebarMenuItem key={index} item={item} />
-          ))}
-          <div
-            className={clsx(
-              classes.sidebar_separator__text,
-              sideIn && classes.center
-            )}
-          >
-            <span>Preferences</span>
-          </div>
-          {PrefrencesItems.map((item, index) => (
-            <SidebarMenuItem key={index + 10} item={item} />
           ))}
         </div>
         {/* <SidebarFooter /> */}

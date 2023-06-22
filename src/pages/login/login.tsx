@@ -2,19 +2,19 @@ import clsx from "clsx";
 import Button from "components/core/button";
 import FormInput from "components/form/formInput";
 import FormPassword from "components/form/password";
-import {FrameBold} from "components/icon";
-import {useFormik} from "formik";
-import {Link, useHistory} from "react-router-dom";
-import {getFormikFieldProps} from "utils/form";
+import { FrameBold } from "components/icon";
+import { useFormik } from "formik";
+import { Link, useHistory } from "react-router-dom";
+import { getFormikFieldProps } from "utils/form";
 import LoginLayout from "./components/loginLayout";
 import classes from "./components/styles.module.scss";
-import {useAuth} from "hooks/useAuth";
-import {UserLoginType} from "api/types/userTypes";
-import {useEffect, useState,} from "react";
-import {toast} from "react-toastify";
-import {BeatLoader} from "react-spinners";
+import { useAuth } from "hooks/useAuth";
+import { UserLoginType } from "api/types/userTypes";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { BeatLoader } from "react-spinners";
 import yup from "utils/yupExtended";
-import {IPhoneNumber} from "interfaces";
+import { IPhoneNumber } from "interfaces";
 
 interface IOnFieldForm {
   username: string;
@@ -82,12 +82,8 @@ export default function LoginPage() {
   return (
     <LoginLayout
       hasFooter
-      form_title="UnitSelection"
-      form_description={
-        step === 1
-          ? "Please enter your username and password."
-          : "Please enter 5 digit code."
-      }
+      form_title="ورود به حساب کاربری"
+      form_description=""
       stepsCount={2}
       step={step}
     >
@@ -95,17 +91,17 @@ export default function LoginPage() {
         <FormInput
           rootProps={{
             icon: FrameBold,
-            placeholder: "Username (Email)",
+            placeholder: "نام کاربری",
             disabled: isLoading,
           }}
           className="p-0"
-          {...getFormikFieldProps("username", "Username", formik)}
+          {...getFormikFieldProps("username", "نام کاربری", formik)}
         />
 
         <FormPassword
-          rootProps={{ placeholder: "Password", disabled: isLoading }}
+          rootProps={{ placeholder: "رمز عبور", disabled: isLoading }}
           className="p-0 mt-4"
-          {...getFormikFieldProps("password", "Password", formik)}
+          {...getFormikFieldProps("password", "رمز عبور", formik)}
         />
 
         <div className="d-flex mt-4 pt-2">
@@ -113,7 +109,7 @@ export default function LoginPage() {
             className={clsx([classes.link, "ms-auto"])}
             to="/forget-password"
           >
-            Forgot Password?
+            فراموشی رمز عبور
           </Link>
         </div>
         <Button disabled={isLoading} className="mt-3 w-100" type="submit">
@@ -122,14 +118,12 @@ export default function LoginPage() {
               <BeatLoader color="#fff" size={10} margin={2} />
             </div>
           ) : (
-            "Sign In"
+            "ورود"
           )}
         </Button>
         <div className="d-flex mt-3">
           <span>
-            <span className={clsx(["me-1", classes.text])}>
-              Don’t have an account?
-            </span>
+            <span className={clsx(["me-1", classes.text])}>ایجاد حساب</span>
             {/* <Dropdown anchor="right">
               <span
                 className={clsx([classes.link, "pe-2"])}

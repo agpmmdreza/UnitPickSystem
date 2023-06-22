@@ -1,7 +1,7 @@
-import {RedirectToDashboard} from "components/common/redirectToDashboard";
-import {lazy} from "react";
-import {TRoute} from "config/router";
-import {DASHBOARD_GLOBAL_ROUTES} from "./globalDashboard";
+import { RedirectToDashboard } from "components/common/redirectToDashboard";
+import { lazy } from "react";
+import { TRoute } from "config/router";
+import { DASHBOARD_GLOBAL_ROUTES } from "./globalDashboard";
 
 // const ResetPassword = lazy(
 //   () =>
@@ -32,9 +32,147 @@ const SUPER_ADMIN_ROUTES: TRoute = {
             () => import("pages/dashboard/admin/users/components/addUser")
           ),
         },
+        {
+          exact: true,
+          path: ":id",
+          component: lazy(
+            () => import("pages/dashboard/admin/users/components/editUser")
+          ),
+        },
       ],
     },
-
+    {
+      path: "majors",
+      exact: true,
+      component: lazy(() => import("pages/dashboard/admin/majors")),
+      inners: [
+        {
+          exact: true,
+          path: "create",
+          component: lazy(
+            () => import("pages/dashboard/admin/majors/components/addMajor")
+          ),
+        },
+        {
+          exact: true,
+          path: ":id",
+          component: lazy(
+            () => import("pages/dashboard/admin/users/components/editUser")
+          ),
+        },
+      ],
+    },
+    {
+      path: "unit-pick-time",
+      exact: true,
+      component: lazy(() => import("pages/dashboard/admin/unitPickTime")),
+      inners: [
+        {
+          exact: true,
+          path: "add",
+          component: lazy(
+            () => import("pages/dashboard/admin/unitPickTime/addPickTime")
+          ),
+        },
+        {
+          exact: true,
+          path: ":id",
+          component: lazy(
+            () => import("pages/dashboard/admin/users/components/editUser")
+          ),
+        },
+      ],
+    },
+    {
+      path: "days",
+      exact: true,
+      component: lazy(() => import("pages/dashboard/admin/days")),
+      inners: [
+        {
+          exact: true,
+          path: "create",
+          component: lazy(
+            () => import("pages/dashboard/admin/days/components/addDay")
+          ),
+        },
+        {
+          exact: true,
+          path: ":id",
+          component: lazy(
+            () => import("pages/dashboard/admin/days/components/editDay")
+          ),
+        },
+      ],
+    },
+    {
+      path: "bells",
+      exact: true,
+      component: lazy(() => import("pages/dashboard/admin/bells")),
+      inners: [
+        {
+          exact: true,
+          path: "create",
+          component: lazy(
+            () => import("pages/dashboard/admin/bells/components/addBell")
+          ),
+        },
+        {
+          exact: true,
+          path: ":id",
+          component: lazy(
+            () => import("pages/dashboard/admin/bells/components/editBell")
+          ),
+        },
+      ],
+    },
+    {
+      path: "time-table-bells",
+      exact: true,
+      component: lazy(() => import("pages/dashboard/admin/timeTableBells")),
+      inners: [
+        {
+          exact: true,
+          path: "create",
+          component: lazy(
+            () =>
+              import(
+                "pages/dashboard/admin/timeTableBells/components/addTimeTableBell"
+              )
+          ),
+        },
+        {
+          exact: true,
+          path: ":id",
+          component: lazy(
+            () =>
+              import(
+                "pages/dashboard/admin/timeTableBells/components/editTimeTableBell"
+              )
+          ),
+        },
+      ],
+    },
+    {
+      path: "courses",
+      exact: true,
+      component: lazy(() => import("pages/dashboard/admin/courses")),
+      inners: [
+        {
+          exact: true,
+          path: "create",
+          component: lazy(
+            () => import("pages/dashboard/admin/courses/components/addCourse")
+          ),
+        },
+        {
+          exact: true,
+          path: ":id",
+          component: lazy(
+            () => import("pages/dashboard/admin/courses/components/editCourse")
+          ),
+        },
+      ],
+    },
     ...DASHBOARD_GLOBAL_ROUTES,
   ],
 };

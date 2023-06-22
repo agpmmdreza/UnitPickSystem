@@ -1,18 +1,18 @@
-import {IResponse} from "api";
+import { IResponse } from "api";
 import Button from "components/core/button";
-import {Dropdown} from "components/core/dropdown";
-import {DropdownMenu} from "components/core/dropdownMenu";
-import {ActionMenuBold} from "components/icon";
-import {useState} from "react";
-import {generateUUIDv4} from "utils/uuid";
-import {DeleteMenuItem} from "./deleteMenuItem";
-import {ResetMenuItem} from "./resetMenuItem";
+import { Dropdown } from "components/core/dropdown";
+import { DropdownMenu } from "components/core/dropdownMenu";
+import { ActionMenuBold } from "components/icon";
+import { useState } from "react";
+import { generateUUIDv4 } from "utils/uuid";
+import { DeleteMenuItem } from "./deleteMenuItem";
+import { ResetMenuItem } from "./resetMenuItem";
 import classes from "./styles.module.scss";
-import {UpdateMenuItem} from "./updateMenuItem";
+import { UpdateMenuItem } from "./updateMenuItem";
 // import { ActiveInactiveCell } from "./activeIactiveMenuItem";
 import NotificationAlert from "components/core/notificationAlert";
-import {AddBranchMenuItem} from "./addBranchMenuItem";
-import {SendMessageMenuItem} from "./sendMessageMenuItem";
+import { AddBranchMenuItem } from "./addBranchMenuItem";
+import { SendMessageMenuItem } from "./sendMessageMenuItem";
 import AddRoleMenuItem from "./addRole";
 
 interface IActionProps {
@@ -37,7 +37,7 @@ interface IActionProps {
 
 //? the last cell in table that handles the deletion and edition od table row with a popup
 
-const POPUP_DESCRIPTION = "Do you approve to delete this record ?";
+const POPUP_DESCRIPTION = "آیا مطمئنید که میخوهید این رکورد را حذف کنید؟";
 
 function ActionCell({
   cellProps,
@@ -131,7 +131,7 @@ function ActionCell({
         open={isAlertOpen}
         onClose={() => setIsAlertOpen(false)}
         onApprove={() => setIsApproved(true)}
-        title="Confirm Deleting"
+        title="تایید حذف"
         contnet={POPUP_DESCRIPTION}
       />
     </div>

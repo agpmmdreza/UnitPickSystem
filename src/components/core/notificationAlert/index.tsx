@@ -48,11 +48,11 @@ const NotificationAlert = ({
               className="me-2"
               onClick={!!onCancel ? onCancel : props.onClose}
             >
-              Cancel
+              لغو
             </Button>
           )}
           <Button color="secondary" onClick={handleApprove}>
-            {approveTitle || "Approve"}
+            {approveTitle || "تایید"}
           </Button>
         </div>
       </Modal>

@@ -1,5 +1,5 @@
-import {IMenuOption} from "components/core/autoComplete";
-import {TChipColor} from "interfaces";
+import { IMenuOption } from "components/core/autoComplete";
+import { TChipColor } from "interfaces";
 
 export const GENDER_OPTIONS: IMenuOption[] = [
   { key: "male", value: "male" },
@@ -10,6 +10,11 @@ export const GENDER_OPTIONS: IMenuOption[] = [
 export const ROLES_OPTIONS: IMenuOption[] = [
   { key: "master", value: "استاد" },
   { key: "student", value: "دانشجو" },
+];
+
+export const WEEK_TYPE_OPTIONS: IMenuOption[] = [
+  { key: "odd", value: "فرد" },
+  { key: "even", value: "زوج" },
 ];
 
 export const DOCTOR_TYPE_OPTIONS: IMenuOption[] = [
