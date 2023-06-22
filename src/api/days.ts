@@ -6,13 +6,19 @@ export interface IDayData {
   dayOfWeek: number;
 }
 
+export interface IDayResponse {
+  id: number;
+  label: string;
+  dayOfWeek: number;
+}
+
 export function getDayList(
   params: IPageParams
-): Promise<IResponse<IPaginationTableList<IDayData>>> {
+): Promise<IResponse<IPaginationTableList<IDayResponse>>> {
   return apiCaller.get(`days`, { params });
 }
 
-export function getDayById(id: number): Promise<IResponse<IDayData>> {
+export function getDayById(id: number): Promise<IResponse<IDayResponse>> {
   return apiCaller.get(`days/${id}`);
 }
 

@@ -1,12 +1,12 @@
 /* eslint-disable eqeqeq */
-import React, {HTMLAttributes, useEffect, useRef, useState} from "react";
+import React, { HTMLAttributes, useEffect, useRef, useState } from "react";
 import classes from "./styles.module.scss";
 import clsx from "clsx";
-import {ArrowDownBold} from "components/icon";
+import { ArrowDownBold } from "components/icon";
 import Input from "components/core/input";
 import Checkbox from "components/core/checkbox";
 import Chip from "components/core/chip";
-import {TChipColor} from "interfaces";
+import { TChipColor } from "interfaces";
 
 export interface IMenuOption {
   key: string;
@@ -143,7 +143,7 @@ const MultiSelect = ({
         <Input
           type="search"
           validation="success"
-          placeholder="Search Department by name"
+          placeholder="جستجو"
           onChange={handleInputChange}
           value={inputText}
         />

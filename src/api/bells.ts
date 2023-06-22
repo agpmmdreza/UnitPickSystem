@@ -6,13 +6,19 @@ export interface IBellData {
   bellOfDay: number;
 }
 
+export interface IBellResponse {
+  id: number;
+  label: string;
+  bellOfDay: number;
+}
+
 export function getBellsList(
   params: IPageParams
-): Promise<IResponse<IPaginationTableList<IBellData>>> {
+): Promise<IResponse<IPaginationTableList<IBellResponse>>> {
   return apiCaller.get(`bells`, { params });
 }
 
-export function getBellsById(id: number): Promise<IResponse<IBellData>> {
+export function getBellsById(id: number): Promise<IResponse<IBellResponse>> {
   return apiCaller.get(`bells/${id}`);
 }
 

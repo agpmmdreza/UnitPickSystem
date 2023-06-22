@@ -1,3 +1,4 @@
+import { getMajorList } from "api/majors";
 import { deleteUser, getUserList } from "api/users";
 import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
@@ -13,19 +14,7 @@ const COLUMNS = [
   },
   {
     Header: "نام",
-    accessor: "firstName",
-  },
-  {
-    Header: "نام خانوادگی",
-    accessor: "lastName",
-  },
-  {
-    Header: "نقش",
-    accessor: "role",
-  },
-  {
-    Header: "نام کاربری",
-    accessor: "code",
+    accessor: "majorName",
   },
 ];
 
@@ -41,7 +30,7 @@ const MajorsList = () => {
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery(
     ["getFacilities", pagination.currentPage, pagination.resultsPerPage],
-    () => getUserList({ page: pagination.currentPage }),
+    () => getMajorList({ page: pagination.currentPage }),
     {
       keepPreviousData: true,
       onSuccess: (data) => {

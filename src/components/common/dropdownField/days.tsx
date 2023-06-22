@@ -1,38 +1,40 @@
-import { GPSBold } from "components/icon";
+import { GPSBold, ManBold } from "components/icon";
 import { useQuery } from "react-query";
 import { getFormikFieldProps } from "utils/form";
 import { FormikProps } from "formik";
 import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
-import { getCoursesList } from "api/courses";
 import FormMultiSelect from "components/form/formMultiSelect";
 import { ISelectDefaultProps } from "components/core/multiSelect";
+import { getDayList } from "api/days";
+import FormAutoComplete from "components/form/formAutoComplete";
+import { IDefaultProps } from "components/core/autoComplete";
 
 export interface IStateProps<T> {
   formik: FormikProps<T>;
-  rootProps?: Partial<ISelectDefaultProps>;
-  courseFieldName: string;
+  rootProps?: Partial<IDefaultProps>;
+  dayFieldName: string;
   disabled?: boolean;
   noPadding?: boolean;
   label?: string;
-  courseId?: string;
-  courseName?: string;
+  dayId?: string;
+  dayName?: string;
 }
 
 //? Gets the country and shows states in dropdown
 
-export function Courses<T extends { [key: string]: any }>({
+export function Days<T extends { [key: string]: any }>({
   formik,
-  courseFieldName,
-  courseName,
-  courseId,
+  dayFieldName,
+  dayName,
+  dayId,
   rootProps,
   disabled,
   noPadding,
   label,
 }: IStateProps<T>) {
   const { data, isLoading, isError } = useQuery(
-    [getCoursesList.name, "courseList"],
-    () => getCoursesList({ page: 1 })
+    [getDayList.name, "dayList"],
+    () => getDayList({ page: 1 })
     // {
     //   staleTime: Infinity,
     //   cacheTime: Infinity,
@@ -41,32 +43,32 @@ export function Courses<T extends { [key: string]: any }>({
 
   const OPTIONS = data?.data.data?.list.map((item) => ({
     key: item.id.toString(),
-    value: item.title,
+    value: item.label,
   }));
 
   useDropdownDefaultValue({
-    fieldName: courseFieldName,
+    fieldName: dayFieldName,
     formik: formik,
-    id: courseId,
+    id: dayId,
     OPTIONS: OPTIONS,
-    name: courseName,
+    name: dayName,
   });
 
   const changeHandler = (value: any) => {
-    formik.setFieldValue(courseFieldName, value);
+    formik.setFieldValue(dayFieldName, value);
   };
 
   return (
-    <FormMultiSelect
+    <FormAutoComplete
       noPadding={noPadding}
       rootProps={{
-        icon: GPSBold,
+        icon: ManBold,
         placeholder: label,
         disabled: isError || isLoading || disabled,
         ...rootProps,
       }}
       options={OPTIONS || []}
-      {...getFormikFieldProps(courseFieldName, label ? label : "دروس", formik)}
+      {...getFormikFieldProps(dayFieldName, label ? label : "روز", formik)}
       onChange={changeHandler}
     />
   );

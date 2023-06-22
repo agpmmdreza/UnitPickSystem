@@ -9,6 +9,8 @@ import { getFormikFieldProps } from "utils/form";
 import { IMenuOption } from "interfaces";
 import { ITimeTableBellData } from "api/timeTableBells";
 import { WeekType } from "components/common/dropdownField/weekType";
+import { Days } from "components/common/dropdownField/days";
+import { Bells } from "components/common/dropdownField/bells";
 
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
@@ -28,22 +30,22 @@ interface ITimeTableFormProps {
 }
 
 interface ITimeTableForm {
-  bellId: number;
-  dayId: number;
+  bellId: IMenuOption;
+  dayId: IMenuOption;
   roomNumber: number;
   weekType: IMenuOption;
 }
 
 export const defaultValues: ITimeTableForm = {
-  bellId: 1,
-  dayId: 1,
+  bellId: { key: "", value: "" },
+  dayId: { key: "", value: "" },
   roomNumber: 1,
   weekType: { key: "", value: "" },
 };
 
 export const ValidationSchema = yup.object().shape({
-  bellId: yup.number().required(REQUIRED_FIELD_MESSAGE),
-  dayId: yup.number().required(REQUIRED_FIELD_MESSAGE),
+  bellId: yup.object().dropdown(),
+  dayId: yup.object().dropdown(),
   roomNumber: yup.number().required(REQUIRED_FIELD_MESSAGE),
   weekType: yup.object().dropdown(),
 });
@@ -56,21 +58,30 @@ const TimeTableForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit: (values) => {
-      onSumbit({ ...values, weekType: values.weekType.key });
+      onSumbit({
+        dayId: +values.dayId.key,
+        bellId: +values.bellId.key,
+        weekType: values.weekType.key,
+        roomNumber: values.roomNumber,
+      });
     },
   });
 
   return (
     <form onSubmit={formik.handleSubmit}>
       <Grid flowDense>
-        <FormInput
-          {...getFormikFieldProps("dayId", "آیدی روز", formik)}
-          rootProps={{ placeholder: "آیدی روز", icon: UserBold }}
+        <Days
+          formik={formik}
+          dayFieldName="dayId"
+          label="روز"
+          dayId={initialValues?.dayId.key}
         />
 
-        <FormInput
-          {...getFormikFieldProps("bellId", "آیدی زنگ", formik)}
-          rootProps={{ placeholder: "آیدی زنگ", icon: UserBold }}
+        <Bells
+          formik={formik}
+          bellFieldName="bellId"
+          label="زنگ"
+          bellId={initialValues?.bellId.key}
         />
 
         <FormInput

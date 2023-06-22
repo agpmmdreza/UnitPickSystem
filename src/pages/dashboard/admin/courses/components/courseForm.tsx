@@ -6,11 +6,10 @@ import Button from "components/core/button";
 import FormInput from "components/form/formInput";
 import { UserBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
-import { IMenuOption } from "interfaces";
 import { ICourseData } from "api/courses";
 import FormNumberInput from "components/form/formNumberInput";
-import FormMultiSelect from "components/form/formMultiSelect";
 import { Courses } from "components/common/dropdownField/courses";
+import { IMenuOption } from "interfaces";
 
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
@@ -32,7 +31,7 @@ interface ICourseFormProps {
 interface ICourseForm {
   title: string;
   unitsCount: number;
-  prerequisiteList: string[];
+  prerequisiteList: IMenuOption[];
 }
 
 export const defaultValues: ICourseForm = {
@@ -44,7 +43,7 @@ export const defaultValues: ICourseForm = {
 export const ValidationSchema = yup.object().shape({
   title: yup.string().required(REQUIRED_FIELD_MESSAGE),
   unitsCount: yup.number().required(REQUIRED_FIELD_MESSAGE),
-  // prerequisiteList: yup.number().required(REQUIRED_FIELD_MESSAGE),
+  // prerequisiteList: yup.array().of(yup.string()),
 });
 
 const CourseForm = ({ onSumbit, initialValues }: ICourseFormProps) => {
@@ -55,7 +54,10 @@ const CourseForm = ({ onSumbit, initialValues }: ICourseFormProps) => {
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit: (values) => {
-      onSumbit(values);
+      onSumbit({
+        ...values,
+        prerequisiteList: values.prerequisiteList.map((i) => i.value),
+      });
     },
   });
 
@@ -63,7 +65,7 @@ const CourseForm = ({ onSumbit, initialValues }: ICourseFormProps) => {
     <form onSubmit={formik.handleSubmit}>
       <Grid flowDense>
         <FormInput
-          {...getFormikFieldProps("dayId", "عنوان درس", formik)}
+          {...getFormikFieldProps("title", "عنوان درس", formik)}
           rootProps={{ placeholder: "عنوان درس", icon: UserBold }}
         />
 
@@ -76,7 +78,11 @@ const CourseForm = ({ onSumbit, initialValues }: ICourseFormProps) => {
           {...getFormikFieldProps("unitsCount", "تعداد واحد", formik)}
         />
 
-        <Courses courseFieldName="prerequisiteList" formik={formik} />
+        <Courses
+          courseFieldName="prerequisiteList"
+          formik={formik}
+          label="پیشنیازها"
+        />
       </Grid>
       <div className="d-flex gap-2 justify-content-end mt-5 pt-5">
         <Button
@@ -86,7 +92,7 @@ const CourseForm = ({ onSumbit, initialValues }: ICourseFormProps) => {
         >
           لغو
         </Button>
-        <Button type="submit">ثبت زنگ درسی</Button>
+        <Button type="submit">ثبت درس </Button>
       </div>
     </form>
   );

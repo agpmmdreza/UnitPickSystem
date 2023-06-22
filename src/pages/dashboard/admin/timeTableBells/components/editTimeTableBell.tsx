@@ -36,8 +36,8 @@ const EditUser = () => {
         initialValues={
           data?.data.data && {
             ...data?.data.data,
-            dayId: data.data.data.day.id,
-            bellId: data.data.data.bell.id,
+            dayId: { key: data.data.data.day.id.toString(), value: "" },
+            bellId: { key: data.data.data.bell.id.toString(), value: "" },
             weekType: { key: data.data.data.weekType, value: "" },
           }
         }

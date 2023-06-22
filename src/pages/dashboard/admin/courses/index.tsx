@@ -1,5 +1,4 @@
-import { getCoursesList } from "api/courses";
-import { deleteDay } from "api/days";
+import { deleteCourse, getCoursesList } from "api/courses";
 import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
 import Table from "components/core/table";
@@ -9,20 +8,16 @@ import { useQuery } from "react-query";
 
 const COLUMNS = [
   {
-    Header: "روز",
-    accessor: "day.label",
+    Header: "آیدی",
+    accessor: "id",
   },
   {
-    Header: "زنگ",
-    accessor: "bell.label",
+    Header: "عنوان",
+    accessor: "title",
   },
   {
-    Header: "نوع هفته",
-    accessor: "weekType",
-  },
-  {
-    Header: "شماره اتاق",
-    accessor: "roomNumber",
+    Header: "تعداد واحد",
+    accessor: "unitsCount",
   },
 ];
 
@@ -37,7 +32,7 @@ const Courses = () => {
   } = usePagination();
 
   const { data, refetch, isFetching } = useQuery(
-    ["coursesList", pagination.currentPage, pagination.resultsPerPage],
+    ["courseList", pagination.currentPage, pagination.resultsPerPage],
     () => getCoursesList({ page: pagination.currentPage }),
     {
       keepPreviousData: true,
@@ -65,7 +60,7 @@ const Courses = () => {
       ActionCell({
         cellProps: props,
         refetch,
-        deleteMutationFn: deleteDay,
+        deleteMutationFn: deleteCourse,
       }),
   };
 

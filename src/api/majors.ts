@@ -3,12 +3,7 @@ import { IPageParams, IPaginationTableList } from "./types/paginationType";
 
 interface IMajorListResponse {
   id: number;
-  firstName: string;
-  lastName: string;
-  password: string;
-  role: string;
-  code: string;
-  major: string;
+  majorName: string;
 }
 
 export interface IMajorData {
