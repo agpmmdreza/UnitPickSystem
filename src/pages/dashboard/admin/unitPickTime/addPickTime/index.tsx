@@ -1,11 +1,14 @@
 import { addUnitPickTime, IUPickData } from "api/unitPickTime";
+import { Years } from "components/common/dropdownField/years";
 import Button from "components/core/button";
 import Grid from "components/core/Grid";
+import { notify } from "components/core/toast";
 import FormDatePicker from "components/form/formDatePicker";
 import FormInput from "components/form/formInput";
 import { CalendarBold, UserBold } from "components/icon";
 import Page from "components/layout/page";
 import { useFormik } from "formik";
+import { IMenuOption } from "interfaces";
 import { useMutation } from "react-query";
 import { useHistory } from "react-router";
 import { getFormikFieldProps } from "utils/form";
@@ -14,7 +17,7 @@ import yup from "utils/yupExtended";
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
 export interface IAddMajorFields {
-  entranceYear: number;
+  entranceYear: IMenuOption;
   pickTime: string;
   modifyTime: string;
 }
@@ -24,14 +27,14 @@ interface IMajorFormProps {
   initialValues?: IAddMajorFields;
 }
 
-export const defaultValues: IUPickData = {
-  entranceYear: 1399,
+export const defaultValues: IAddMajorFields = {
+  entranceYear: { key: "", value: "" },
   pickTime: "",
   modifyTime: "",
 };
 
 export const ValidationSchema = yup.object().shape({
-  entranceYear: yup.number().required(),
+  entranceYear: yup.object().dropdown(),
   pickTime: yup.date().required(),
   modifyTime: yup.date().required(),
 });
@@ -39,16 +42,21 @@ export const ValidationSchema = yup.object().shape({
 const AddPickTime = () => {
   const history = useHistory();
 
-  const { mutate } = useMutation(addUnitPickTime);
+  const { mutate } = useMutation(addUnitPickTime, {
+    onSuccess: () => {
+      notify.success("زمان انتخاب واحد با موفقیت اضافه شد.");
+      history.replace("../unit-pick-time");
+    },
+  });
 
-  const formik = useFormik<IUPickData>({
+  const formik = useFormik<IAddMajorFields>({
     initialValues: defaultValues,
     validationSchema: ValidationSchema,
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit: (values) => {
       //   onSumbit(values);
-      mutate(values);
+      mutate({ ...values, entranceYear: +values.entranceYear.key });
     },
   });
 
@@ -56,10 +64,7 @@ const AddPickTime = () => {
     <Page title="افزودن تایم انتخاب واحد" type="main">
       <form onSubmit={formik.handleSubmit}>
         <Grid flowDense>
-          <FormInput
-            {...getFormikFieldProps("entranceYear", "سال ورود", formik)}
-            rootProps={{ placeholder: "سال ورود", icon: UserBold }}
-          />
+          <Years formik={formik} fieldName="entranceYear" />
           <FormDatePicker
             noPadding
             {...getFormikFieldProps("pickTime", "زمان انتخاب واحد", formik)}

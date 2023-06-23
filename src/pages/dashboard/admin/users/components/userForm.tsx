@@ -8,6 +8,7 @@ import { IdBold, MailTrackingBold, UserBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 import { Roles } from "components/common/dropdownField/roles";
 import { IMenuOption } from "interfaces";
+import { Majors } from "components/common/dropdownField/majors";
 
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
@@ -80,12 +81,20 @@ const UserForm = ({ onSumbit, initialValues }: IUserFormProps) => {
           rootProps={{ placeholder: "نام کاربری", icon: IdBold }}
         />
 
-        <FormInput
+        {/* <FormInput
           rootProps={{
             icon: MailTrackingBold,
             placeholder: "رشته تحصیلی",
           }}
           {...getFormikFieldProps("major", "رشته تحصیلی", formik)}
+        /> */}
+        <Majors
+          formik={formik}
+          majorFieldName="major"
+          rootProps={{
+            icon: MailTrackingBold,
+            placeholder: "رشته تحصیلی",
+          }}
         />
 
         <FormInput

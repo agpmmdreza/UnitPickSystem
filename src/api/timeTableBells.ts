@@ -9,6 +9,7 @@ export interface ITimeTableBellData {
 }
 
 export interface ITimeTableBellResponse {
+  id: number;
   day: {
     id: number;
     label: string;

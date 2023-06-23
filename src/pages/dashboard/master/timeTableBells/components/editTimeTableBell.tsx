@@ -2,24 +2,28 @@ import Page from "components/layout/page";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useHistory, useParams } from "react-router";
 import { IParam } from "interfaces/param";
+import TimeTableForm from "./timeTableBellForm";
+import {
+  getTimeTableBellsById,
+  ITimeTableBellData,
+  updateTimeTableBell,
+} from "api/timeTableBells";
 import { notify } from "components/core/toast";
-import { getCoursesById, ICourseData, updateCourse } from "api/courses";
-import CourseForm from "./courseForm";
 
 const EditUser = () => {
   const { id } = useParams<IParam>();
   const history = useHistory();
   const queryClient = useQueryClient();
 
-  const { data } = useQuery(["courseById", id], () =>
-    getCoursesById(Number(id))
+  const { data } = useQuery(["timeTableById", id], () =>
+    getTimeTableBellsById(Number(id))
   );
   const { mutate } = useMutation(
-    (data: ICourseData) => updateCourse(Number(id), data),
+    (data: ITimeTableBellData) => updateTimeTableBell(Number(id), data),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(["courseList"]);
-        queryClient.invalidateQueries(["courseById"]);
+        queryClient.invalidateQueries(["timeTableBellsList"]);
+        queryClient.invalidateQueries(["timeTableById"]);
         notify.success("زنگ با موفقیت ویرایش شد.");
         history.replace("../time-table-bells");
       },
@@ -27,12 +31,14 @@ const EditUser = () => {
   );
 
   return (
-    <Page title="ویرایش درس" type="inner" backTo="pop">
-      <CourseForm
+    <Page title="ویرایش کاربر" type="inner" backTo="pop">
+      <TimeTableForm
         initialValues={
           data?.data.data && {
             ...data?.data.data,
-            prerequisiteList: [],
+            dayId: { key: data.data.data.day.id.toString(), value: "" },
+            bellId: { key: data.data.data.bell.id.toString(), value: "" },
+            weekType: { key: data.data.data.weekType, value: "" },
           }
         }
         onSumbit={(values) => {

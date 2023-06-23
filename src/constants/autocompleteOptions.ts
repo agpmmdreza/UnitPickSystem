@@ -17,6 +17,16 @@ export const WEEK_TYPE_OPTIONS: IMenuOption[] = [
   { key: "even", value: "زوج" },
 ];
 
+export const YEARS_OPTIONS: IMenuOption[] = [
+  { key: "1398", value: "1398" },
+  { key: "1399", value: "1399" },
+  { key: "1400", value: "1400" },
+  { key: "1401", value: "1401" },
+  { key: "1402", value: "1402" },
+  { key: "1403", value: "1403" },
+  { key: "1404", value: "1404" },
+];
+
 export const DOCTOR_TYPE_OPTIONS: IMenuOption[] = [
   {
     key: "international",

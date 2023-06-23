@@ -1,5 +1,5 @@
-import apiCaller, {IResponse} from "api/index";
-import {IUserRole, UserLoginType} from "api/types/userTypes";
+import apiCaller, { IResponse } from "api/index";
+import { IUserRole, UserLoginType } from "api/types/userTypes";
 
 // login
 
@@ -265,51 +265,6 @@ export interface IProfileResponse {
   lastName: string;
   code: string;
   role: string;
-  user_id: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  mobile: string;
-  phone: string;
-  is_active: 0 | 1;
-  user_name: string;
-  timezone: {
-    id: number;
-    name: string;
-    gmt_offset_name: string;
-  };
-  roles: IUserRole[];
-  current_facility: string;
-  avatar: string;
-  birthday: Date | string;
-  gender: string;
-  facilities: {
-    id: 1;
-    facility_id: "H-DE-000001";
-    city: { id: number; name: string };
-    state: { id: number; name: string };
-    country: { id: number; name: string; flag: string };
-    name: string;
-    website: string;
-    type: string;
-    side: string;
-    roles: IUserRole[];
-  }[];
-  more_info: IDoctorProfileInfo;
-  address: IProfileAddress;
-  languages?: ILanguage[];
-  national_id?: string;
-  mrn_number?: string;
-  emergency_phone_number?: string;
-  emergency_contact_name?: string;
-  employee_number?: string;
-  insurance?: string;
-  departments?: string[];
-  has_medical_history?: boolean;
-  wallet: null | {
-    balance: string; // "5468291.1500000000";
-    currency: string; // "USD";
-  };
 }
 
 export function getProfile(): Promise<IResponse<IProfileResponse>> {

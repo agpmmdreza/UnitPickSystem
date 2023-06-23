@@ -202,9 +202,9 @@ export function useAuth(): IUseAuth {
 
   // trigger logout api
   const logOut = async (callAPI = true) => {
-    if (callAPI) {
-      await logoutRequest.mutateAsync(); // call api.
-    }
+    // if (callAPI) {
+    //   await logoutRequest.mutateAsync(); // call api.
+    // }
 
     authContext.logOut();
     queryClient.clear(); // clear local catch.

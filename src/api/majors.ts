@@ -23,7 +23,7 @@ export function getMajorById(
 }
 
 export function addMajor(data: IMajorData): Promise<IResponse<any>> {
-  return apiCaller.post(`majors/add`, data);
+  return apiCaller.post(`majors/`, data);
 }
 
 export function deleteMajor(userId: number): Promise<IResponse<any>> {

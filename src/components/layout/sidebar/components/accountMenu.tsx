@@ -30,7 +30,7 @@ export function AccountMenu() {
           >
             <Avatar
               name="John Doe"
-              src={profile.data?.data.data?.avatar || ""}
+              src={""}
               className={clsx([classes.cursorPointer, classes.avatar])}
             />
             <div
@@ -41,7 +41,7 @@ export function AccountMenu() {
             >
               <div className="d-flex">
                 <div className={classes.profileName}>
-                  {`${profile.data?.data.data?.first_name} ${profile.data?.data.data?.last_name}`}
+                  {`${profile.data?.data.data?.firstName} ${profile.data?.data.data?.lastName}`}
                 </div>
                 <div className={classes.verifyImage}>
                   <VerifyBold />

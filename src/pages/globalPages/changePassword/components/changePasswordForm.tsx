@@ -1,15 +1,15 @@
 import Button from "components/core/button";
-import {FormikErrors, useFormik} from "formik";
-import {getFormikFieldProps} from "utils/form";
+import { FormikErrors, useFormik } from "formik";
+import { getFormikFieldProps } from "utils/form";
 import FormPassword from "components/form/password";
-import {useMutation} from "react-query";
-import {submitChangePassword} from "api/auth";
-import {useHistory} from "react-router";
+import { useMutation } from "react-query";
+import { submitChangePassword } from "api/auth";
+import { useHistory } from "react-router";
 import BeatLoader from "react-spinners/BeatLoader";
-import {validatePassword} from "utils/validation";
+import { validatePassword } from "utils/validation";
 import NotificationAlert from "components/core/notificationAlert";
-import {useState} from "react";
-import {notify} from "components/core/toast";
+import { useState } from "react";
+import { notify } from "components/core/toast";
 import Grid from "components/core/Grid";
 
 interface IFieldTypes {
@@ -87,25 +87,25 @@ function ChangePasswordForm() {
         <Grid>
           <FormPassword
             className="ps-0"
-            {...getFormikFieldProps("oldPassword", "Old Password", formik)}
+            {...getFormikFieldProps("oldPassword", "پسورد فعلی", formik)}
             rootProps={{
-              placeholder: "Old Password",
+              placeholder: "پسورد فعلی",
             }}
           />
           <FormPassword
-            {...getFormikFieldProps("newPassword", "New Password", formik)}
+            {...getFormikFieldProps("newPassword", "پسورد جدید", formik)}
             rootProps={{
-              placeholder: "New Password",
+              placeholder: "پسورد جدید",
             }}
           />
           <FormPassword
             {...getFormikFieldProps(
               "confirmPassword",
-              "Confirm New Password",
+              "تایید پسورد جدید",
               formik
             )}
             rootProps={{
-              placeholder: "Confirm New Password",
+              placeholder: "تایید پسورد جدید",
             }}
           />
         </Grid>
@@ -117,7 +117,7 @@ function ChangePasswordForm() {
             className="m-2"
             onClick={() => history.replace("./dashboard")}
           >
-            Cancel
+            لغو
           </Button>
 
           <Button
@@ -134,7 +134,7 @@ function ChangePasswordForm() {
                 <BeatLoader color="#fff" size={10} margin={2} />
               </div>
             ) : (
-              "Change"
+              "تغییر پسورد"
             )}
           </Button>
         </div>

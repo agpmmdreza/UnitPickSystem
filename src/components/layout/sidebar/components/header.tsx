@@ -35,14 +35,14 @@ export function SidebarHeader() {
   const { sideIn, setSideIn } = useContext(SidebarContext);
   const { roles, role, logOut } = useAuth();
   const profile = useProfile();
-  const profileName = `${profile.data?.data.data?.first_name} ${profile.data?.data.data?.last_name}`;
+  const profileName = `${profile.data?.data.data?.firstName} ${profile.data?.data.data?.lastName}`;
   const history = useHistory();
   const [logOutOpen, setLogoutOpen] = useState(false);
 
   /** Avatar settings dropdown items */
   const AVATAR_DROPDOWN_ITEMS: IAvatarDropdownItems[] = [
     {
-      label: "View Profile",
+      label: "ویرایش پروفایل",
       icon: EditProfileLinear,
       onClick: () => {
         history.push(`/panel/${role}/profile-management/view-profile`);
@@ -50,45 +50,16 @@ export function SidebarHeader() {
       },
     },
     {
-      label: "Change Password",
+      label: "تغییر رمز عبور",
       icon: PasswordCheckLinear,
       onClick: () => {
         history.push(`/panel/${role}/change-password`);
         closeSidebar(setSideIn);
       },
     },
+
     {
-      label: "Switch Account",
-      icon: SwitchLinear,
-      nestedItems: roles?.map((item) => (
-        <DropdownItem
-          key={item.roleName + item.facilityId}
-          className={clsx([
-            classes.accountMenuItem,
-            classes.accountMenuPaddingRight,
-          ])}
-          onClick={() => {
-            // changeRole(item.role, item.facilityId);
-            document.body.style.overflowY = "auto";
-          }}
-        >
-          <div className="d-flex">
-            <Avatar
-              name={item.roleName}
-              src=""
-              contentClassName={clsx([classes.avatar])}
-              size="normal"
-            />
-            <div className="ms-3">
-              <div className={classes.profileName}>{item.roleName}</div>
-              <div className={classes.profileRole}>{item.facility}</div>
-            </div>
-          </div>
-        </DropdownItem>
-      )),
-    },
-    {
-      label: "Logout",
+      label: "خروج از حساب",
       icon: LogoutLinear,
       onClick: () => setLogoutOpen(true),
     },
@@ -124,7 +95,7 @@ export function SidebarHeader() {
             <Avatar
               name={profileName}
               size={sideIn ? "big" : "large"}
-              src={profile?.data?.data?.data?.avatar}
+              src={""}
             />
             <Dropdown anchor="bottom">
               {/* <IconButton

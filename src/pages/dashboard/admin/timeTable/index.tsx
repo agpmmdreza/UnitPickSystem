@@ -1,35 +1,38 @@
-import { getUnitPickTimeList } from "api/unitPickTime";
-import { deleteUser } from "api/users";
+import { deleteDay } from "api/days";
+import { getTimeTablesList } from "api/timeTable";
+import { getTimeTableBellsList } from "api/timeTableBells";
 import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
 import Table from "components/core/table";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
 import { useQuery } from "react-query";
-import { convertToDateAndTime } from "utils/time";
 
 const COLUMNS = [
   {
-    Header: "سال ورودی",
-    accessor: "entranceYear",
+    Header: "درس",
+    accessor: "course.title",
   },
   {
-    Header: "زمان انتخاب واحد",
-    accessor: "pickTime",
+    Header: "استاد",
+    accessor: "master.user.firstName",
     Cell: (value: any) => {
-      return <span> {convertToDateAndTime(value.cell.value)} </span>;
+      return (
+        <span>{`${value.row.original.master.user.firstName} ${value.row.original.master.user.lastName}`}</span>
+      );
     },
   },
   {
-    Header: "زمان حذف و اضافه",
-    accessor: "modifyTime",
-    Cell: (value: any) => {
-      return <span> {convertToDateAndTime(value.cell.value)} </span>;
-    },
+    Header: "رشته",
+    accessor: "master.major.majorName",
+  },
+  {
+    Header: "شماره اتاق",
+    accessor: "roomNumber",
   },
 ];
 
-const UnitPickList = () => {
+const TimeTableBells = () => {
   const {
     handleGotoPage,
     handleNextPage,
@@ -39,9 +42,9 @@ const UnitPickList = () => {
     updateMaxPage,
   } = usePagination();
 
-  const { data, isLoading, isError, refetch, isFetching } = useQuery(
-    ["getPickTimes", pagination.currentPage, pagination.resultsPerPage],
-    () => getUnitPickTimeList({ page: pagination.currentPage }),
+  const { data, refetch, isFetching } = useQuery(
+    ["timeTableBellsList", pagination.currentPage, pagination.resultsPerPage],
+    () => getTimeTablesList({ page: pagination.currentPage }),
     {
       keepPreviousData: true,
       onSuccess: (data) => {
@@ -60,7 +63,6 @@ const UnitPickList = () => {
     data: responseData ? responseData.list : [],
     ...pagination,
   };
-  console.log(fixedData);
 
   const actionCell = {
     Header: "عملیات",
@@ -69,12 +71,12 @@ const UnitPickList = () => {
       ActionCell({
         cellProps: props,
         refetch,
-        deleteMutationFn: deleteUser,
+        deleteMutationFn: deleteDay,
       }),
   };
 
   return (
-    <Page title="لیست تایم انتخاب واحد" type="main">
+    <Page title="لیست زنگ های درسی" type="main">
       <Table
         onRowSelect={(results) => {}}
         onNextPage={handleNextPage}
@@ -87,13 +89,11 @@ const UnitPickList = () => {
         fetchedData={fixedData}
         columns={[...COLUMNS, actionCell]}
         {...{ isFetching }}
-        title="تایم انتخاب واحد"
-        actionsComponent={
-          <RegistrationButton title="افزودن تایم انتخاب واحد" />
-        }
+        title="برنامه زمانی"
+        actionsComponent={<RegistrationButton title="افزودن برنامه زمانی" />}
       />
     </Page>
   );
 };
 
-export default UnitPickList;
+export default TimeTableBells;

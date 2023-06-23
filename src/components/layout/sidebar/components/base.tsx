@@ -8,8 +8,8 @@ import { SidebarMenuItem } from "./sidebarMenuItem";
 import { ISidebarItem, SidebarContext } from "..";
 import { useLocation } from "react-router";
 import {
-  DoctorItems,
-  PatientItems,
+  MasterItems,
+  StudentItems,
   SuperAdminItems,
 } from "constants/sidebarItems";
 
@@ -26,12 +26,12 @@ export function SidebarBase() {
         setItems(SuperAdminItems);
         break;
 
-      case "doctor":
-        setItems(DoctorItems);
+      case "master":
+        setItems(MasterItems);
         break;
 
-      case "patient":
-        setItems(PatientItems);
+      case "student":
+        setItems(StudentItems);
         break;
 
       default:

@@ -69,7 +69,7 @@ const SUPER_ADMIN_ROUTES: TRoute = {
       inners: [
         {
           exact: true,
-          path: "add",
+          path: "create",
           component: lazy(
             () => import("pages/dashboard/admin/unitPickTime/addPickTime")
           ),
@@ -150,6 +150,31 @@ const SUPER_ADMIN_ROUTES: TRoute = {
               )
           ),
         },
+      ],
+    },
+    {
+      path: "time-table",
+      exact: true,
+      component: lazy(() => import("pages/dashboard/admin/timeTable")),
+      inners: [
+        {
+          exact: true,
+          path: "create",
+          component: lazy(
+            () =>
+              import("pages/dashboard/admin/timeTable/components/addTimeTable")
+          ),
+        },
+        // {
+        //   exact: true,
+        //   path: ":id",
+        //   component: lazy(
+        //     () =>
+        //       import(
+        //         "pages/dashboard/admin/timeTable/components/editTimeTableBell"
+        //       )
+        //   ),
+        // },
       ],
     },
     {

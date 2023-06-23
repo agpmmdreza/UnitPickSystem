@@ -78,6 +78,7 @@ export const SuperAdminItems: ISidebarItem[] = [
       },
     ],
   },
+
   {
     id: "5",
     name: "زنگ های درسی",
@@ -102,123 +103,58 @@ export const SuperAdminItems: ISidebarItem[] = [
     path: "/panel/admin/majors",
     child: [],
   },
+  {
+    id: "8",
+    name: "برنامه زمانی دروس",
+    icon: FinancialDuotone,
+    selectedIcon: FinancialBold,
+    path: "/panel/admin/time-table",
+    child: [],
+  },
 ];
 
-export const DoctorItems: ISidebarItem[] = [
+export const MasterItems: ISidebarItem[] = [
   {
     id: "0",
-    name: "Summary",
+    name: "صفحه اصلی",
     icon: SummaryDuotone,
     selectedIcon: SummaryBold,
-    path: "/panel/doctor/dashboard",
+    path: "/panel/master/dashboard",
     child: [],
   },
   {
     id: "1",
-    name: "Availability Time",
-    icon: AvailabilityDoutone,
-    selectedIcon: AvailabilityBold,
-    child: [
-      {
-        id: "1",
-        path: "/panel/doctor/availability-time",
-        name: "Availability Time List",
-      },
-      {
-        id: "2",
-        path: "/panel/doctor/assigned-robots",
-        name: "Assigned Robots",
-      },
-    ],
+    name: "کاربران",
+    icon: HospitalDuotone,
+    selectedIcon: HospitalBold,
+    path: "/panel/master/users",
+    child: [],
   },
-  {
-    id: "2",
-    name: "My Appointments",
-    icon: AppointmentDuotone,
-    selectedIcon: AppointmentBold,
-    child: [
-      {
-        id: "0",
-        name: "Scheduled Appointments",
-        path: "/panel/doctor/appointments/scheduled",
-      },
-      {
-        id: "1",
-        name: "On Demand Appointments",
-        path: "/panel/doctor/appointments/on-demand",
-      },
-    ],
-  },
-  {
-    id: "3",
-    name: "My Patients",
-    icon: UsersDuotone,
-    selectedIcon: UsersBold,
-    child: [
-      {
-        id: "0",
-        name: "View Patients List",
-        path: "/panel/doctor/patients/list",
-      },
-      {
-        id: "1",
-        name: "Patient Stored Results From Robot",
-        path: "/panel/doctor/patients/stored-results",
-      },
-      {
-        id: "2",
-        name: "Past Visit Summary Note",
-        path: "/panel/doctor/patients/past-visit-summary",
-      },
-      {
-        id: "3",
-        name: "Visit Summary Note Management",
-        path: "/panel/doctor/patients/summary-note-management",
-      },
-    ],
-  },
+
   {
     id: "4",
-    name: "My Staff",
+    name: "درس ها",
     icon: UsersDuotone,
     selectedIcon: UsersBold,
-    path: "/panel/doctor/staffs",
-    child: [],
+    child: [
+      {
+        id: "1",
+        name: "لیست درس ها",
+        path: "/panel/master/courses",
+      },
+    ],
   },
   {
     id: "5",
-    name: "Report Generation",
-    icon: ReportDuotone,
-    selectedIcon: ReportBold,
-    path: "/panel/doctor/reports",
+    name: "زنگ های درسی",
+    icon: FinancialDuotone,
+    selectedIcon: FinancialBold,
+    path: "/panel/master/time-table-bells",
     child: [],
-  },
-  {
-    id: "6",
-    name: "PACS",
-    icon: PacsDuotone,
-    selectedIcon: PacsDuotone,
-    child: [
-      {
-        name: "PACS Viewer",
-        path: "/panel/doctor/pacs/viewer",
-        id: "1",
-      },
-      {
-        name: "Upload Study",
-        path: "/panel/doctor/pacs/upload-study",
-        id: "2",
-      },
-      {
-        name: "PACS Admin",
-        id: "3",
-        path: "/panel/doctor/pacs/admin",
-      },
-    ],
   },
 ];
 
-export const PatientItems: ISidebarItem[] = [
+export const StudentItems: ISidebarItem[] = [
   {
     id: "0",
     name: "Summary",

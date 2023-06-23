@@ -4,7 +4,7 @@ import ChangePasswordForm from "./components/changePasswordForm";
 function ChangePassword() {
   return (
     <div>
-      <Page title="Change Password" type="inner" backTo="pop">
+      <Page title="تغییر رمز عبور" type="inner" backTo="pop">
         <ChangePasswordForm />
       </Page>
     </div>

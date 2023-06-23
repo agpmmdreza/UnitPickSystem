@@ -20,7 +20,7 @@ export interface IUPickData {
 export function getUnitPickTimeList(
   params: IPageParams
 ): Promise<IResponse<IPaginationTableList<IUPickData>>> {
-  return apiCaller.get(`unit-pick-time`, { params });
+  return apiCaller.get(`unit-pick-time/?page=${params.page}`);
 }
 
 export function getMajorById(

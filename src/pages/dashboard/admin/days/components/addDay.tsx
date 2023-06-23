@@ -1,10 +1,22 @@
 import Page from "components/layout/page";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { addDay } from "api/days";
 import DayForm from "./dayForm";
+import { notify } from "components/core/toast";
+import { useHistory } from "react-router";
 
 const AddDay = () => {
-  const { mutate } = useMutation(addDay);
+  const history = useHistory();
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation(addDay, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["dayList"]);
+      queryClient.invalidateQueries(["dayById"]);
+      notify.success("روز با موفقیت اضافه شد.");
+      history.replace("../days");
+    },
+  });
 
   return (
     <Page title="افزودن روز" type="inner" backTo="pop">
