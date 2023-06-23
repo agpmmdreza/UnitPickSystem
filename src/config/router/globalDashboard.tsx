@@ -1,5 +1,5 @@
-import {TRoute} from "config/router";
-import {lazy} from "react";
+import { TRoute } from "config/router";
+import { lazy } from "react";
 
 export const DASHBOARD_GLOBAL_ROUTES: TRoute[] = [
   {

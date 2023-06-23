@@ -41,14 +41,18 @@ const COLUMNS = [
       );
     },
   },
+  {
+    Header: "نمره",
+    accessor: "grade",
+  },
 ];
 
-const StudentUnits = () => {
+const GradeReport = () => {
   const { handleGotoPage, handleNextPage, handlePreviousPage, pagination } =
     usePagination();
 
   const { data, refetch, isFetching } = useQuery(
-    ["studentUnits", pagination.currentPage, pagination.resultsPerPage],
+    ["reports", pagination.currentPage, pagination.resultsPerPage],
     () => getStudentUnits(),
     {
       keepPreviousData: true,
@@ -69,8 +73,10 @@ const StudentUnits = () => {
     ...pagination,
   };
 
+  console.log(data?.data);
+
   return (
-    <Page title="لیست دروس انتخاب شده" type="main">
+    <Page title="گزارش" type="main">
       <Table
         onRowSelect={(results) => {}}
         onNextPage={handleNextPage}
@@ -83,11 +89,11 @@ const StudentUnits = () => {
         fetchedData={fixedData}
         columns={[...COLUMNS]}
         {...{ isFetching }}
-        title="دروس اخذ شده"
+        title="کارنامه"
         // actionsComponent={<RegistrationButton title="افزودن زنگ درسی" />}
       />
     </Page>
   );
 };
 
-export default StudentUnits;
+export default GradeReport;

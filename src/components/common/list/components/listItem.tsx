@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import IconButton from "components/core/iconButton";
-import {TrashLinear} from "components/icon";
-import {ReactNode} from "react";
+import { TrashLinear } from "components/icon";
+import { ReactNode } from "react";
 import ItemNumberLabel from "./itemNumberLabel";
 import classes from "./styles.module.scss";
 
@@ -48,12 +48,6 @@ const ListItem = ({
 }: IListItemProps) => {
   return (
     <div className={classes.card}>
-      {icon ? (
-        <span className="pe-3">{icon}</span>
-      ) : (
-        <ItemNumberLabel numberLabel={numberLabel || 0} />
-      )}
-
       <div className="row w-100">
         {/* <div className="col"></div> */}
         {data.title && (

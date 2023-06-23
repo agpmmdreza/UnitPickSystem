@@ -3,22 +3,11 @@ import Grid from "components/core/Grid";
 import { useFormik } from "formik";
 import { useHistory } from "react-router";
 import Button from "components/core/button";
-import FormInput from "components/form/formInput";
-import { UserBold } from "components/icon";
-import { getFormikFieldProps } from "utils/form";
 import { IMenuOption } from "interfaces";
-import { ITimeTableBellData } from "api/timeTableBells";
-import { WeekType } from "components/common/dropdownField/weekType";
-import { Days } from "components/common/dropdownField/days";
-import { Bells } from "components/common/dropdownField/bells";
-import { Courses } from "components/common/dropdownField/courses";
 import { CoursesDropdown } from "components/common/dropdownField/coursesDropdown";
-import { UsersByRole } from "components/common/dropdownField/userListByRole";
 import { TimeTableBellMultiSelect } from "components/common/dropdownField/timeTableBellMutli";
 import { ITimeTableData } from "api/timeTable";
 import { Masters } from "components/common/dropdownField/masters";
-
-const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
 export interface IAddUserFields {
   firstName: string;

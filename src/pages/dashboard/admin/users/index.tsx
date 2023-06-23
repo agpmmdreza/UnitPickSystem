@@ -1,10 +1,10 @@
-import {deleteUser, getUserList} from "api/users";
-import {ActionCell} from "components/common/tableCell";
+import { deleteUser, getUserList } from "api/users";
+import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
 import Table from "components/core/table";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
-import {useQuery} from "react-query";
+import { useQuery } from "react-query";
 
 const COLUMNS = [
   {
@@ -47,9 +47,7 @@ const UsersList = () => {
       onSuccess: (data) => {
         const result = data?.data.data;
         if (result) {
-          updateMaxPage(
-            Math.floor(result.total / pagination.resultsPerPage) + 1
-          );
+          updateMaxPage(result.totalPage);
         }
       },
     }

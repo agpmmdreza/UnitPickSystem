@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {ArrowLeftLinear, ArrowRightLinear} from "components/icon";
-import {PropsWithChildren, ReactNode} from "react";
+import { ArrowLeftLinear, ArrowRightLinear } from "components/icon";
+import { PropsWithChildren, ReactNode } from "react";
 import IconButton from "../iconButton";
 import classes from "./styles.module.scss";
 import Loader from "components/common/loader";
 import SimpleTable from "./components/simpleTable";
-import Filter, {IFilterDefaultProps} from "../filter";
+import Filter, { IFilterDefaultProps } from "../filter";
 import clsx from "clsx";
-import {ListInfo} from "../../icon/listInfo";
+import { ListInfo } from "../../icon/listInfo";
 import SearchInput from "./components/searchInput";
 import Input from "../input";
 // import { IPaginationTableList } from "api/types/paginationType";
@@ -134,7 +134,7 @@ function Table({
         <div className={clsx(["col-12 p-3", classes.titleContainer])}>
           <div className="col-12 d-flex align-items-center justify-content-between flex-wrap gap-3">
             <div className="d-flex align-items-center">
-              <ListInfo />
+              {/* <ListInfo /> */}
               <span className={classes.title}>{title}</span>
             </div>
             <div>{actionsComponent}</div>
@@ -194,14 +194,14 @@ function Table({
             <IconButton
               variant="text"
               icon={ArrowRightLinear}
-              onClick={() => onNextPage()}
-              disabled={fetchedData.currentPage === fetchedData.maxPage}
+              onClick={() => onPreviousPage()}
+              disabled={fetchedData.currentPage === 1}
             />
             <IconButton
               variant="text"
               icon={ArrowLeftLinear}
-              onClick={() => onPreviousPage()}
-              disabled={fetchedData.currentPage === 1}
+              onClick={() => onNextPage()}
+              disabled={fetchedData.currentPage === fetchedData.maxPage}
             />
           </div>
         </div>

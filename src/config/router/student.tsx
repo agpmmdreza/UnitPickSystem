@@ -168,25 +168,10 @@ const PATIENT_ROUTES: TRoute = {
       ],
     },
     {
-      path: "courses",
+      path: "report",
       exact: true,
-      component: lazy(() => import("pages/dashboard/admin/courses")),
-      inners: [
-        {
-          exact: true,
-          path: "create",
-          component: lazy(
-            () => import("pages/dashboard/admin/courses/components/addCourse")
-          ),
-        },
-        {
-          exact: true,
-          path: ":id",
-          component: lazy(
-            () => import("pages/dashboard/admin/courses/components/editCourse")
-          ),
-        },
-      ],
+      component: lazy(() => import("pages/dashboard/student/reports")),
+      inners: [],
     },
     ...DASHBOARD_GLOBAL_ROUTES,
   ],

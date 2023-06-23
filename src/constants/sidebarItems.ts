@@ -190,7 +190,7 @@ export const StudentItems: ISidebarItem[] = [
       {
         id: "1",
         name: "کارنامه",
-        path: "/panel/master/courses",
+        path: "/panel/student/report",
       },
     ],
   },

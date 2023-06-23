@@ -1,10 +1,9 @@
-import { GPSBold, ManBold } from "components/icon";
+import { ManBold } from "components/icon";
 import { useQuery } from "react-query";
 import { getFormikFieldProps } from "utils/form";
 import { FormikProps } from "formik";
 import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
-import FormMultiSelect, { IMenuOption } from "components/form/formMultiSelect";
-import { ISelectDefaultProps } from "components/core/multiSelect";
+import { IMenuOption } from "components/form/formMultiSelect";
 import FormAutoComplete from "components/form/formAutoComplete";
 import { IDefaultProps } from "components/core/autoComplete";
 import { getTimeTablesList } from "api/timeTable";
@@ -45,8 +44,8 @@ export function TimeTables<T extends { [key: string]: any }>({
 
   data?.data.data?.list.forEach((item) => {
     const allBells = item.timeTableBellList.map((ttb) => ({
-      key: ttb.id.toString(),
-      value: "",
+      key: item.id.toString(),
+      value: `${item.course.title} - ${item.master.user.firstName} ${item.master.user.lastName} - (${ttb.day.label} - ${ttb.bell.label}) - کلاس ${ttb.roomNumber} - هفته ${ttb.weekType}`,
     }));
     OPTIONS.push(...allBells);
   });

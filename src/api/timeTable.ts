@@ -50,6 +50,13 @@ export interface ITimeTableResponse {
   ];
 }
 
+export interface IStudentUnitResponse {
+  id: number;
+  timeTable: ITimeTableResponse;
+  grade: number;
+  term: number;
+}
+
 export function getTimeTablesList(
   params: IPageParams
 ): Promise<IResponse<IPaginationTableList<ITimeTableResponse>>> {
@@ -77,6 +84,14 @@ export function updateTimeTable(
   return apiCaller.put(`time-tables/${dayId}`, data);
 }
 
-export function getStudentUnits(): Promise<IResponse<ITimeTableResponse[]>> {
+export function getStudentUnits(): Promise<IResponse<IStudentUnitResponse[]>> {
   return apiCaller.get(`time-tables/student-units`);
+}
+
+export function chooseUnit(timeTableId: number): Promise<IResponse<any>> {
+  return apiCaller.post(`time-tables/${timeTableId}/choose`);
+}
+
+export function deleteUnit(unitId: number): Promise<IResponse<any>> {
+  return apiCaller.delete(`time-tables/${unitId}/remove`);
 }
