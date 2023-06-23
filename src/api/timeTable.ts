@@ -31,6 +31,23 @@ export interface ITimeTableResponse {
     unitsCount: number;
     title: string;
   };
+  timeTableBellList: [
+    {
+      id: number;
+      bell: {
+        id: number;
+        label: string;
+        bellOfDay: number;
+      };
+      day: {
+        id: number;
+        label: string;
+        dayOfWeek: number;
+      };
+      weekType: string;
+      roomNumber: number;
+    }
+  ];
 }
 
 export function getTimeTablesList(
@@ -58,4 +75,8 @@ export function updateTimeTable(
   data: ITimeTableData
 ): Promise<IResponse<any>> {
   return apiCaller.put(`time-tables/${dayId}`, data);
+}
+
+export function getStudentUnits(): Promise<IResponse<ITimeTableResponse[]>> {
+  return apiCaller.get(`time-tables/student-units`);
 }

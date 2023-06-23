@@ -21,6 +21,24 @@ export interface IUserData {
   entranceYear: string;
 }
 
+export interface IMastersResponse {
+  id: number;
+  user: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    password: string;
+    role: string;
+    code: string;
+    major: string;
+    entranceYear: number;
+  };
+  major: {
+    id: number;
+    majorName: string;
+  };
+}
+
 export function getUserList(
   params: IPageParams
 ): Promise<IResponse<IPaginationTableList<IUserListResponse>>> {
@@ -44,4 +62,10 @@ export function updateUser(
   data: IUserData
 ): Promise<IResponse<any>> {
   return apiCaller.put(`users/${userId}`, data);
+}
+
+export function getMasters(
+  params: IPageParams
+): Promise<IResponse<IMastersResponse[]>> {
+  return apiCaller.get(`masters`);
 }

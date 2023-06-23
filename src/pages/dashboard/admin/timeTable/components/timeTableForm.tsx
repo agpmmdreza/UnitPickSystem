@@ -16,6 +16,7 @@ import { CoursesDropdown } from "components/common/dropdownField/coursesDropdown
 import { UsersByRole } from "components/common/dropdownField/userListByRole";
 import { TimeTableBellMultiSelect } from "components/common/dropdownField/timeTableBellMutli";
 import { ITimeTableData } from "api/timeTable";
+import { Masters } from "components/common/dropdownField/masters";
 
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
@@ -76,9 +77,9 @@ const TimeTableForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
           label="درس"
         />
 
-        <UsersByRole
+        <Masters
           formik={formik}
-          userFieldName="masterId"
+          masterFieldName="masterId"
           label="استاد"
           role="master"
         />

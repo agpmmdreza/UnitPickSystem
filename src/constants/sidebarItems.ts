@@ -157,98 +157,41 @@ export const MasterItems: ISidebarItem[] = [
 export const StudentItems: ISidebarItem[] = [
   {
     id: "0",
-    name: "Summary",
+    name: "داشبورد",
     icon: SummaryDuotone,
     selectedIcon: SummaryBold,
-    path: "/panel/patient/dashboard",
+    path: "/panel/student/dashboard",
     child: [],
   },
   {
     id: "1",
-    name: "Intake Form Management",
+    name: "انتخاب واحد",
     icon: IntakeFormDuotone,
     selectedIcon: IntakeFormBold,
-    path: "/panel/patient/intake-form-management",
-    child: [],
-  },
-  {
-    id: "6",
-    name: "Past Medical History",
-    icon: PastMedicalHistoryDuotone,
-    selectedIcon: PastMedicalHistoryBold,
-    path: "/panel/patient/past-medical-history",
-    child: [],
+    child: [
+      {
+        id: "0",
+        name: "انتخاب واحد",
+        path: "/panel/student/units/add",
+      },
+      {
+        id: "1",
+        name: "دروس دانشجو در نیمسال",
+        path: "/panel/student/units/chosen",
+      },
+    ],
   },
   {
     id: "2",
-    name: "Appointments Management",
-    icon: AppointmentDuotone,
-    selectedIcon: AppointmentBold,
+    name: "گزارش",
+    icon: IntakeFormDuotone,
+    selectedIcon: IntakeFormBold,
     child: [
       {
-        id: "0",
-        name: "Scheduled Appointments",
-        path: "/panel/patient/appointments/scheduled",
-      },
-      {
         id: "1",
-        name: "On Demand Appointments",
-        path: "/panel/patient/appointments/on-demand",
+        name: "کارنامه",
+        path: "/panel/master/courses",
       },
     ],
-  },
-  {
-    id: "3",
-    name: "Health Record",
-    icon: HealthRecordDuotone,
-    selectedIcon: HealthRecordBold,
-    child: [
-      {
-        id: "0",
-        name: "Visit Summary",
-        path: "/panel/patient/visit-summary",
-      },
-      {
-        id: "1",
-        name: "New Self Report",
-        path: "/panel/patient/new-self-report",
-      },
-      {
-        id: "2",
-        name: "Stored Results",
-        path: "/panel/patient/view-stored-result",
-      },
-      {
-        id: "3",
-        name: "Follow Up/Orders/Referrals/Prescriptions",
-        path: "/panel/patient/follow-up",
-      },
-    ],
-  },
-  {
-    id: "4",
-    name: "Financial Management",
-    icon: FinancialDuotone,
-    selectedIcon: FinancialBold,
-    child: [
-      {
-        id: "0",
-        name: "My Payments",
-        path: "/panel/patient/financial-records",
-      },
-      {
-        id: "1",
-        name: "My Wallet",
-        path: "/panel/patient/wallet-balance",
-      },
-    ],
-  },
-  {
-    id: "5",
-    name: "My Family List",
-    icon: FamilyDuotone,
-    selectedIcon: FamilyBold,
-    path: "/panel/patient/family-members",
-    child: [],
   },
 ];

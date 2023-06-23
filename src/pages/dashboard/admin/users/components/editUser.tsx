@@ -16,14 +16,16 @@ const EditUser = () => {
   return (
     <Page title="ویرایش کاربر" type="inner" backTo="pop">
       <UserForm
-        // initialValues={
-        //   data?.data.data && {
-        //     ...data?.data.data,
-        //     role: { key: data.data.data.role.toLowerCase(), value: "" },
-        //   }
-        // }
+        initialValues={
+          data?.data.data && {
+            ...data?.data.data,
+            role: { key: data.data.data.role.toLowerCase(), value: "" },
+            entranceYear: { key: "", value: "" },
+            major: { key: "", value: data.data.data.major },
+          }
+        }
         onSumbit={(values) => {
-          mutate({ ...values, role: values.role.key });
+          mutate({ ...values, role: values.role });
         }}
       />
     </Page>

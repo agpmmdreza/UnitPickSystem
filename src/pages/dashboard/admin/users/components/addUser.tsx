@@ -20,7 +20,7 @@ const AddUser = () => {
         onSumbit={(values) => {
           mutate({
             ...values,
-            role: values.role.key,
+            role: values.role,
           });
         }}
       />

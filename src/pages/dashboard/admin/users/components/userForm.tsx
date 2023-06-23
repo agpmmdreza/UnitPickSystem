@@ -9,6 +9,8 @@ import { getFormikFieldProps } from "utils/form";
 import { Roles } from "components/common/dropdownField/roles";
 import { IMenuOption } from "interfaces";
 import { Majors } from "components/common/dropdownField/majors";
+import { IUserData } from "api/users";
+import { Years } from "components/common/dropdownField/years";
 
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
@@ -17,13 +19,13 @@ export interface IAddUserFields {
   lastName: string;
   code: string;
   password: string;
-  entranceYear: string;
-  major: string;
+  entranceYear: IMenuOption;
+  major: IMenuOption;
   role: IMenuOption;
 }
 
 interface IUserFormProps {
-  onSumbit: (values: IAddUserFields) => void;
+  onSumbit: (values: IUserData) => void;
   initialValues?: IAddUserFields;
 }
 
@@ -32,8 +34,8 @@ export const defaultValues: IAddUserFields = {
   lastName: "",
   code: "",
   password: "",
-  major: "",
-  entranceYear: "",
+  major: { key: "", value: "" },
+  entranceYear: { key: "", value: "" },
   role: { key: "", value: "" },
 };
 export const ValidationSchema = yup.object().shape({
@@ -41,8 +43,8 @@ export const ValidationSchema = yup.object().shape({
   lastName: yup.string().required(REQUIRED_FIELD_MESSAGE),
   code: yup.string().required(REQUIRED_FIELD_MESSAGE),
   password: yup.string().required(REQUIRED_FIELD_MESSAGE),
-  entranceYear: yup.string().required(REQUIRED_FIELD_MESSAGE),
-  major: yup.string().required(REQUIRED_FIELD_MESSAGE),
+  entranceYear: yup.object().dropdown(),
+  major: yup.object().dropdown(),
   role: yup.object().dropdown(),
 });
 
@@ -54,7 +56,12 @@ const UserForm = ({ onSumbit, initialValues }: IUserFormProps) => {
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit: (values) => {
-      onSumbit(values);
+      onSumbit({
+        ...values,
+        major: values.major.value,
+        role: values.role.key,
+        entranceYear: values.entranceYear.key,
+      });
     },
   });
 
@@ -95,15 +102,18 @@ const UserForm = ({ onSumbit, initialValues }: IUserFormProps) => {
             icon: MailTrackingBold,
             placeholder: "رشته تحصیلی",
           }}
+          majorName={initialValues?.major.value}
         />
 
-        <FormInput
+        <Years formik={formik} fieldName="entranceYear" />
+
+        {/* <FormInput
           rootProps={{
             icon: MailTrackingBold,
             placeholder: "سال ورودی",
           }}
           {...getFormikFieldProps("entranceYear", "سال ورود", formik)}
-        />
+        /> */}
 
         <FormInput
           {...getFormikFieldProps("password", "رمز عبور", formik)}
