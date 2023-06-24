@@ -7,6 +7,11 @@ export interface ITimeTableData {
   timeTableBellsId: number[];
 }
 
+export interface IAnnouncementData {
+  timeTableId: number;
+  message: string;
+}
+
 export interface ITimeTableResponse {
   id: number;
   master: {
@@ -94,4 +99,8 @@ export function chooseUnit(timeTableId: number): Promise<IResponse<any>> {
 
 export function deleteUnit(unitId: number): Promise<IResponse<any>> {
   return apiCaller.delete(`time-tables/${unitId}/remove`);
+}
+
+export function masterTimeList(): Promise<IResponse<ITimeTableResponse[]>> {
+  return apiCaller.get("time-tables/master");
 }

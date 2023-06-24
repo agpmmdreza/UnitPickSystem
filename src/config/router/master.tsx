@@ -37,9 +37,9 @@ const DOCTOR_ROUTES: TRoute = {
     },
 
     {
-      path: "time-table-bells",
+      path: "announcements",
       exact: true,
-      component: lazy(() => import("pages/dashboard/master/timeTableBells")),
+      component: lazy(() => import("pages/dashboard/master/announcements")),
       inners: [
         {
           exact: true,
@@ -47,7 +47,7 @@ const DOCTOR_ROUTES: TRoute = {
           component: lazy(
             () =>
               import(
-                "pages/dashboard/master/timeTableBells/components/addTimeTableBell"
+                "pages/dashboard/master/announcements/components/addAnnouncements"
               )
           ),
         },
@@ -57,7 +57,7 @@ const DOCTOR_ROUTES: TRoute = {
           component: lazy(
             () =>
               import(
-                "pages/dashboard/master/timeTableBells/components/editTimeTableBell"
+                "pages/dashboard/master/announcements/components/editAnnouncements"
               )
           ),
         },

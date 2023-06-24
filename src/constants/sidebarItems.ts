@@ -123,15 +123,6 @@ export const MasterItems: ISidebarItem[] = [
     child: [],
   },
   {
-    id: "1",
-    name: "کاربران",
-    icon: HospitalDuotone,
-    selectedIcon: HospitalBold,
-    path: "/panel/master/users",
-    child: [],
-  },
-
-  {
     id: "4",
     name: "درس ها",
     icon: UsersDuotone,
@@ -146,10 +137,10 @@ export const MasterItems: ISidebarItem[] = [
   },
   {
     id: "5",
-    name: "زنگ های درسی",
+    name: "اطلاعیه‌ها",
     icon: FinancialDuotone,
     selectedIcon: FinancialBold,
-    path: "/panel/master/time-table-bells",
+    path: "/panel/master/announcements",
     child: [],
   },
 ];
