@@ -143,6 +143,14 @@ export const MasterItems: ISidebarItem[] = [
     path: "/panel/master/announcements",
     child: [],
   },
+  {
+    id: "6",
+    name: "ثبت نمرات",
+    icon: FinancialDuotone,
+    selectedIcon: FinancialBold,
+    path: "/panel/master/submit-grade",
+    child: [],
+  },
 ];
 
 export const StudentItems: ISidebarItem[] = [

@@ -5,6 +5,7 @@ export interface IPaginationParams {
 
 export interface IPageParams {
   page: number;
+  pageSize?: number;
 }
 
 export interface IPagination {

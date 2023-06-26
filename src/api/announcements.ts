@@ -1,6 +1,6 @@
 import apiCaller, { IResponse } from "api";
-import { IPageParams, IPaginationTableList } from "./types/paginationType";
 import { IAnnouncementData, ITimeTableResponse } from "./timeTable";
+import { IPaginationTableList } from "./types/paginationType";
 
 export interface IAnnouncementResponse {
   id: number;
@@ -16,6 +16,12 @@ export function getAnnouncementsList(
   params: IAnnouncementParams
 ): Promise<IResponse<IPaginationTableList<IAnnouncementResponse>>> {
   return apiCaller.get(`announcements`, { params });
+}
+
+export function getMasterAnnouncementsList(
+  params: IAnnouncementParams
+): Promise<IResponse<IPaginationTableList<IAnnouncementResponse>>> {
+  return apiCaller.get(`announcements/master-announcements`, { params });
 }
 
 export function addAnnouncements(

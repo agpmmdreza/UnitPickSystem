@@ -1,4 +1,5 @@
-import { deleteAnnouncement, getAnnouncementsList, getMasterAnnouncementsList } from "api/announcements";
+import { deleteCourse, getCoursesList } from "api/courses";
+import { masterTimeList } from "api/timeTable";
 import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
 import Table from "components/core/table";
@@ -8,16 +9,24 @@ import { useQuery } from "react-query";
 
 const COLUMNS = [
   {
-    Header: "درس",
-    accessor: "timeTable.course.title",
+    Header: "آیدی",
+    accessor: "id",
   },
   {
-    Header: "اطلاعیه",
-    accessor: "message",
+    Header: "عنوان",
+    accessor: "course.title",
+  },
+  {
+    Header: "تعداد واحد",
+    accessor: "course.unitsCount",
+  },
+  {
+    Header: "وضعیت",
+    accessor: "status",
   },
 ];
 
-const AnnouncementsList = () => {
+const Courses = () => {
   const {
     handleGotoPage,
     handleNextPage,
@@ -28,13 +37,11 @@ const AnnouncementsList = () => {
   } = usePagination();
 
   const { data, refetch, isFetching } = useQuery(
-    ["masterAnnouncementsList", pagination.currentPage, pagination.resultsPerPage],
-    () => getMasterAnnouncementsList({ page: pagination.currentPage }),
+    ["masterCourse", pagination.currentPage, pagination.resultsPerPage],
+    () => masterTimeList({ page: pagination.currentPage }),
     {
       keepPreviousData: true,
       onSuccess: (data) => {
-        console.log(data);
-        
         const result = data?.data.data;
         if (result) {
           updateMaxPage(
@@ -51,8 +58,6 @@ const AnnouncementsList = () => {
     ...pagination,
   };
 
-  console.log(fixedData);
-
   const actionCell = {
     Header: "عملیات",
     accessor: "none",
@@ -60,12 +65,12 @@ const AnnouncementsList = () => {
       ActionCell({
         cellProps: props,
         refetch,
-        deleteMutationFn: deleteAnnouncement,
+        deleteMutationFn: deleteCourse,
       }),
   };
 
   return (
-    <Page title="لیست اطلاعیه‌ها" type="main">
+    <Page title="دروس" type="main">
       <Table
         onRowSelect={(results) => {}}
         onNextPage={handleNextPage}
@@ -78,11 +83,11 @@ const AnnouncementsList = () => {
         fetchedData={fixedData}
         columns={[...COLUMNS, actionCell]}
         {...{ isFetching }}
-        title="اطلاعیه‌ها"
-        actionsComponent={<RegistrationButton title="افزودن اطلاعیه" />}
+        title="لیست دروس"
+        actionsComponent={<RegistrationButton title="افزودن درس" />}
       />
     </Page>
   );
 };
 
-export default AnnouncementsList;
+export default Courses;

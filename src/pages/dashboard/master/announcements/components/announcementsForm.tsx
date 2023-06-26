@@ -37,7 +37,7 @@ export const ValidationSchema = yup.object().shape({
   message: yup.string().required(REQUIRED_FIELD_MESSAGE),
 });
 
-const TimeTableForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
+const AnnouncementForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
   const history = useHistory();
   const formik = useFormik<ITimeTableForm>({
     initialValues: initialValues || defaultValues,
@@ -81,4 +81,4 @@ const TimeTableForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
   );
 };
 
-export default TimeTableForm;
+export default AnnouncementForm;

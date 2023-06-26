@@ -1,5 +1,5 @@
-import NumberInput, {INumberInputProps} from "components/core/numberInput";
-import FormBaseElement, {IBaseProps, IFormikFieldProps} from "./base";
+import NumberInput, { INumberInputProps } from "components/core/numberInput";
+import FormBaseElement, { IBaseProps, IFormikFieldProps } from "./base";
 
 interface IFormTimeInputProps {
   rootProps?: Partial<INumberInputProps>;

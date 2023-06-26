@@ -66,20 +66,35 @@ const DOCTOR_ROUTES: TRoute = {
     {
       path: "courses",
       exact: true,
-      component: lazy(() => import("pages/dashboard/admin/courses")),
+      component: lazy(() => import("pages/dashboard/master/courses")),
       inners: [
         {
           exact: true,
           path: "create",
           component: lazy(
-            () => import("pages/dashboard/admin/courses/components/addCourse")
+            () => import("pages/dashboard/master/courses/components/addCourse")
           ),
         },
         {
           exact: true,
           path: ":id",
           component: lazy(
-            () => import("pages/dashboard/admin/courses/components/editCourse")
+            () => import("pages/dashboard/master/courses/components/editCourse")
+          ),
+        },
+      ],
+    },
+    {
+      path: "submit-grade",
+      exact: true,
+      component: lazy(() => import("pages/dashboard/master/grades")),
+      inners: [
+        {
+          exact: true,
+          path: ":id/create",
+          component: lazy(
+            () =>
+              import("pages/dashboard/master/grades/components/submitGrades")
           ),
         },
       ],

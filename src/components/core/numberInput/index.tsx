@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import {ArrowDownLinear} from "components/icon/arrowDown";
+import { ArrowDownLinear } from "components/icon/arrowDown";
 
 import classes from "./styles.module.scss";
-import {HTMLProps} from "react";
+import { HTMLProps } from "react";
 
 export interface INumberInputProps {
   name: string;
@@ -58,7 +58,7 @@ function NumberInput({
         className={classes.numberInput}
         data-testid="test-number-input"
       />
-
+      {/* 
       {!readOnly && (
         <div className={classes.arrowsContainer}>
           <ArrowDownLinear
@@ -73,7 +73,7 @@ function NumberInput({
             onClick={() => value && value > min && handleArrowChange(-1)}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 }

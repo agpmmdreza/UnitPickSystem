@@ -33,13 +33,10 @@ export function MasterCourses<T extends { [key: string]: any }>({
 }: IStateProps<T>) {
   const { data, isLoading, isError } = useQuery(
     [masterTimeList.name, "masterTimeTable"],
-    () => masterTimeList()
+    () => masterTimeList({ page: 1, pageSize: 1000 })
   );
 
-  console.log(data);
-  
-
-  const OPTIONS = data?.data?.data?.map((item) => ({
+  const OPTIONS = data?.data?.data?.list.map((item) => ({
     key: item.id.toString(),
     value: item.course.title.toString(),
   }));

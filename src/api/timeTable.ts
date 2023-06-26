@@ -14,6 +14,7 @@ export interface IAnnouncementData {
 
 export interface ITimeTableResponse {
   id: number;
+  status: "accepted" | "not_accepted";
   master: {
     id: number;
     user: {
@@ -62,6 +63,70 @@ export interface IStudentUnitResponse {
   term: number;
 }
 
+export interface IStudentList {
+  id: number;
+  student: {
+    id: number;
+    user: {
+      id: number;
+      firstName: string;
+      lastName: string;
+      password: string;
+      role: string;
+      code: string;
+      major: null;
+      entranceYear: number;
+    };
+    major: {
+      id: number;
+      majorName: string;
+    };
+    unitPickTimeTable: {
+      entranceYear: number;
+      pickTime: string;
+      modifyTime: string;
+    };
+  };
+  timeTable: {
+    id: number;
+    status: string;
+    master: {
+      id: number;
+      user: {
+        id: number;
+        firstName: string;
+        lastName: string;
+        password: string;
+        role: string;
+        code: string;
+        major: null;
+        entranceYear: number;
+      };
+      major: {
+        id: number;
+        majorName: string;
+      };
+    };
+    course: {
+      id: number;
+      unitsCount: number;
+      title: string;
+    };
+    timeTableBellList: [];
+  };
+  grade: number;
+  term: number;
+}
+
+export interface IGrade {
+  id: string;
+  grade: string;
+}
+export interface ISubmitGrades {
+  id: string;
+  reportGrade: IGrade[];
+}
+
 export function getTimeTablesList(
   params: IPageParams
 ): Promise<IResponse<IPaginationTableList<ITimeTableResponse>>> {
@@ -101,6 +166,23 @@ export function deleteUnit(unitId: number): Promise<IResponse<any>> {
   return apiCaller.delete(`time-tables/${unitId}/remove`);
 }
 
-export function masterTimeList(): Promise<IResponse<ITimeTableResponse[]>> {
-  return apiCaller.get("time-tables/master");
+export function masterTimeList(
+  params: IPageParams
+): Promise<IResponse<IPaginationTableList<ITimeTableResponse>>> {
+  return apiCaller.get("time-tables/master", { params });
+}
+
+export function studentTimeList(
+  id: string,
+  params: IPageParams
+): Promise<IResponse<IPaginationTableList<IStudentList>>> {
+  return apiCaller.get(`time-tables/${id}/students`, { params });
+}
+
+export function submitStudentGrades(
+  data: ISubmitGrades
+): Promise<IResponse<any>> {
+  return apiCaller.post(`time-tables/${data.id}/students-grade`, {
+    reportGrade: data.reportGrade,
+  });
 }
