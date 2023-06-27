@@ -8,6 +8,38 @@ export interface IAnnouncementResponse {
   message: string;
 }
 
+export interface IStudentAnnouncementResponse {
+  id: number;
+  timeTable: {
+    id: number;
+    status: string;
+    master: {
+      id: number;
+      user: {
+        id: number;
+        firstName: string;
+        lastName: string;
+        password: string;
+        role: string;
+        code: string;
+        major: string;
+        entranceYear: number;
+      };
+      major: {
+        id: number;
+        majorName: string;
+      };
+    };
+    course: {
+      id: number;
+      unitsCount: number;
+      title: string;
+    };
+    timeTableBellList: number[];
+  };
+  message: string;
+}
+
 export interface IAnnouncementParams {
   page: number;
 }
@@ -45,4 +77,10 @@ export function updateAnnouncement(
 
 export function deleteAnnouncement(id: number): Promise<IResponse<any>> {
   return apiCaller.delete(`announcements/${id}`);
+}
+
+export function getStudentAnnouncements(
+  params: IAnnouncementParams
+): Promise<IResponse<IStudentAnnouncementResponse[]>> {
+  return apiCaller.get(`announcements/student-announcements`);
 }

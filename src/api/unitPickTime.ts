@@ -1,7 +1,7 @@
 import apiCaller, { IResponse } from "api";
 import { IPageParams, IPaginationTableList } from "./types/paginationType";
 
-interface IMajorListResponse {
+interface IUnitPickTimeListResponse {
   id: number;
   firstName: string;
   lastName: string;
@@ -23,23 +23,23 @@ export function getUnitPickTimeList(
   return apiCaller.get(`unit-pick-time/?page=${params.page}`);
 }
 
-export function getMajorById(
+export function getUnitPickTimeById(
   id: number
-): Promise<IResponse<IMajorListResponse>> {
-  return apiCaller.get(`majors/${id}`);
+): Promise<IResponse<IUPickData>> {
+  return apiCaller.get(`unit-pick-time/${id}`);
 }
 
 export function addUnitPickTime(data: IUPickData): Promise<IResponse<any>> {
   return apiCaller.post(`unit-pick-time`, data);
 }
 
-export function deleteMajor(userId: number): Promise<IResponse<any>> {
-  return apiCaller.delete(`majors/${userId}`);
+export function deleteUnitPickTime(userId: number): Promise<IResponse<any>> {
+  return apiCaller.delete(`unit-pick-time/${userId}`);
 }
 
-// export function updateMajor(
-//   userId: number,
-//   data: IMajorData
-// ): Promise<IResponse<any>> {
-//   return apiCaller.put(`majors/${userId}`, data);
-// }
+export function updateUnitPickTime(
+  userId: number,
+  data: IUPickData
+): Promise<IResponse<any>> {
+  return apiCaller.put(`unit-pick-time/${userId}`, data);
+}

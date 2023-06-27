@@ -80,6 +80,7 @@ const CourseForm = ({ onSumbit, initialValues }: ICourseFormProps) => {
 
         <Courses
           courseFieldName="prerequisiteList"
+          courseNames={initialValues?.prerequisiteList?.map((i) => i.value)}
           formik={formik}
           label="پیشنیازها"
         />

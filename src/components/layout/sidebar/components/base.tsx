@@ -12,13 +12,78 @@ import {
   StudentItems,
   SuperAdminItems,
 } from "constants/sidebarItems";
+import { useQuery } from "react-query";
+import { getStudentDetail } from "api/auth";
+import { IntakeFormDuotone } from "components/icon/intakeForm";
+import { IntakeFormBold } from "components/icon/intakeFormBold";
+
+function isDateWithinRange(
+  targetDate: Date,
+  specifiedDate: Date | undefined | string
+): boolean {
+  console.log(targetDate, specifiedDate);
+
+  if (specifiedDate) {
+    const endDate = new Date(
+      new Date(specifiedDate).getTime() + 24 * 60 * 60 * 1000
+    );
+    return (
+      new Date(specifiedDate).getTime() <= targetDate.getTime() &&
+      targetDate.getTime() <= endDate.getTime()
+    );
+  }
+  return false;
+}
 
 export function SidebarBase() {
   const [items, setItems] = useState<ISidebarItem[]>([]);
   // const [filteredItems, setFilteredItems] = useState<ISidebarItem[]>([]);
   const { sideIn } = useContext(SidebarContext);
-  // const [searchParameter, setSearchParameter] = useState("");
   const location = useLocation();
+  // const [searchParameter, setSearchParameter] =
+  // useState("");
+  const { data } = useQuery(["student-detail"], getStudentDetail, {
+    enabled:
+      location.pathname.toLocaleLowerCase().split("/")[2].toLowerCase() ===
+      "student",
+  });
+
+  useEffect(() => {
+    if (
+      location.pathname.toLocaleLowerCase().split("/")[2].toLowerCase() ===
+      "student"
+    ) {
+      setItems(
+        isDateWithinRange(
+          new Date(),
+          data?.data.data?.unitPickTimeTable.pickTime
+        ) ||
+          isDateWithinRange(
+            new Date(),
+            data?.data.data?.unitPickTimeTable.modifyTime
+          )
+          ? StudentItems
+          : StudentItems.map((i) => {
+              return i.id === "1"
+                ? {
+                    id: "1",
+                    name: "انتخاب واحد",
+                    icon: IntakeFormDuotone,
+                    selectedIcon: IntakeFormBold,
+                    child: [
+                      {
+                        id: "1",
+                        name: "دروس دانشجو در نیمسال",
+                        path: "/panel/student/units/chosen",
+                      },
+                    ],
+                  }
+                : i;
+            })
+      );
+    }
+  }, [data]);
+
   useEffect(() => {
     const splitPathname = location.pathname.toLocaleLowerCase().split("/");
     switch (splitPathname[2].toLowerCase()) {
@@ -31,7 +96,34 @@ export function SidebarBase() {
         break;
 
       case "student":
-        setItems(StudentItems);
+        setItems(
+          isDateWithinRange(
+            new Date(),
+            data?.data.data?.unitPickTimeTable.pickTime
+          ) ||
+            isDateWithinRange(
+              new Date(),
+              data?.data.data?.unitPickTimeTable.modifyTime
+            )
+            ? StudentItems
+            : StudentItems.map((i) => {
+                return i.id === "1"
+                  ? {
+                      id: "1",
+                      name: "انتخاب واحد",
+                      icon: IntakeFormDuotone,
+                      selectedIcon: IntakeFormBold,
+                      child: [
+                        {
+                          id: "1",
+                          name: "دروس دانشجو در نیمسال",
+                          path: "/panel/student/units/chosen",
+                        },
+                      ],
+                    }
+                  : i;
+              })
+        );
         break;
 
       default:
@@ -39,21 +131,6 @@ export function SidebarBase() {
         break;
     }
   }, [location]);
-
-  // useEffect(() => {
-  //   const filteredChildren = items.filter(
-  //     (t) =>
-  //       t.name
-  //         .toLocaleLowerCase()
-  //         .includes(searchParameter.toLocaleLowerCase()) ||
-  //       t.child.some((ch) =>
-  //         ch.name
-  //           .toLocaleLowerCase()
-  //           .includes(searchParameter.toLocaleLowerCase())
-  //       )
-  //   );
-  //   setFilteredItems(filteredChildren);
-  // }, [searchParameter, items]);
 
   return (
     <div className="position-fixed" style={{ zIndex: "102" }}>
@@ -64,17 +141,7 @@ export function SidebarBase() {
         ])}
       >
         <SidebarHeader />
-        {/* <div
-          className={classes.searchInputContainer}
-          onClick={() => setSideIn(false)}
-        >
-          <Input
-            type="search"
-            placeholder="Search"
-            value={searchParameter}
-            onChange={(e) => setSearchParameter(e.target.value)}
-          />
-        </div> */}
+
         <div
           className={clsx([
             classes.menuItemContainer,

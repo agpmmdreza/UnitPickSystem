@@ -78,7 +78,10 @@ const SUPER_ADMIN_ROUTES: TRoute = {
           exact: true,
           path: ":id",
           component: lazy(
-            () => import("pages/dashboard/admin/users/components/editUser")
+            () =>
+              import(
+                "pages/dashboard/admin/unitPickTime/addPickTime/editUnitPickTime"
+              )
           ),
         },
       ],

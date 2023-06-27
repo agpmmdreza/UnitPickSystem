@@ -112,7 +112,7 @@ $padding_x: 40px;
   padding-left: $padding_x;
   padding-right: $padding_x;
   background-color: colorFromRgb(primary-background);
-  overflow: hidden;
+  // overflow: hidden;
   @media (max-width: $md) {
     padding: 35px 30px;
   }
@@ -129,7 +129,7 @@ $padding_x: 40px;
 
   .mainIcon {
     path {
-      fill: colorFromRgb(primary-main);
+      // fill: colorFromRgb(primary-main);
     }
   }
 }

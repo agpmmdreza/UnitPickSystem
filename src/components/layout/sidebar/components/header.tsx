@@ -61,7 +61,7 @@ export function SidebarHeader() {
     {
       label: "خروج از حساب",
       icon: LogoutLinear,
-      onClick: () => setLogoutOpen(true),
+      onClick: () => logOut(),
     },
   ];
 
@@ -80,7 +80,7 @@ export function SidebarHeader() {
                 sideIn && classes.hideText
               )}
             >
-              <span className={classes.logoLabel}>UnitSelection</span>
+              <span className={classes.logoLabel}>ساو</span>
             </div>
 
             <div>
@@ -183,15 +183,6 @@ export function SidebarHeader() {
               </DropdownMenu>
             </Dropdown>
           </div>
-          {/* <div>
-        <div className={clsx([sideIn ? classes.min : null, classes.logo])}>
-          <Logo />
-        </div>
-      </div> */}
-          {/* <div className={clsx([classes.brand, sideIn ? classes.hideText : null])}>
-        <SidebarBrand />
-      </div> */}
-          <div className={classes.polygon}></div>
         </div>
         {!sideIn && (
           <div className={classes.info}>
@@ -203,17 +194,6 @@ export function SidebarHeader() {
             </span>
           </div>
         )}
-        <Alert
-          open={logOutOpen}
-          setOpen={setLogoutOpen}
-          title={"Logout"}
-          text={
-            "Are you sure you want to log out? You will need to log in again to access your account."
-          }
-          dismissible={true}
-          onApprove={() => logOut()}
-          modalMaxWidth={725}
-        />
       </div>
     </>
   );

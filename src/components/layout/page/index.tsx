@@ -78,14 +78,7 @@ function Page({
           </p>
         </div>
         <div className={classes.iconsGroupContainer}>
-          {type === "main" ? (
-            <MainGroup />
-          ) : (
-            <>
-              {type === "edit-inner" && <EditGroup editPath={editPath} />}
-              <BackGroup backTo={backTo} />
-            </>
-          )}
+          {type !== "main" && <BackGroup backTo={backTo} />}
         </div>
       </div>
 

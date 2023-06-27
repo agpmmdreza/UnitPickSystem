@@ -76,7 +76,7 @@ const TimeTableBells = () => {
   };
 
   return (
-    <Page title="لیست زنگ های درسی" type="main">
+    <Page title="لیست برنامه های زمانی " type="main">
       <Table
         onRowSelect={(results) => {}}
         onNextPage={handleNextPage}

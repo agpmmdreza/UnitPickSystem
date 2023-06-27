@@ -11,7 +11,7 @@ const EditUser = () => {
   const history = useHistory();
   const queryClient = useQueryClient();
 
-  const { data } = useQuery(["courseById", id], () =>
+  const { data, isLoading } = useQuery(["courseById", id], () =>
     getCoursesById(Number(id))
   );
   const { mutate } = useMutation(
@@ -21,24 +21,31 @@ const EditUser = () => {
         queryClient.invalidateQueries(["courseList"]);
         queryClient.invalidateQueries(["courseById"]);
         notify.success("زنگ با موفقیت ویرایش شد.");
-        history.replace("../time-table-bells");
+        history.replace("../courses");
       },
     }
   );
 
   return (
     <Page title="ویرایش درس" type="inner" backTo="pop">
-      <CourseForm
-        initialValues={
-          data?.data.data && {
-            ...data?.data.data,
-            prerequisiteList: [],
+      {!isLoading && (
+        <CourseForm
+          initialValues={
+            data?.data.data && {
+              ...data?.data.data,
+              prerequisiteList: data?.data?.data?.coursePrerequisiteList?.map(
+                (i) => ({
+                  key: i.id.toString(),
+                  value: i.title,
+                })
+              ),
+            }
           }
-        }
-        onSumbit={(values) => {
-          mutate(values);
-        }}
-      />
+          onSumbit={(values) => {
+            mutate(values);
+          }}
+        />
+      )}
     </Page>
   );
 };

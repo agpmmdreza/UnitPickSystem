@@ -186,3 +186,7 @@ export function submitStudentGrades(
     reportGrade: data.reportGrade,
   });
 }
+
+export function acceptTimeTable(timeTableId: number): Promise<IResponse<any>> {
+  return apiCaller.put(`time-tables/${timeTableId}/accept`);
+}

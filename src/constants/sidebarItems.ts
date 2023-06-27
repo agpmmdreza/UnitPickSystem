@@ -1,50 +1,40 @@
-import {
-  AppointmentBold,
-  AppointmentDuotone,
-  AvailabilityBold,
-  AvailabilityDoutone,
-  FinancialBold,
-  FinancialDuotone,
-  HospitalBold,
-  MonitorDuotone,
-  PacsDuotone,
-  ReportBold,
-  ReportDuotone,
-} from "components/icon";
+import { FinancialBold, FinancialDuotone } from "components/icon";
 import { ISidebarItem } from "components/layout/sidebar";
 import { SummaryDuotone } from "components/icon/summary";
-import { SummaryBold } from "components/icon/summaryBold";
-import { MonitorBold } from "components/icon/monitorBold";
-import { HospitalDuotone } from "components/icon/hospitalDuotone";
 import { UsersDuotone } from "components/icon/users";
-import { AssignDuotone } from "components/icon/assign";
-import { AssignBold } from "components/icon/assignBold";
 import { UsersBold } from "components/icon/usersBold";
 import { IntakeFormDuotone } from "components/icon/intakeForm";
 import { IntakeFormBold } from "components/icon/intakeFormBold";
-import { HealthRecordDuotone } from "components/icon/healthRecord";
-import { HealthRecordBold } from "components/icon/healthRecordBold";
-import { FamilyDuotone } from "components/icon/family";
-import { FamilyBold } from "components/icon/familyBold";
-import { PastMedicalHistoryDuotone } from "components/icon/history";
-import { PastMedicalHistoryBold } from "components/icon/historyBold";
-
-export const PrefrencesItems: ISidebarItem[] = [];
+import {
+  ArrowDownOnSquareIcon,
+  BellIcon,
+  BellSnoozeIcon,
+  BookmarkIcon,
+  BookOpenIcon,
+  CalendarDaysIcon,
+  ChatBubbleBottomCenterIcon,
+  ChevronDoubleDownIcon,
+  HomeIcon,
+  PencilSquareIcon,
+  PresentationChartBarIcon,
+  TableCellsIcon,
+  UsersIcon,
+} from "@heroicons/react/24/outline";
 
 export const SuperAdminItems: ISidebarItem[] = [
   {
     id: "0",
     name: "صفحه اصلی",
-    icon: SummaryDuotone,
-    selectedIcon: SummaryBold,
+    icon: HomeIcon,
+    selectedIcon: HomeIcon,
     path: "/panel/admin/dashboard",
     child: [],
   },
   {
     id: "1",
     name: "کاربران",
-    icon: HospitalDuotone,
-    selectedIcon: HospitalBold,
+    icon: UsersIcon,
+    selectedIcon: UsersIcon,
     path: "/panel/admin/users",
     child: [],
   },
@@ -52,62 +42,56 @@ export const SuperAdminItems: ISidebarItem[] = [
   {
     id: "2",
     name: "روزها",
-    icon: MonitorDuotone,
-    selectedIcon: MonitorBold,
+    icon: CalendarDaysIcon,
+    selectedIcon: CalendarDaysIcon,
     path: "/panel/admin/days",
     child: [],
   },
   {
     id: "3",
     name: "زنگ ها",
-    icon: AssignDuotone,
-    selectedIcon: AssignBold,
+    icon: BellIcon,
+    selectedIcon: BellIcon,
     path: "/panel/admin/bells",
     child: [],
   },
   {
     id: "4",
     name: "درس ها",
-    icon: UsersDuotone,
-    selectedIcon: UsersBold,
-    child: [
-      {
-        id: "1",
-        name: "لیست درس ها",
-        path: "/panel/admin/courses",
-      },
-    ],
+    icon: BookOpenIcon,
+    selectedIcon: BookOpenIcon,
+    path: "/panel/admin/courses",
+    child: [],
   },
-
   {
     id: "5",
     name: "زنگ های درسی",
-    icon: FinancialDuotone,
-    selectedIcon: FinancialBold,
+    icon: BellSnoozeIcon,
+    selectedIcon: BellSnoozeIcon,
     path: "/panel/admin/time-table-bells",
     child: [],
   },
   {
     id: "6",
     name: "انتخاب واحد",
-    icon: FinancialDuotone,
-    selectedIcon: FinancialBold,
+    icon: ChevronDoubleDownIcon,
+    selectedIcon: ChevronDoubleDownIcon,
     path: "/panel/admin/unit-pick-time",
     child: [],
   },
   {
     id: "7",
     name: "رشته ها",
-    icon: FinancialDuotone,
-    selectedIcon: FinancialBold,
+    icon: BookmarkIcon,
+    selectedIcon: BookmarkIcon,
     path: "/panel/admin/majors",
     child: [],
   },
   {
     id: "8",
     name: "برنامه زمانی دروس",
-    icon: FinancialDuotone,
-    selectedIcon: FinancialBold,
+    icon: TableCellsIcon,
+    selectedIcon: TableCellsIcon,
     path: "/panel/admin/time-table",
     child: [],
   },
@@ -117,16 +101,16 @@ export const MasterItems: ISidebarItem[] = [
   {
     id: "0",
     name: "صفحه اصلی",
-    icon: SummaryDuotone,
-    selectedIcon: SummaryBold,
+    icon: HomeIcon,
+    selectedIcon: HomeIcon,
     path: "/panel/master/dashboard",
     child: [],
   },
   {
     id: "4",
     name: "درس ها",
-    icon: UsersDuotone,
-    selectedIcon: UsersBold,
+    icon: BookOpenIcon,
+    selectedIcon: BookOpenIcon,
     child: [
       {
         id: "1",
@@ -138,16 +122,16 @@ export const MasterItems: ISidebarItem[] = [
   {
     id: "5",
     name: "اطلاعیه‌ها",
-    icon: FinancialDuotone,
-    selectedIcon: FinancialBold,
+    icon: ChatBubbleBottomCenterIcon,
+    selectedIcon: ChatBubbleBottomCenterIcon,
     path: "/panel/master/announcements",
     child: [],
   },
   {
     id: "6",
     name: "ثبت نمرات",
-    icon: FinancialDuotone,
-    selectedIcon: FinancialBold,
+    icon: PencilSquareIcon,
+    selectedIcon: PencilSquareIcon,
     path: "/panel/master/submit-grade",
     child: [],
   },
@@ -157,16 +141,16 @@ export const StudentItems: ISidebarItem[] = [
   {
     id: "0",
     name: "داشبورد",
-    icon: SummaryDuotone,
-    selectedIcon: SummaryBold,
+    icon: HomeIcon,
+    selectedIcon: HomeIcon,
     path: "/panel/student/dashboard",
     child: [],
   },
   {
     id: "1",
     name: "انتخاب واحد",
-    icon: IntakeFormDuotone,
-    selectedIcon: IntakeFormBold,
+    icon: ArrowDownOnSquareIcon,
+    selectedIcon: ArrowDownOnSquareIcon,
     child: [
       {
         id: "0",
@@ -183,8 +167,8 @@ export const StudentItems: ISidebarItem[] = [
   {
     id: "2",
     name: "گزارش",
-    icon: IntakeFormDuotone,
-    selectedIcon: IntakeFormBold,
+    icon: PresentationChartBarIcon,
+    selectedIcon: PresentationChartBarIcon,
     child: [
       {
         id: "1",
@@ -192,5 +176,13 @@ export const StudentItems: ISidebarItem[] = [
         path: "/panel/student/report",
       },
     ],
+  },
+  {
+    id: "3",
+    name: "اطلاعیه‌ها",
+    icon: ChatBubbleBottomCenterIcon,
+    selectedIcon: ChatBubbleBottomCenterIcon,
+    path: "/panel/student/announcements",
+    child: [],
   },
 ];

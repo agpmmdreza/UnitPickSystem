@@ -6,6 +6,7 @@ import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
 import { getCoursesList } from "api/courses";
 import FormMultiSelect from "components/form/formMultiSelect";
 import { ISelectDefaultProps } from "components/core/multiSelect";
+import { useMultiSelectDefaultValue } from "hooks/useMultiSelecetDefaultValue";
 
 export interface IStateProps<T> {
   formik: FormikProps<T>;
@@ -14,8 +15,8 @@ export interface IStateProps<T> {
   disabled?: boolean;
   noPadding?: boolean;
   label?: string;
-  courseId?: string;
-  courseName?: string;
+  courseIds?: string[];
+  courseNames?: string[];
 }
 
 //? Gets the country and shows states in dropdown
@@ -23,8 +24,8 @@ export interface IStateProps<T> {
 export function Courses<T extends { [key: string]: any }>({
   formik,
   courseFieldName,
-  courseName,
-  courseId,
+  courseNames,
+  courseIds,
   rootProps,
   disabled,
   noPadding,
@@ -44,12 +45,12 @@ export function Courses<T extends { [key: string]: any }>({
     value: item.title,
   }));
 
-  useDropdownDefaultValue({
+  useMultiSelectDefaultValue({
     fieldName: courseFieldName,
     formik: formik,
-    id: courseId,
     OPTIONS: OPTIONS,
-    name: courseName,
+    ids: courseIds,
+    names: courseNames,
   });
 
   const changeHandler = (value: any) => {

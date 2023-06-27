@@ -11,7 +11,7 @@ const PATIENT_ROUTES: TRoute = {
     {
       path: "dashboard",
       exact: true,
-      component: lazy(() => import("pages/dashboard/admin/home")),
+      component: lazy(() => import("pages/dashboard/student/home")),
     },
     {
       path: "units",
@@ -172,6 +172,33 @@ const PATIENT_ROUTES: TRoute = {
       exact: true,
       component: lazy(() => import("pages/dashboard/student/reports")),
       inners: [],
+    },
+    {
+      path: "announcements",
+      exact: true,
+      component: lazy(() => import("pages/dashboard/student/announcements")),
+      inners: [
+        {
+          exact: true,
+          path: "create",
+          component: lazy(
+            () =>
+              import(
+                "pages/dashboard/student/announcements/components/addAnnouncements"
+              )
+          ),
+        },
+        {
+          exact: true,
+          path: ":id",
+          component: lazy(
+            () =>
+              import(
+                "pages/dashboard/student/announcements/components/editAnnouncements"
+              )
+          ),
+        },
+      ],
     },
     ...DASHBOARD_GLOBAL_ROUTES,
   ],

@@ -320,3 +320,30 @@ export function uploadAvatar(data: {
 }
 
 //#endregion
+
+interface IStudentDetailResponse {
+  id: number;
+  user: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    password: string;
+    role: string;
+    code: string;
+    major: null;
+    entranceYear: number;
+  };
+  major: {
+    id: number;
+    majorName: string;
+  };
+  unitPickTimeTable: {
+    entranceYear: number;
+    pickTime: string;
+    modifyTime: string;
+  };
+}
+
+export function getStudentDetail(): Promise<IResponse<IStudentDetailResponse>> {
+  return apiCaller.get("student-detail");
+}

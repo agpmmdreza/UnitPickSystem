@@ -1,3 +1,4 @@
+import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import { ReactComponent as BackIcon } from "assets/icons/bold/arrow-circle-left.svg";
 import { useHistory } from "react-router";
 import classes from "../styles.module.scss";
@@ -19,7 +20,10 @@ function BackGroup({ backTo }: IBackGroupProps) {
   };
   return (
     <button className={classes.mainIconContainer}>
-      <BackIcon className={classes.mainIcon} onClick={handleClick} />
+      <ArrowRightCircleIcon
+        className={classes.mainIcon}
+        onClick={handleClick}
+      />
     </button>
   );
 }

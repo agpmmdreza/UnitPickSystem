@@ -1,8 +1,8 @@
 import Sidebar from "components/layout/sidebar";
-import {buildRoute, getAuthRoutes} from "config/router";
-import {useAuth, WithAuth} from "components/provider/auth";
-import React, {Suspense, useRef, useState,} from "react";
-import {Prompt, Route, Switch} from "react-router";
+import { buildRoute, getAuthRoutes } from "config/router";
+import { useAuth, WithAuth } from "components/provider/auth";
+import React, { Suspense, useRef, useState } from "react";
+import { Prompt, Route, Switch } from "react-router";
 import NotFound from "pages/404";
 import Alert from "../../components/common/alert";
 
@@ -38,14 +38,7 @@ export function PanelPages() {
               <Route component={() => <NotFound />} />
             </Switch>
           </Suspense>
-          {block && (
-            <Prompt
-              message={
-                "Are you sure you want to leave? Any changes you made will be lost. To avoid losing your progress, please save your changes before leaving or come back to this page later. Do you want to continue without saving?"
-              }
-              when={block}
-            />
-          )}
+
           <Alert
             open={alertOpen}
             setOpen={setAlertOpen}

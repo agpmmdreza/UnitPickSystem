@@ -11,6 +11,11 @@ export interface ICourseResponse {
   id: number;
   unitsCount: number;
   title: string;
+  coursePrerequisiteList: {
+    id: number;
+    unitsCount: number;
+    title: string;
+  }[];
 }
 
 export function getCoursesList(
@@ -38,4 +43,8 @@ export function updateCourse(
   data: ICourseData
 ): Promise<IResponse<any>> {
   return apiCaller.put(`courses/${dayId}`, data);
+}
+
+export function getTodayCourses(): Promise<IResponse<ICourseResponse>> {
+  return apiCaller.get(`courses/today-courses`);
 }
