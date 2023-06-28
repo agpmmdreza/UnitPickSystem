@@ -1,10 +1,15 @@
 import { deleteDay } from "api/days";
-import { getStudentUnits } from "api/timeTable";
+import {
+  getStudentUnits,
+  IStudentUnitResponse,
+  ITimeTableResponse,
+} from "api/timeTable";
 import { ActionCell } from "components/common/tableCell";
 import Table from "components/core/table";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
 import { useQuery } from "react-query";
+import { Cell } from "react-table";
 
 const COLUMNS = [
   {
@@ -44,6 +49,13 @@ const COLUMNS = [
   {
     Header: "نمره",
     accessor: "grade",
+    Cell: (props: Cell<IStudentUnitResponse>) => {
+      return (
+        <span>
+          {props.row.original.grade === 0.25 ? null : props.row.original.grade}
+        </span>
+      );
+    },
   },
 ];
 

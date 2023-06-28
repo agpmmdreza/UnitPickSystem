@@ -27,8 +27,22 @@ const COLUMNS = [
     accessor: "master.major.majorName",
   },
   {
-    Header: "شماره اتاق",
+    Header: "اطلاعات برنامه زمانی",
     accessor: "roomNumber",
+    Cell: (value: any) => {
+      const timeTable = value.row.original.timeTableBellList[0];
+      const day = timeTable?.day.label;
+      const bell = timeTable?.bell.label;
+      const weekType = timeTable?.weekType;
+      const roomNumber = timeTable?.roomNumber;
+      return (
+        <span>
+          {" "}
+          {timeTable &&
+            `${day} (${bell}) - هفته های ${weekType} - کلاس ${roomNumber}`}
+        </span>
+      );
+    },
   },
 ];
 
