@@ -16,6 +16,7 @@ import { UserRoleName } from "api/types/userTypes";
 import clsx from "clsx";
 import classes from "../common/loader/styles.module.scss";
 import { VideoVisitLogo } from "../icon";
+import { BeatLoader, BounceLoader } from "react-spinners";
 
 // constants keys for holding the data in local storage
 const STORAGE_TOKEN_KEY = "token";
@@ -45,8 +46,6 @@ interface IAuthContext extends IAuthData {
 
 // get users information from local storage incase that user had logged-in before
 function getDefaultData(): IAuthData {
-  // const browserToken = localStorage.getItem(STORAGE_TOKEN_KEY);
-  // const browserRole = localStorage.getItem(STORAGE_ROLE_KEY);
   const browserToken = sessionStorage.getItem(STORAGE_TOKEN_KEY);
   const browserRole = sessionStorage.getItem(STORAGE_ROLE_KEY);
 
@@ -93,22 +92,6 @@ export function AuthProvider({
   const profileQuery = useProfile(value.isLoggedIn);
   const role = profileQuery.data?.data.data?.role.toLowerCase();
 
-  //TODO:i don't have any idea what is this for
-  // const roles: IRole[] | undefined =
-  //   profileQuery.data?.data.data?.facilities.reduce<IRole[]>(
-  //     (perv, current) => {
-  //       const newResult = current.roles.map(({ slug }) => ({
-  //         facilityId: current.id,
-  //         roleName: slug,
-  //         role: mapServerRoleName(slug),
-  //         facility: current.name,
-  //       }));
-
-  //       return [...perv, ...newResult];
-  //     },
-  //     []
-  //   );
-
   // this function gets token and role and save them in local storage
   // beside it sets that token to axios for further api calls
   // and in the end it sets user's authentication information inside value state
@@ -139,26 +122,6 @@ export function AuthProvider({
       role: undefined,
     });
   }, []);
-
-  //TODO:i don't have any idea what is this for
-  // const changeRole = useCallback(
-  //   (role: UserRoleName): boolean => {
-  //     if (!profileQuery.isSuccess || roles!.length === 0) {
-  //       logOut();
-  //       throw new Error("Roles are not provided!");
-  //     }
-
-  //     if (roles && !!roles.find((item) => item.role === role)) {
-  //       //  localStorage.setItem(STORAGE_ROLE_KEY, role);
-  //       sessionStorage.setItem(STORAGE_ROLE_KEY, role);
-  //       setValue((perv) => ({ ...perv, role: role }));
-  //       return true;
-  //     }
-
-  //     return false;
-  //   },
-  //   [roles, profileQuery.isSuccess, logOut]
-  // );
 
   return (
     <AuthContext.Provider value={{ ...value, role, logOut, logIn }}>
@@ -278,14 +241,10 @@ export function WithAuth({
         )}
         style={{ height: "100vh" }}
       >
-        <VideoVisitLogo style={{ width: "200px", height: "200px" }} />
+        <BounceLoader size={30} />
       </div>
     );
   }
-
-  // if (roles === undefined || roles.length === 0) {
-  //   return <Redirect to={"/login"} />;
-  // }
 
   const pathName = location.pathname.split("/")[2];
 
@@ -310,17 +269,3 @@ export function WithAuth({
 
   return <>{children}</>;
 }
-
-/*export function WithoutAuth({
-  children,
-}: {
-  children: ReactElement | ReactElement[];
-}) {
-  const { isLoggedIn, role } = useAuth();
-
-  if (isLoggedIn) {
-    return <Redirect to={`/${role}/`} />;
-  }
-
-  return <>{children}</>;
-}*/
