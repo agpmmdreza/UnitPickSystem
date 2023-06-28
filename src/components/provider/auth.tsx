@@ -15,8 +15,7 @@ import { useProfile } from "hooks/useProfile";
 import { UserRoleName } from "api/types/userTypes";
 import clsx from "clsx";
 import classes from "../common/loader/styles.module.scss";
-import { VideoVisitLogo } from "../icon";
-import { BeatLoader, BounceLoader } from "react-spinners";
+import { BounceLoader } from "react-spinners";
 
 // constants keys for holding the data in local storage
 const STORAGE_TOKEN_KEY = "token";

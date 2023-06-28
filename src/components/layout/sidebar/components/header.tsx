@@ -82,10 +82,6 @@ export function SidebarHeader() {
             >
               <span className={classes.logoLabel}>ساو</span>
             </div>
-
-            <div>
-              <SideMenuButton />
-            </div>
           </div>
 
           <div
