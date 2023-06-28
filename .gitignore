@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Env files.
-*.env
+# *.env
 !*.env.example
 
 # .sh files in linux
