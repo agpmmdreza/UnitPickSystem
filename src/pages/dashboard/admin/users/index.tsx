@@ -39,8 +39,8 @@ const UsersList = () => {
     updateMaxPage,
   } = usePagination();
 
-  const { data, isLoading, isError, refetch, isFetching } = useQuery(
-    ["getFacilities", pagination.currentPage, pagination.resultsPerPage],
+  const { data, refetch, isFetching } = useQuery(
+    ["getUsers", pagination.currentPage, pagination.resultsPerPage],
     () => getUserList({ page: pagination.currentPage }),
     {
       keepPreviousData: true,

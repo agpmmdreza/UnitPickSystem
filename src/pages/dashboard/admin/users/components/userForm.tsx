@@ -103,6 +103,7 @@ const UserForm = ({ onSumbit, initialValues }: IUserFormProps) => {
             placeholder: "رشته تحصیلی",
           }}
           majorName={initialValues?.major.value}
+          majorId={initialValues?.major.value}
         />
 
         <Years formik={formik} fieldName="entranceYear" />

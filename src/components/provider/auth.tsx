@@ -6,7 +6,7 @@ import {
   useContext,
   useState,
 } from "react";
-import { ILoginInfo, login, submitLogout } from "api/auth";
+import { ILoginInfo, login } from "api/auth";
 import { Redirect } from "react-router";
 import { setAxiosRole, setAxiosToken } from "api";
 import { useHistory } from "react-router-dom";
@@ -147,7 +147,7 @@ export function useAuth(): IUseAuth {
   // used for send login request
   const loginRequest = useMutation(login);
   // used for send logout request
-  const logoutRequest = useMutation(submitLogout);
+  // const logoutRequest = useMutation(submitLogout);
 
   // trigger login api with given login data
   const logIn = async (data: ILoginInfo) => {

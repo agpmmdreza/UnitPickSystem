@@ -134,7 +134,7 @@
     width: 11px;
     position: absolute;
     top: space(pd-x);
-    right: space(pd-x);
+    left: space(pd-x);
     cursor: pointer;
     &[data-variant="bold"] > path {
       fill: colorFromRgb(secondary-main);

@@ -1,4 +1,4 @@
-import {ToastContainerProps} from "react-toastify/dist/types";
+import { ToastContainerProps } from "react-toastify/dist/types";
 
 export const TOAST_PROPS: ToastContainerProps = {
   position: "bottom-right",
@@ -6,11 +6,11 @@ export const TOAST_PROPS: ToastContainerProps = {
   hideProgressBar: false,
   newestOnTop: false,
   closeOnClick: true,
-  rtl: false,
+  rtl: true,
   pauseOnFocusLoss: true,
   draggable: true,
   pauseOnHover: true,
-  theme: "colored",
+  theme: "light",
   toastStyle: { zIndex: 999999 },
   style: { zIndex: 999999 },
   bodyStyle: { zIndex: 999999 },

@@ -1,8 +1,7 @@
 import classes from "./styles.module.scss";
 import { ReactComponent as SettingIcon } from "assets/icons/bold/setting.svg";
 import { SidebarContext } from "..";
-import { FunctionComponent, useContext, useState } from "react";
-import { SideMenuButton } from "./sideMenuButton";
+import { FunctionComponent, useContext } from "react";
 import Avatar from "components/core/avatar";
 import clsx from "clsx";
 import Button from "components/core/button";
@@ -14,12 +13,10 @@ import {
   LogoutLinear,
   PasswordCheckLinear,
 } from "components/icon";
-import { SwitchLinear } from "components/icon/switchLinear";
 import { EditProfileLinear } from "components/icon/editProfileLinear";
 import { useAuth } from "hooks/useAuth";
 import { useHistory } from "react-router";
 import { useProfile } from "hooks/useProfile";
-import Alert from "../../../common/alert";
 import { MEDIUM } from "constants/breakpoints";
 import { closeSidebar } from "./helperFunctions";
 
@@ -37,7 +34,6 @@ export function SidebarHeader() {
   const profile = useProfile();
   const profileName = `${profile.data?.data.data?.firstName} ${profile.data?.data.data?.lastName}`;
   const history = useHistory();
-  const [logOutOpen, setLogoutOpen] = useState(false);
 
   /** Avatar settings dropdown items */
   const AVATAR_DROPDOWN_ITEMS: IAvatarDropdownItems[] = [
