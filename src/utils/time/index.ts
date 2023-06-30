@@ -44,5 +44,5 @@ function getJalaliDayIndex(day: string) {
 
 export function isClassJoinTime(dayNames: string[]) {
   const mappedDayIndexes = dayNames.map((d) => getJalaliDayIndex(d));
-  return mappedDayIndexes.some((i) => i === moment("2023-07-01").isoWeekday());
+  return mappedDayIndexes.some((i) => i === moment().isoWeekday());
 }
