@@ -1,10 +1,12 @@
-import { deleteCourse, getCoursesList } from "api/courses";
-import { acceptTimeTable, masterTimeList } from "api/timeTable";
+import {
+  acceptTimeTable,
+  ITimeTableResponse,
+  masterTimeList,
+} from "api/timeTable";
 import { ITimeTableBellResponse } from "api/timeTableBells";
 import { queryClient } from "App";
-import { ActionCell } from "components/common/tableCell";
-import { SendMessageMenuItem } from "components/common/tableCell/sendMessageMenuItem";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
+import Button from "components/core/button";
 import Chip from "components/core/chip";
 import { Dropdown } from "components/core/dropdown";
 import DropdownItem from "components/core/dropdownItem";
@@ -15,8 +17,8 @@ import { ActionMenuBold } from "components/icon";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
 import { useMutation, useQuery } from "react-query";
-import { Link } from "react-router-dom";
 import { Cell } from "react-table";
+import { isClassJoinTime } from "utils/time";
 import { generateUUIDv4 } from "utils/uuid";
 import OnlineClass from "./components/onlineClass";
 
@@ -87,7 +89,7 @@ const Courses = () => {
     updateMaxPage,
   } = usePagination();
 
-  const { data, refetch, isFetching } = useQuery(
+  const { data, isFetching } = useQuery(
     ["masterCourse", pagination.currentPage, pagination.resultsPerPage],
     () => masterTimeList({ page: pagination.currentPage }),
     {
@@ -116,11 +118,19 @@ const Courses = () => {
     ...pagination,
   };
 
-  function renderActionCell(props: Cell) {
+  function renderActionCell(props: Cell<ITimeTableResponse>) {
     const id = "bb" + generateUUIDv4().split("-")[0];
     const row: any = props.row.original;
 
-    if (row.status === "accepted") return null;
+    if (row.status === "accepted") {
+      const shouldShowButton = isClassJoinTime(
+        props.row.original.timeTableBellList.map((t) => t.day.label)
+      );
+
+      return shouldShowButton ? (
+        <Button size="small"> پیوستن به کلاس</Button>
+      ) : null;
+    }
 
     return (
       <Dropdown anchor={"top"}>
