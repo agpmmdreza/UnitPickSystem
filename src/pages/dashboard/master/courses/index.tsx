@@ -1,5 +1,6 @@
 import { deleteCourse, getCoursesList } from "api/courses";
 import { acceptTimeTable, masterTimeList } from "api/timeTable";
+import { ITimeTableBellResponse } from "api/timeTableBells";
 import { queryClient } from "App";
 import clsx from "clsx";
 import { ActionCell } from "components/common/tableCell";
@@ -40,6 +41,27 @@ const COLUMNS = [
   {
     Header: "تعداد واحد",
     accessor: "course.unitsCount",
+  },
+  {
+    Header: "ترم",
+    accessor: "term",
+  },
+  {
+    Header: "اطلاعات درس",
+    accessor: "course",
+    Cell: (value: any) => {
+      return (
+        <>
+          {value.row.original.timeTableBellList?.map(
+            (i: ITimeTableBellResponse) => (
+              <div>
+                {`${i.day.label} ساعت (${i.bell.label}) هفته ${i.weekType} کلاس ${i.roomNumber}`}
+              </div>
+            )
+          )}
+        </>
+      );
+    },
   },
   {
     Header: "وضعیت",
