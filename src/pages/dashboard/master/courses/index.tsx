@@ -20,6 +20,7 @@ import { useMutation, useQuery } from "react-query";
 import { Cell } from "react-table";
 import { isClassJoinTime } from "utils/time";
 import { generateUUIDv4 } from "utils/uuid";
+import OnlineClass from "./components/onlineClass";
 
 const getChipColor = (v: string) => {
   switch (v) {
@@ -175,6 +176,7 @@ const Courses = () => {
         title="لیست دروس"
         actionsComponent={<RegistrationButton title="افزودن درس" />}
       />
+      <OnlineClass />
     </Page>
   );
 };

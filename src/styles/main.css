@@ -1,2 +1,5 @@
 @import "./theme.css";
 @import "./spacing.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
