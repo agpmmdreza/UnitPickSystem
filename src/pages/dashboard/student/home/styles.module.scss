@@ -264,3 +264,19 @@
   display: flex;
   justify-content: center;
 }
+
+.card {
+  background-color: colorFromRgb(secondary-background);
+  padding: 20px;
+
+  &__title {
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  &__time {
+    font-weight: 500;
+    font-size: 16px;
+    color: colorFromRgb(gray-text);
+  }
+}

@@ -1,6 +1,5 @@
-import { deleteDay } from "api/days";
 import { getStudentUnits } from "api/timeTable";
-import { ActionCell } from "components/common/tableCell";
+import { ITimeTableBellResponse } from "api/timeTableBells";
 import Table from "components/core/table";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
@@ -27,18 +26,15 @@ const COLUMNS = [
     Header: "زمان کلاس",
     accessor: "timeTabe.timeTableBellList[0]",
     Cell: (value: any) => {
-      const timeTable = value.row.original.timeTable.timeTableBellList[0];
-      const day = timeTable?.day.label;
-      const bell = timeTable?.bell.label;
-      const weekType = timeTable?.weekType;
-      const roomNumber = timeTable?.roomNumber;
-      return (
-        <span>
-          {" "}
-          {timeTable &&
-            `${day} (${bell}) - هفته های ${weekType} - کلاس ${roomNumber}`}
-        </span>
+      const timeTable = value.row.original.timeTable.timeTableBellList?.map(
+        (i: ITimeTableBellResponse) => (
+          <div>
+            {`${i.day.label} ساعت (${i.bell.label}) هفته ${i.weekType} کلاس ${i.roomNumber}`}
+          </div>
+        )
       );
+
+      return <span>{timeTable}</span>;
     },
   },
 ];
@@ -47,19 +43,11 @@ const StudentUnits = () => {
   const { handleGotoPage, handleNextPage, handlePreviousPage, pagination } =
     usePagination();
 
-  const { data, refetch, isFetching } = useQuery(
+  const { data, isFetching } = useQuery(
     ["studentUnits", pagination.currentPage, pagination.resultsPerPage],
     () => getStudentUnits(),
     {
       keepPreviousData: true,
-      onSuccess: (data) => {
-        // const result = data?.data.data;
-        // if (result) {
-        //   updateMaxPage(
-        //     Math.floor(result.total / pagination.resultsPerPage) + 1
-        //   );
-        // }
-      },
     }
   );
 

@@ -36,21 +36,17 @@ const AddUnit = () => {
     },
   });
 
-  const { data, refetch, isFetching } = useQuery(
-    ["studentUnits"],
-    () => getStudentUnits(),
-    {
-      keepPreviousData: true,
-      onSuccess: (data) => {
-        // const result = data?.data.data;
-        // if (result) {
-        //   updateMaxPage(
-        //     Math.floor(result.total / pagination.resultsPerPage) + 1
-        //   );
-        // }
-      },
-    }
-  );
+  const { data } = useQuery(["studentUnits"], () => getStudentUnits(), {
+    keepPreviousData: true,
+    onSuccess: (data) => {
+      // const result = data?.data.data;
+      // if (result) {
+      //   updateMaxPage(
+      //     Math.floor(result.total / pagination.resultsPerPage) + 1
+      //   );
+      // }
+    },
+  });
 
   const formik = useFormik<ITableTableFields>({
     initialValues: { timeTable: { key: "", value: "" } },
@@ -70,19 +66,6 @@ const AddUnit = () => {
     <Page title="انتخاب واحد" type="main">
       <form onSubmit={formik.handleSubmit}>
         <Grid flowDense>
-          {/* <CoursesDropdown
-            formik={formik}
-            courseFieldName="courseId"
-            label="درس"
-          /> */}
-
-          {/* <UsersByRole
-            formik={formik}
-            userFieldName="masterId"
-            label="استاد"
-            role="master"
-          /> */}
-
           <Grid.Column doubleWidth>
             <TimeTables
               formik={formik}

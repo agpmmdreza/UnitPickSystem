@@ -3,7 +3,6 @@ import { FormikErrors, useFormik } from "formik";
 import { getFormikFieldProps } from "utils/form";
 import FormPassword from "components/form/password";
 import { useMutation } from "react-query";
-import { submitChangePassword } from "api/auth";
 import { useHistory } from "react-router";
 import BeatLoader from "react-spinners/BeatLoader";
 import { validatePassword } from "utils/validation";
@@ -11,6 +10,7 @@ import NotificationAlert from "components/core/notificationAlert";
 import { useState } from "react";
 import { notify } from "components/core/toast";
 import Grid from "components/core/Grid";
+import { changePassword } from "api/users";
 
 interface IFieldTypes {
   oldPassword: string;
@@ -26,7 +26,7 @@ const INITIAL_VALUES = {
 
 function ChangePasswordForm() {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
-  const { mutate, isLoading } = useMutation(submitChangePassword);
+  const { mutate, isLoading } = useMutation(changePassword);
   const history = useHistory();
   const formik = useFormik<IFieldTypes>({
     initialValues: INITIAL_VALUES,
@@ -63,9 +63,8 @@ function ChangePasswordForm() {
   const handleMutation = () => {
     mutate(
       {
-        old_password: formik.values.oldPassword,
-        new_password: formik.values.newPassword,
-        new_password_confirmation: formik.values.confirmPassword,
+        currentPassword: formik.values.oldPassword,
+        newPassword: formik.values.newPassword,
       },
       {
         onSuccess: () => {

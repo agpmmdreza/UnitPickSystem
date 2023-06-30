@@ -9,13 +9,14 @@ import {
   updateTimeTableBell,
 } from "api/timeTableBells";
 import { notify } from "components/core/toast";
+import Loader from "components/common/loader";
 
 const EditUser = () => {
   const { id } = useParams<IParam>();
   const history = useHistory();
   const queryClient = useQueryClient();
 
-  const { data } = useQuery(["timeTableById", id], () =>
+  const { data, isLoading } = useQuery(["timeTableById", id], () =>
     getTimeTableBellsById(Number(id))
   );
   const { mutate } = useMutation(
@@ -32,19 +33,21 @@ const EditUser = () => {
 
   return (
     <Page title="ویرایش کاربر" type="inner" backTo="pop">
-      <TimeTableForm
-        initialValues={
-          data?.data.data && {
-            ...data?.data.data,
-            dayId: { key: data.data.data.day.id.toString(), value: "" },
-            bellId: { key: data.data.data.bell.id.toString(), value: "" },
-            weekType: { key: data.data.data.weekType, value: "" },
+      <Loader isLoading={isLoading}>
+        <TimeTableForm
+          initialValues={
+            data?.data.data && {
+              ...data?.data.data,
+              dayId: { key: data.data.data.day.id.toString(), value: "" },
+              bellId: { key: data.data.data.bell.id.toString(), value: "" },
+              weekType: { key: data.data.data.weekType, value: "" },
+            }
           }
-        }
-        onSumbit={(values) => {
-          mutate(values);
-        }}
-      />
+          onSumbit={(values) => {
+            mutate(values);
+          }}
+        />
+      </Loader>
     </Page>
   );
 };

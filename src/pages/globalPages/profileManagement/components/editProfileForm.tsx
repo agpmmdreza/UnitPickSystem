@@ -2,12 +2,14 @@ import FormInput from "components/form/formInput";
 import { UserBold } from "components/icon";
 import { useFormik } from "formik";
 import { getFormikFieldProps } from "utils/form";
-import FormPhoneInput from "components/form/formPhoneInput";
-import { IPhoneNumber } from "interfaces";
 import Button from "components/core/button";
 import { editProfileSchema } from "./editProfileSchema";
-import countries from "constants/countries.json";
 import Grid from "components/core/Grid";
+import { updateProfile } from "api/users";
+import { useMutation } from "react-query";
+import { queryClient } from "App";
+import { notify } from "components/core/toast";
+import { useHistory } from "react-router";
 
 interface IEditProfileFormProps {
   initialValues: IProfileManagement;
@@ -20,13 +22,22 @@ export interface IProfileManagement {
 }
 
 const EditProfileForm = ({ initialValues }: IEditProfileFormProps) => {
-  // const { mutate } = useMutation(updateProfile);
+  const history = useHistory();
+
+  const { mutate } = useMutation(updateProfile, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["getProfile"]);
+      notify.success("اطلاعات با موفقیت ویرایش شد.");
+      history.replace("../dashboard");
+    },
+  });
   // const { mutate: updateAvatar } = useMutation(uploadAvatar);
-  // const history = useHistory();
   // const queryClient = useQueryClient();
   const formik = useFormik<IProfileManagement>({
     initialValues: initialValues,
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      mutate(values);
+    },
     validationSchema: editProfileSchema,
     enableReinitialize: true,
     validateOnBlur: false,

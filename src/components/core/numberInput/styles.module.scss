@@ -2,10 +2,10 @@
 @import "styles/functions.scss";
 .numberRoot {
   display: flex;
+  width: 100%;
   flex-flow: row;
   align-items: center;
   justify-content: center;
-  width: fit-content;
   padding: space(pd-y) space(pd-x);
   //margin-top: space(pd-y);
   border-radius: space(radius);

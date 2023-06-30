@@ -40,15 +40,28 @@ export function TimeTables<T extends { [key: string]: any }>({
     // }
   );
 
-  const OPTIONS: IMenuOption[] = [];
+  const OPTIONS: IMenuOption[] =
+    data?.data.data?.list.map((item) => {
+      const bells = item.timeTableBellList
+        .map(
+          (i) =>
+            `(${i.day.label} - ${i.bell.label}) - کلاس ${i.roomNumber} - هفته ${i.weekType}`
+        )
+        .join(" --- ");
 
-  data?.data.data?.list.forEach((item) => {
-    const allBells = item.timeTableBellList.map((ttb) => ({
-      key: item.id.toString(),
-      value: `${item.course.title} - ${item.master.user.firstName} ${item.master.user.lastName} - (${ttb.day.label} - ${ttb.bell.label}) - کلاس ${ttb.roomNumber} - هفته ${ttb.weekType}`,
-    }));
-    OPTIONS.push(...allBells);
-  });
+      return {
+        key: item.id.toString(),
+        value: `${item.course.title} - ${item.master.user.firstName} ${item.master.user.lastName} ${bells}`,
+      };
+    }) || [];
+
+  // data?.data.data?.list.forEach((item) => {
+  //   const allBells = item.timeTableBellList.map((ttb) => ({
+  //     key: item.id.toString(),
+  //     value: `${item.course.title} - ${item.master.user.firstName} ${item.master.user.lastName} - (${ttb.day.label} - ${ttb.bell.label}) - کلاس ${ttb.roomNumber} - هفته ${ttb.weekType}`,
+  //   }));
+  //   OPTIONS.push(...allBells);
+  // });
 
   useDropdownDefaultValue({
     fieldName: timeTableFieldName,

@@ -39,6 +39,17 @@ export interface IMastersResponse {
   };
 }
 
+interface IPasswordData {
+  currentPassword: string;
+  newPassword: string;
+}
+
+interface IUpdateProfileData {
+  firstName: string;
+  lastName: string;
+  code: string;
+}
+
 export function getUserList(
   params: IPageParams
 ): Promise<IResponse<IPaginationTableList<IUserListResponse>>> {
@@ -68,4 +79,13 @@ export function getMasters(
   params: IPageParams
 ): Promise<IResponse<IMastersResponse[]>> {
   return apiCaller.get(`masters`);
+}
+
+export function changePassword(data: IPasswordData): Promise<IResponse<any>> {
+  return apiCaller.post(`users/profile/change-password`, data);
+}
+export function updateProfile(
+  data: IUpdateProfileData
+): Promise<IResponse<any>> {
+  return apiCaller.post(`users/profile`, data);
 }

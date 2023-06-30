@@ -58,7 +58,7 @@ function NumberInput({
         className={classes.numberInput}
         data-testid="test-number-input"
       />
-      {/* 
+
       {!readOnly && (
         <div className={classes.arrowsContainer}>
           <ArrowDownLinear
@@ -73,7 +73,7 @@ function NumberInput({
             onClick={() => value && value > min && handleArrowChange(-1)}
           />
         </div>
-      )} */}
+      )}
     </div>
   );
 }
