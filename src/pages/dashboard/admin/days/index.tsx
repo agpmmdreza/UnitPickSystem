@@ -1,10 +1,13 @@
-import { deleteDay, getDayList } from "api/days";
+import { deleteDay, getDayList, seedDays } from "api/days";
+import { queryClient } from "App";
 import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
+import Button from "components/core/button";
 import Table from "components/core/table";
+import { notify } from "components/core/toast";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
 const COLUMNS = [
   {
@@ -43,6 +46,13 @@ const DaysList = () => {
     }
   );
 
+  const { mutate, isLoading } = useMutation(seedDays, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["dayList"]);
+      notify.success("اطلاعات با موفقیت افزوده شد");
+    },
+  });
+
   const responseData = data?.data.data;
   const fixedData = {
     data: responseData ? responseData.list : [],
@@ -75,7 +85,18 @@ const DaysList = () => {
         columns={[...COLUMNS, actionCell]}
         {...{ isFetching }}
         title="روزها"
-        actionsComponent={<RegistrationButton title="افزودن روز" />}
+        actionsComponent={
+          <div className="d-flex gap-2">
+            <Button
+              color="secondary"
+              disabled={isLoading}
+              onClick={() => mutate()}
+            >
+              افزودن خودکار داده
+            </Button>
+            <RegistrationButton title="افزودن روز" />
+          </div>
+        }
       />
     </Page>
   );

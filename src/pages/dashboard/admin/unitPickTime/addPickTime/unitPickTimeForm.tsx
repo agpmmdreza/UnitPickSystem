@@ -3,17 +3,13 @@ import Grid from "components/core/Grid";
 import { useFormik } from "formik";
 import { useHistory } from "react-router";
 import Button from "components/core/button";
-import FormInput from "components/form/formInput";
-import { CalendarBold, UserBold } from "components/icon";
+import { CalendarBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
-import { IMenuOption } from "interfaces";
-import { ITimeTableBellData } from "api/timeTableBells";
-import { WeekType } from "components/common/dropdownField/weekType";
-import { Days } from "components/common/dropdownField/days";
-import { Bells } from "components/common/dropdownField/bells";
 import { Years } from "components/common/dropdownField/years";
 import FormDatePicker from "components/form/formDatePicker";
 import { IUPickData } from "api/unitPickTime";
+import moment from "moment";
+import { IMenuOption } from "interfaces";
 
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
@@ -23,19 +19,19 @@ interface IUnitPickTimeFormProps {
 }
 
 interface IUnitPickTimeForm {
-  entranceYear: number;
-  pickTime: string;
-  modifyTime: string;
+  entranceYear: IMenuOption;
+  pickTime: string | Date;
+  modifyTime: string | Date;
 }
 
 export const defaultValues: IUnitPickTimeForm = {
-  entranceYear: 1,
+  entranceYear: { key: "", value: " " },
   pickTime: "",
   modifyTime: "",
 };
 
 export const ValidationSchema = yup.object().shape({
-  entranceYear: yup.number().required(REQUIRED_FIELD_MESSAGE),
+  entranceYear: yup.object().dropdown(),
   pickTime: yup.string().required(REQUIRED_FIELD_MESSAGE),
   modifyTime: yup.string().required(REQUIRED_FIELD_MESSAGE),
 });
@@ -52,9 +48,9 @@ const UnitPickTimeForm = ({
     validateOnBlur: false,
     onSubmit: (values) => {
       onSumbit({
-        entranceYear: +values.entranceYear,
-        modifyTime: values.modifyTime,
-        pickTime: values.pickTime,
+        entranceYear: +values.entranceYear.key,
+        modifyTime: moment(values.modifyTime).utc().format(),
+        pickTime: moment(values.pickTime).utc().format(),
       });
     },
   });
@@ -62,12 +58,18 @@ const UnitPickTimeForm = ({
   return (
     <form onSubmit={formik.handleSubmit}>
       <Grid flowDense>
-        <Years formik={formik} fieldName="entranceYear" />
+        <Years
+          formik={formik}
+          fieldName="entranceYear"
+          yearsId={initialValues?.entranceYear.key}
+          yearsName={initialValues?.entranceYear.value}
+        />
         <FormDatePicker
           noPadding
           {...getFormikFieldProps("pickTime", "زمان انتخاب واحد", formik)}
           icon={CalendarBold}
           placeholder={"زمان انتخاب واحد"}
+
           //   rootProps={{readOnly: isViewingProfile}}
         />
         <FormDatePicker

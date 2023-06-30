@@ -61,6 +61,7 @@ const DatePicker = ({
         timeInputLabel="Time:"
         dateFormat="yyyy-MM-dd HH:mm:ss"
         showTimeInput
+        timeFormat="HH:mm:ss"
       />
     </div>
   );

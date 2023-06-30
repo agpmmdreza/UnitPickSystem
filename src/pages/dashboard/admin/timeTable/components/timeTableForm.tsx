@@ -8,6 +8,7 @@ import { CoursesDropdown } from "components/common/dropdownField/coursesDropdown
 import { TimeTableBellMultiSelect } from "components/common/dropdownField/timeTableBellMutli";
 import { ITimeTableData } from "api/timeTable";
 import { Masters } from "components/common/dropdownField/masters";
+import { Terms } from "components/common/dropdownField/terms";
 
 export interface IAddUserFields {
   firstName: string;
@@ -28,17 +29,21 @@ interface ITimeTableForm {
   courseId: IMenuOption;
   masterId: IMenuOption;
   timeTableBellsId: IMenuOption[];
+  term: IMenuOption;
 }
 
 export const defaultValues: ITimeTableForm = {
   courseId: { key: "", value: "" },
   masterId: { key: "", value: "" },
+  term: { key: "", value: "" },
   timeTableBellsId: [],
 };
 
 export const ValidationSchema = yup.object().shape({
   courseId: yup.object().dropdown(),
   masterId: yup.object().dropdown(),
+  term: yup.object().dropdown(),
+  timeTableBellsId: yup.array().min(1),
 });
 
 const TimeTableForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
@@ -53,6 +58,7 @@ const TimeTableForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
         courseId: +values.courseId.key,
         masterId: +values.masterId.key,
         timeTableBellsId: values.timeTableBellsId.map((i) => +i.key),
+        term: values.term.key,
       });
     },
   });
@@ -71,6 +77,12 @@ const TimeTableForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
           masterFieldName="masterId"
           label="استاد"
           role="master"
+        />
+
+        <Terms
+          formik={formik}
+          termFieldName="term"
+          termId={initialValues?.term.key}
         />
 
         <TimeTableBellMultiSelect

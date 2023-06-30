@@ -36,3 +36,7 @@ export function updateDay(
 ): Promise<IResponse<any>> {
   return apiCaller.put(`days/${dayId}`, data);
 }
+
+export function seedDays(): Promise<IResponse<any>> {
+  return apiCaller.post(`days/seed`);
+}

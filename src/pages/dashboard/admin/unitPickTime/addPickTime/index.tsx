@@ -1,11 +1,10 @@
-import { addUnitPickTime, IUPickData } from "api/unitPickTime";
+import { addUnitPickTime } from "api/unitPickTime";
 import { Years } from "components/common/dropdownField/years";
 import Button from "components/core/button";
 import Grid from "components/core/Grid";
 import { notify } from "components/core/toast";
 import FormDatePicker from "components/form/formDatePicker";
-import FormInput from "components/form/formInput";
-import { CalendarBold, UserBold } from "components/icon";
+import { CalendarBold } from "components/icon";
 import Page from "components/layout/page";
 import { useFormik } from "formik";
 import { IMenuOption } from "interfaces";
@@ -14,17 +13,10 @@ import { useHistory } from "react-router";
 import { getFormikFieldProps } from "utils/form";
 import yup from "utils/yupExtended";
 
-const REQUIRED_FIELD_MESSAGE = "This field is required.";
-
 export interface IAddMajorFields {
   entranceYear: IMenuOption;
   pickTime: string;
   modifyTime: string;
-}
-
-interface IMajorFormProps {
-  onSumbit: (values: IAddMajorFields) => void;
-  initialValues?: IAddMajorFields;
 }
 
 export const defaultValues: IAddMajorFields = {

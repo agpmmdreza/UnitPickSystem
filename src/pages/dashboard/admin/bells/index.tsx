@@ -1,10 +1,13 @@
-import { deleteBell, getBellsList } from "api/bells";
+import { deleteBell, getBellsList, seedBells } from "api/bells";
+import { queryClient } from "App";
 import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
+import Button from "components/core/button";
 import Table from "components/core/table";
+import { notify } from "components/core/toast";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
 const COLUMNS = [
   {
@@ -49,6 +52,13 @@ const BellList = () => {
     ...pagination,
   };
 
+  const { mutate, isLoading } = useMutation(seedBells, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["bellsList"]);
+      notify.success("اطلاعات با موفقیت افزوده شد");
+    },
+  });
+
   const actionCell = {
     Header: "عملیات",
     accessor: "none",
@@ -75,7 +85,18 @@ const BellList = () => {
         columns={[...COLUMNS, actionCell]}
         {...{ isFetching }}
         title="زنگ‌ها"
-        actionsComponent={<RegistrationButton title="افزودن زنگ" />}
+        actionsComponent={
+          <div className="d-flex gap-2">
+            <Button
+              color="secondary"
+              disabled={isLoading}
+              onClick={() => mutate()}
+            >
+              افزودن خودکار داده
+            </Button>
+            <RegistrationButton title="افزودن زنگ" />
+          </div>
+        }
       />
     </Page>
   );

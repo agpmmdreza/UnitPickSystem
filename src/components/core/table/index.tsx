@@ -137,7 +137,11 @@ function Table({
               {/* <ListInfo /> */}
               <span className={classes.title}>{title}</span>
             </div>
-            <div>{actionsComponent}</div>
+
+            <div className="d-flex gap-2">
+              {!!filterProps && <Filter {...filterProps!} />}
+              {actionsComponent}
+            </div>
           </div>
 
           {description && (
@@ -150,7 +154,7 @@ function Table({
         {/* This line should be removed after changing all tables to new format */}
         {/* {type === "basic" ? children : operationsComponent} */}
 
-        {(filterProps || searchProps) && (
+        {searchProps && (
           <div
             className={clsx(
               "d-flex align-items-center p-3 gap-3",
@@ -158,7 +162,6 @@ function Table({
               // type === "custom" && "border-bottom"
             )}
           >
-            {!!filterProps && <Filter {...filterProps!} />}
             {!!searchProps && searchProps.optimizedOnChange ? (
               <SearchInput {...searchProps} />
             ) : (

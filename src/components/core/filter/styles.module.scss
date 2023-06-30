@@ -96,6 +96,7 @@
   @include flex-column;
   color: colorFromRgb(secondary-main);
   top: 3em;
+  left: -10em;
   border-radius: space(radius);
   // padding: space(pd-y) space(pd-x);
   position: absolute;
@@ -175,10 +176,6 @@
   border-radius: space(radius);
   cursor: pointer;
 
-  &:hover {
-    background-color: colorFromRgba(gray-text, 20);
-    transition: time(default);
-  }
   [class~="op"] {
     font-weight: 500;
     font-size: 13px;

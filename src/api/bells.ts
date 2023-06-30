@@ -36,3 +36,7 @@ export function updateBell(
 ): Promise<IResponse<any>> {
   return apiCaller.put(`bells/${dayId}`, data);
 }
+
+export function seedBells(): Promise<IResponse<any>> {
+  return apiCaller.post(`bells/seed`);
+}

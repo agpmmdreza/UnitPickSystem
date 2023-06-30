@@ -85,7 +85,7 @@ const UsersList = () => {
         fetchedData={fixedData}
         columns={[...COLUMNS, actionCell]}
         {...{ isFetching }}
-        title="کابران"
+        title="کاربران"
         actionsComponent={<RegistrationButton title="افزودن کاربر" />}
       />
     </Page>

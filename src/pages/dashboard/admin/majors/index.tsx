@@ -1,5 +1,5 @@
 import { getMajorList } from "api/majors";
-import { deleteUser, getUserList } from "api/users";
+import { deleteUser } from "api/users";
 import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
 import Table from "components/core/table";
@@ -28,8 +28,8 @@ const MajorsList = () => {
     updateMaxPage,
   } = usePagination();
 
-  const { data, isLoading, isError, refetch, isFetching } = useQuery(
-    ["getFacilities", pagination.currentPage, pagination.resultsPerPage],
+  const { data, refetch, isFetching } = useQuery(
+    ["majorList", pagination.currentPage, pagination.resultsPerPage],
     () => getMajorList({ page: pagination.currentPage }),
     {
       keepPreviousData: true,
@@ -49,7 +49,6 @@ const MajorsList = () => {
     data: responseData ? responseData.list : [],
     ...pagination,
   };
-  console.log(fixedData);
 
   const actionCell = {
     Header: "عملیات",

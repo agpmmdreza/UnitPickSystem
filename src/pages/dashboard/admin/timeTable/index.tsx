@@ -1,11 +1,13 @@
 import { deleteDay } from "api/days";
 import { getTimeTablesList } from "api/timeTable";
-import { getTimeTableBellsList } from "api/timeTableBells";
+import { TERM_OPTIONS } from "components/common/dropdownField/terms";
 import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
+import { IFilter, IFilterValue } from "components/core/filter";
 import Table from "components/core/table";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
+import { useState } from "react";
 import { useQuery } from "react-query";
 
 const COLUMNS = [
@@ -27,6 +29,10 @@ const COLUMNS = [
     accessor: "master.major.majorName",
   },
   {
+    Header: "ترم",
+    accessor: "term",
+  },
+  {
     Header: "اطلاعات برنامه زمانی",
     accessor: "roomNumber",
     Cell: (value: any) => {
@@ -37,7 +43,6 @@ const COLUMNS = [
       const roomNumber = timeTable?.roomNumber;
       return (
         <span>
-          {" "}
           {timeTable &&
             `${day} (${bell}) - هفته های ${weekType} - کلاس ${roomNumber}`}
         </span>
@@ -45,6 +50,17 @@ const COLUMNS = [
     },
   },
 ];
+
+function getFilterParamsByValue(
+  filters: IFilterValue[],
+  index: number,
+  accessor: "value" | "key" = "value"
+) {
+  if (filters[index]) {
+    return filters[index].filters.map((item) => item[accessor]);
+  }
+  return [];
+}
 
 const TimeTableBells = () => {
   const {
@@ -55,10 +71,21 @@ const TimeTableBells = () => {
     pagination,
     updateMaxPage,
   } = usePagination();
+  const [filters, setFilters] = useState<IFilter[]>([]);
+  const filValue = getFilterParamsByValue(filters, 0, "key");
 
   const { data, refetch, isFetching } = useQuery(
-    ["timeTableBellsList", pagination.currentPage, pagination.resultsPerPage],
-    () => getTimeTablesList({ page: pagination.currentPage }),
+    [
+      "timeTableList",
+      pagination.currentPage,
+      pagination.resultsPerPage,
+      filters,
+    ],
+    () =>
+      getTimeTablesList({
+        page: pagination.currentPage,
+        term: filValue[filValue.length - 1],
+      }),
     {
       keepPreviousData: true,
       onSuccess: (data) => {
@@ -78,16 +105,16 @@ const TimeTableBells = () => {
     ...pagination,
   };
 
-  const actionCell = {
-    Header: "عملیات",
-    accessor: "none",
-    Cell: (props: any) =>
-      ActionCell({
-        cellProps: props,
-        refetch,
-        deleteMutationFn: deleteDay,
-      }),
-  };
+  // const actionCell = {
+  //   Header: "عملیات",
+  //   accessor: "none",
+  //   Cell: (props: any) =>
+  //     ActionCell({
+  //       cellProps: props,
+  //       refetch,
+  //       deleteMutationFn: deleteDay,
+  //     }),
+  // };
 
   return (
     <Page title="لیست برنامه های زمانی " type="main">
@@ -101,7 +128,19 @@ const TimeTableBells = () => {
         resultsPerPage={pagination.resultsPerPage}
         onGoToPage={handleGotoPage}
         fetchedData={fixedData}
-        columns={[...COLUMNS, actionCell]}
+        columns={[...COLUMNS]}
+        filterProps={{
+          options: [
+            {
+              title: "ترم",
+              filters: TERM_OPTIONS,
+            },
+          ],
+          value: filters,
+          onFilterSelect(filters) {
+            setFilters(filters);
+          },
+        }}
         {...{ isFetching }}
         title="برنامه زمانی"
         actionsComponent={<RegistrationButton title="افزودن برنامه زمانی" />}

@@ -5,6 +5,7 @@ export interface ITimeTableData {
   courseId: number;
   masterId: number;
   timeTableBellsId: number[];
+  term: string;
 }
 
 export interface IAnnouncementData {
@@ -127,10 +128,16 @@ export interface ISubmitGrades {
   reportGrade: IGrade[];
 }
 
+interface ITTableParams extends IPageParams {
+  term?: string;
+}
+
 export function getTimeTablesList(
-  params: IPageParams
+  params: ITTableParams
 ): Promise<IResponse<IPaginationTableList<ITimeTableResponse>>> {
-  return apiCaller.get(`time-tables`, { params });
+  return apiCaller.get(`time-tables`, {
+    params,
+  });
 }
 
 export function getTimeTablesById(

@@ -1,14 +1,14 @@
-import {useState} from "react";
-import {IFilter, IFilterOption, IFilterValue} from ".";
+import { useState } from "react";
+import { IFilter, IFilterOption, IFilterValue } from ".";
 import classes from "./styles.module.scss";
 import clsx from "clsx";
-import {AmountBold, ArrowRightLinear} from "components/icon";
+import { AmountBold, ArrowRightLinear } from "components/icon";
 import FilterCheckbox from "../filterCheckbox";
 import TimespanFilter from "../timespanFilter";
 import AmountInput from "../amountInput";
-import {convertToString} from "utils/form";
+import { convertToString } from "utils/form";
 import Button from "../button";
-import AutoComplete, {IMenuOption} from "../autoComplete";
+import AutoComplete, { IMenuOption } from "../autoComplete";
 
 interface IFilterSelectProps {
   content: IFilter;
@@ -140,18 +140,7 @@ const FilterSelect = ({
     }
   };
   // function for selecting all options
-  const SelectAllOptions = () => {
-    options[number].filters.forEach((f) => {
-      if (
-        !value[number].filters.map((x) => x.value).includes(f.value) &&
-        !!onFilterSelect
-      ) {
-        const cloneValues = [...value];
-        cloneValues[number].filters.push(f);
-        onFilterSelect(cloneValues);
-      }
-    });
-  };
+
   // render component
   return (
     <div className={classes.filterSelectBox}>
@@ -170,7 +159,7 @@ const FilterSelect = ({
       </div>
       {isMenuOpen && (
         <div className={classes.filtersList}>
-          <div
+          {/* <div
             onClick={SelectAllOptions}
             className={classes.filterSelectOption}
           >
@@ -181,7 +170,7 @@ const FilterSelect = ({
               }
             />
             <span className="op">All</span>
-          </div>
+          </div> */}
 
           {content.filters.map((f, idx) => {
             if (f.variant === "dropdown") {

@@ -1,5 +1,4 @@
-import { getUnitPickTimeList } from "api/unitPickTime";
-import { deleteUser } from "api/users";
+import { deleteUnitPickTime, getUnitPickTimeList } from "api/unitPickTime";
 import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
 import Table from "components/core/table";
@@ -39,7 +38,7 @@ const UnitPickList = () => {
     updateMaxPage,
   } = usePagination();
 
-  const { data, isLoading, isError, refetch, isFetching } = useQuery(
+  const { data, refetch, isFetching } = useQuery(
     ["getPickTimes", pagination.currentPage, pagination.resultsPerPage],
     () => getUnitPickTimeList({ page: pagination.currentPage }),
     {
@@ -69,7 +68,8 @@ const UnitPickList = () => {
       ActionCell({
         cellProps: props,
         refetch,
-        deleteMutationFn: deleteUser,
+        deleteMutationFn: deleteUnitPickTime,
+        idAccessor: "entranceYear",
       }),
   };
 

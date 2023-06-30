@@ -1,11 +1,11 @@
-import {HTMLAttributes, ReactNode} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import classes from "./styles.module.scss";
 import clsx from "clsx";
-import {FilterLinear} from "components/icon";
 import useOutsideDetect from "hooks/useOutsideDetect";
 import Select from "./select";
-import {IDefaultProps, IMenuOption} from "../autoComplete";
-import {useHistory} from "react-router";
+import { IDefaultProps, IMenuOption } from "../autoComplete";
+import { useHistory } from "react-router";
+import { FunnelIcon } from "@heroicons/react/24/outline";
 
 type omittedProps = "value" | "onChange" | "name";
 type IDropdownProps = Omit<IDefaultProps, omittedProps>;
@@ -65,27 +65,7 @@ const Filter = ({
   const handleToggleMenu = () => {
     setIsComponentVisible(!isComponentVisible);
   };
-  // function for closing toggle menu
-  // const handleClose = () => {
-  //   setIsComponentVisible(false);
-  // };
-  // function for clearing filter
-  const handleClearFilter = () => {
-    if (!!onFilterSelect) {
-      let cloneValues = [...value];
 
-      cloneValues.forEach((x) => {
-        x.filters.length = 0;
-      });
-
-      onFilterSelect(cloneValues);
-      if (setToUrl) {
-        const params = new URLSearchParams();
-        params.delete("filters");
-        history.replace({ search: params.toString() });
-      }
-    }
-  };
   // render filter options
   const getFilterOptions = () => {
     const filterSelectHandle = (f: IFilter[]) => {
@@ -135,8 +115,8 @@ const Filter = ({
         className={classes.filterBtn}
         onClick={handleToggleMenu}
       >
-        <FilterLinear className={classes.icon} />
-        Filter
+        <FunnelIcon className={classes.icon} />
+        فیلتر
       </div>
 
       <div
@@ -146,13 +126,7 @@ const Filter = ({
       >
         <div className={clsx(classes.inside)}>
           <div className={clsx([classes.menuTitle])}>
-            <span className="title">Filters</span>
-
-            <div className={classes.tools}>
-              <span onClick={handleClearFilter}>ClearAll</span>
-              {/* <span className="mx-1">-</span> */}
-              {/* <span onClick={handleClose}>save view</span> */}
-            </div>
+            <span className="title">فیلترها</span>
           </div>
           {/* <div className={classes.divider} /> */}
           {getFilterOptions()}

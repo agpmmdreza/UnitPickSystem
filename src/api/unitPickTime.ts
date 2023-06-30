@@ -1,16 +1,6 @@
 import apiCaller, { IResponse } from "api";
 import { IPageParams, IPaginationTableList } from "./types/paginationType";
 
-interface IUnitPickTimeListResponse {
-  id: number;
-  firstName: string;
-  lastName: string;
-  password: string;
-  role: string;
-  code: string;
-  major: string;
-}
-
 export interface IUPickData {
   entranceYear: number;
   pickTime: string;

@@ -1,9 +1,6 @@
 import { FormikProps } from "formik";
 import { IDefaultProps as IAutoCompleteProps } from "components/core/autoComplete";
-import {
-  WEEK_TYPE_OPTIONS,
-  YEARS_OPTIONS,
-} from "constants/autocompleteOptions";
+import { YEARS_OPTIONS } from "constants/autocompleteOptions";
 import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
 import FormAutoComplete from "components/form/formAutoComplete";
 import { ManBold } from "components/icon";
@@ -32,7 +29,7 @@ export function Years<T extends { [key: string]: any }>({
     fieldName: fieldName,
     formik: formik,
     id: yearsId,
-    OPTIONS: WEEK_TYPE_OPTIONS,
+    OPTIONS: YEARS_OPTIONS,
     name: yearsName,
   });
   return (
