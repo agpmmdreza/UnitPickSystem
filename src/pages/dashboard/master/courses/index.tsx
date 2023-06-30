@@ -2,7 +2,6 @@ import { deleteCourse, getCoursesList } from "api/courses";
 import { acceptTimeTable, masterTimeList } from "api/timeTable";
 import { ITimeTableBellResponse } from "api/timeTableBells";
 import { queryClient } from "App";
-import clsx from "clsx";
 import { ActionCell } from "components/common/tableCell";
 import { SendMessageMenuItem } from "components/common/tableCell/sendMessageMenuItem";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
@@ -19,6 +18,7 @@ import { useMutation, useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { Cell } from "react-table";
 import { generateUUIDv4 } from "utils/uuid";
+import OnlineClass from "./components/onlineClass";
 
 const getChipColor = (v: string) => {
   switch (v) {
@@ -166,6 +166,7 @@ const Courses = () => {
         title="لیست دروس"
         actionsComponent={<RegistrationButton title="افزودن درس" />}
       />
+      <OnlineClass />
     </Page>
   );
 };
