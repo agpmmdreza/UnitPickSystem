@@ -62,7 +62,6 @@ function Password({
 
 Password.defaultProps = {
   validation: "none",
-  icon: KeyIcon,
   onChange: () => {},
 };
 

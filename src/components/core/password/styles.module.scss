@@ -62,6 +62,8 @@
 
 .passwordHeadIcon {
   margin-right: space(mg-between);
+  width: 20px;
+  height: 20px;
 
   &[data-variant="bold"] > path {
     fill: rgba(color(gray-text), 0.6);

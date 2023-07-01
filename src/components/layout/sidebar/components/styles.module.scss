@@ -303,6 +303,8 @@ $dusty-gray-light: rgba(#989898, 0.2);
   background-color: colorFromRgb(primary-main);
   position: relative;
   min-height: 85px;
+  display: flex;
+  // justify-content: space-between;
 }
 
 .sidebar_header__min {
@@ -387,8 +389,8 @@ $dusty-gray-light: rgba(#989898, 0.2);
 
 .avatar_setting__icon {
   position: absolute;
-  top: 53px;
-  left: 56px;
+  top: -99px;
+  left: 64px;
   z-index: 500;
   border-radius: 50% !important;
   border: 2px solid colorFromRgb(light-text) !important;
@@ -446,18 +448,24 @@ $dusty-gray-light: rgba(#989898, 0.2);
 }
 .avatarSettingDropdownMenu {
   margin-top: 7px;
+  top: -55px !important;
+  right: auto;
+  bottom: auto;
+  left: -20px;
 }
 .info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding-top: 53px;
+  padding-top: 25px;
+  padding-right: 20px;
 }
 
 .info__name {
   color: colorFromRgb(secondary-main);
   font-weight: 700;
+  font-size: 20px;
   @include disable-select;
 }
 
@@ -552,7 +560,7 @@ $dusty-gray-light: rgba(#989898, 0.2);
   width: 2px;
   margin-left: -$selectedItemLeftPadding;
   margin-right: calc(
-    $selectedItemLeftPadding - 2px
+          $selectedItemLeftPadding - 2px
   ); /*selectedItemLeftPadding - width */
   margin-top: 2px;
   margin-bottom: 1px;
@@ -805,7 +813,7 @@ $accountTogglePadding: 6px;
   padding-right: 1.25rem;
 }
 $accountToggleWidth: calc(
-  $sidebarWidth - $sidebarPadding - $sidebarPadding - $logoutBtnSize - 2px
+        $sidebarWidth - $sidebarPadding - $sidebarPadding - $logoutBtnSize - 2px
 );
 .pseudoAvatar {
   width: $accountToggleWidth;
