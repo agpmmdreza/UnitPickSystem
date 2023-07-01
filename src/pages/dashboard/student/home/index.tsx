@@ -33,14 +33,14 @@ const PatientDashboard = () => {
         centeredSlides={false}
         className="mt-3"
       >
-        {data?.data.data?.map((item) => {
+        {data?.data.data?.map((item, index) => {
           const shouldShowCard = isClassJoinTime(
             item.timeTable.timeTableBellList.map((t) => t.day.label)
           );
 
           return (
             shouldShowCard && (
-              <SwiperSlide className={classes.home__slides}>
+              <SwiperSlide key={index} className={classes.home__slides}>
                 <ClassCard
                   title={item.timeTable.course.title}
                   time={item.timeTable.timeTableBellList[0].bell.label}

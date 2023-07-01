@@ -120,7 +120,7 @@ const GradesForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
           {!isLoading &&
             !isFetching &&
             data?.data.data?.list.map((item, index: number) => (
-              <div className="row">
+              <div className="row" key={index}>
                 <div className="col">
                   <ListItem
                     data={{

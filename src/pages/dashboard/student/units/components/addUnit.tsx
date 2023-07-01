@@ -76,8 +76,9 @@ const AddUnit = () => {
         </Grid>
 
         <div className="row gy-2 mt-4">
-          {data?.data.data?.map((item) => (
+          {data?.data.data?.map((item, index) => (
             <ListItem
+              key={index}
               data={{
                 title: item.timeTable.course.title,
                 columns: [

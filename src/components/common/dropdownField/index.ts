@@ -13,7 +13,6 @@ export { Department } from "./department";
 export { DeviceType } from "./deviceType";
 export { DeviceID } from "./deviceID";
 export { AllDepartments } from "./allDepartments";
-export { PhoneInputDropdown } from "./phoneInput";
 export { HFNameBySide } from "./hfNameBySide";
 export { RobotIDByHF } from "./robotIDByHF";
 export { Gender } from "./gender";
