@@ -161,8 +161,14 @@ export function updateTimeTable(
   return apiCaller.put(`time-tables/${dayId}`, data);
 }
 
-export function getStudentUnits(): Promise<IResponse<IStudentUnitResponse[]>> {
-  return apiCaller.get(`time-tables/student-units`);
+interface IStudentUnitsParams extends Partial<IPageParams> {
+  term?: string;
+}
+
+export function getStudentUnits(
+  params: IStudentUnitsParams
+): Promise<IResponse<IStudentUnitResponse[]>> {
+  return apiCaller.get(`time-tables/student-units`, { params });
 }
 
 export function chooseUnit(timeTableId: number): Promise<IResponse<any>> {

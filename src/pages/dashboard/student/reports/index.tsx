@@ -1,10 +1,4 @@
-import { deleteDay } from "api/days";
-import {
-  getStudentUnits,
-  IStudentUnitResponse,
-  ITimeTableResponse,
-} from "api/timeTable";
-import { ActionCell } from "components/common/tableCell";
+import { getStudentUnits, IStudentUnitResponse } from "api/timeTable";
 import Table from "components/core/table";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
@@ -63,9 +57,9 @@ const GradeReport = () => {
   const { handleGotoPage, handleNextPage, handlePreviousPage, pagination } =
     usePagination();
 
-  const { data, refetch, isFetching } = useQuery(
+  const { data, isFetching } = useQuery(
     ["reports", pagination.currentPage, pagination.resultsPerPage],
-    () => getStudentUnits(),
+    () => getStudentUnits({ page: 1 }),
     {
       keepPreviousData: true,
       onSuccess: (data) => {

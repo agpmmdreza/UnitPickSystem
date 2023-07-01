@@ -75,9 +75,7 @@ export function SidebarHeader() {
                 classes.logoContainer,
                 sideIn && classes.hideText
               )}
-            >
-              <span className={classes.logoLabel}>ساو</span>
-            </div>
+            ></div>
           </div>
 
           <div

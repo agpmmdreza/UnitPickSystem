@@ -1,7 +1,5 @@
-import { deleteDay } from "api/days";
 import { getTimeTablesList } from "api/timeTable";
 import { TERM_OPTIONS } from "components/common/dropdownField/terms";
-import { ActionCell } from "components/common/tableCell";
 import RegistrationButton from "components/common/tableHeader/registrationButton";
 import { IFilter, IFilterValue } from "components/core/filter";
 import Table from "components/core/table";
@@ -51,7 +49,7 @@ const COLUMNS = [
   },
 ];
 
-function getFilterParamsByValue(
+export function getFilterParamsByValue(
   filters: IFilterValue[],
   index: number,
   accessor: "value" | "key" = "value"
@@ -74,7 +72,7 @@ const TimeTableBells = () => {
   const [filters, setFilters] = useState<IFilter[]>([]);
   const filValue = getFilterParamsByValue(filters, 0, "key");
 
-  const { data, refetch, isFetching } = useQuery(
+  const { data, isFetching } = useQuery(
     [
       "timeTableList",
       pagination.currentPage,

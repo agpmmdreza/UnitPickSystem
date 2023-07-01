@@ -16,9 +16,13 @@ import { Socket, io } from "socket.io-client";
 import { useEffect, useState } from "react";
 
 const PatientDashboard = () => {
-  const { data } = useQuery(["studentUnits"], () => getStudentUnits(), {
-    keepPreviousData: true,
-  });
+  const { data } = useQuery(
+    ["studentUnits"],
+    () => getStudentUnits({ page: 1 }),
+    {
+      keepPreviousData: true,
+    }
+  );
   const [showClass, setShowClass] = useState(false);
 
   return (

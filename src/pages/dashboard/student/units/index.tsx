@@ -1,8 +1,12 @@
 import { getStudentUnits } from "api/timeTable";
 import { ITimeTableBellResponse } from "api/timeTableBells";
+import { TERM_OPTIONS } from "components/common/dropdownField/terms";
+import { IFilter } from "components/core/filter";
 import Table from "components/core/table";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
+import { getFilterParamsByValue } from "pages/dashboard/admin/timeTable";
+import { useState } from "react";
 import { useQuery } from "react-query";
 
 const COLUMNS = [
@@ -42,10 +46,21 @@ const COLUMNS = [
 const StudentUnits = () => {
   const { handleGotoPage, handleNextPage, handlePreviousPage, pagination } =
     usePagination();
+  const [filters, setFilters] = useState<IFilter[]>([]);
+  const filValue = getFilterParamsByValue(filters, 0, "key");
 
   const { data, isFetching } = useQuery(
-    ["studentUnits", pagination.currentPage, pagination.resultsPerPage],
-    () => getStudentUnits(),
+    [
+      "studentUnits",
+      pagination.currentPage,
+      pagination.resultsPerPage,
+      filters,
+    ],
+    () =>
+      getStudentUnits({
+        page: pagination.currentPage,
+        term: filValue[filValue.length - 1],
+      }),
     {
       keepPreviousData: true,
     }
@@ -70,6 +85,18 @@ const StudentUnits = () => {
         onGoToPage={handleGotoPage}
         fetchedData={fixedData}
         columns={[...COLUMNS]}
+        filterProps={{
+          options: [
+            {
+              title: "ترم",
+              filters: TERM_OPTIONS,
+            },
+          ],
+          value: filters,
+          onFilterSelect(filters) {
+            setFilters(filters);
+          },
+        }}
         {...{ isFetching }}
         title="دروس اخذ شده"
         // actionsComponent={<RegistrationButton title="افزودن زنگ درسی" />}

@@ -36,17 +36,21 @@ const AddUnit = () => {
     },
   });
 
-  const { data } = useQuery(["studentUnits"], () => getStudentUnits(), {
-    keepPreviousData: true,
-    onSuccess: (data) => {
-      // const result = data?.data.data;
-      // if (result) {
-      //   updateMaxPage(
-      //     Math.floor(result.total / pagination.resultsPerPage) + 1
-      //   );
-      // }
-    },
-  });
+  const { data } = useQuery(
+    ["studentUnits"],
+    () => getStudentUnits({ page: 1 }),
+    {
+      keepPreviousData: true,
+      onSuccess: (data) => {
+        // const result = data?.data.data;
+        // if (result) {
+        //   updateMaxPage(
+        //     Math.floor(result.total / pagination.resultsPerPage) + 1
+        //   );
+        // }
+      },
+    }
+  );
 
   const formik = useFormik<ITableTableFields>({
     initialValues: { timeTable: { key: "", value: "" } },
