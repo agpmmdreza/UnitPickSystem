@@ -5,7 +5,9 @@ const VideoElement = ({ id }: Props) => {
   return (
     <video
       id={id}
-      className="rounded bg-violet-100 mx-2 w-[30%] flex-grow min-w-[300px] min-h-[170px]"
+      autoPlay
+      playsInline
+      className="rounded bg-violet-100 mx-2 w-[30%] flex-grow max-h-full min-w-[370px]"
     />
   );
 };

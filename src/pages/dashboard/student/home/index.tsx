@@ -11,11 +11,15 @@ import { getStudentUnits } from "api/timeTable";
 import { useQuery } from "react-query";
 import { isClassJoinTime } from "utils/time";
 import Button from "components/core/button";
+import OnlineClass from "pages/dashboard/master/courses/components/onlineClass";
+import { Socket, io } from "socket.io-client";
+import { useEffect, useState } from "react";
 
 const PatientDashboard = () => {
   const { data } = useQuery(["studentUnits"], () => getStudentUnits(), {
     keepPreviousData: true,
   });
+  const [showClass, setShowClass] = useState(false);
 
   return (
     <Page title="داشبورد" type="main">
@@ -41,7 +45,11 @@ const PatientDashboard = () => {
                   title={item.timeTable.course.title}
                   time={item.timeTable.timeTableBellList[0].bell.label}
                   content={
-                    <Button size="small" className="w-100">
+                    <Button
+                      size="small"
+                      className="w-100"
+                      onClick={() => setShowClass(true)}
+                    >
                       پیوستن به کلاس
                     </Button>
                   }
@@ -51,6 +59,7 @@ const PatientDashboard = () => {
           );
         })}
       </Swiper>
+      {showClass && <OnlineClass student={true} />}
     </Page>
   );
 };

@@ -21,6 +21,8 @@ import { Cell } from "react-table";
 import { isClassJoinTime } from "utils/time";
 import { generateUUIDv4 } from "utils/uuid";
 import OnlineClass from "./components/onlineClass";
+import { io, Socket } from "socket.io-client";
+import { useEffect, useState } from "react";
 
 const getChipColor = (v: string) => {
   switch (v) {
@@ -80,6 +82,8 @@ const COLUMNS = [
 ];
 
 const Courses = () => {
+  const [showClass, setShowClass] = useState(false);
+
   const {
     handleGotoPage,
     handleNextPage,
@@ -128,7 +132,14 @@ const Courses = () => {
       );
 
       return shouldShowButton ? (
-        <Button size="small"> پیوستن به کلاس</Button>
+        <Button
+          onClick={() => {
+            setShowClass(true);
+          }}
+          size="small"
+        >
+          پیوستن به کلاس
+        </Button>
       ) : null;
     }
 
@@ -176,7 +187,7 @@ const Courses = () => {
         title="لیست دروس"
         actionsComponent={<RegistrationButton title="افزودن درس" />}
       />
-      <OnlineClass />
+      {showClass && <OnlineClass />}
     </Page>
   );
 };

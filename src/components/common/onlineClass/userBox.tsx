@@ -1,7 +1,7 @@
 import { UserBold } from "components/icon";
 
 interface Props {
-  users: string[];
+  users: string[] | undefined;
 }
 const UserBox = ({ users }: Props) => {
   return (
@@ -10,7 +10,7 @@ const UserBox = ({ users }: Props) => {
         <p className=" text-2xl font-bold text-slate-800 m-0 p-0">لیست اعضا</p>
       </div>
       <div className="ml-6 mr-3 divide-y">
-        {users.map((user) => {
+        {users?.map((user) => {
           return (
             <div className="w-full m-1 h-fit pt-2 pb-1 flex justify-start gap-2">
               <UserBold />
