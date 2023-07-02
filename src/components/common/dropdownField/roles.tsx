@@ -1,10 +1,9 @@
-import {FormikProps} from "formik";
-import {IDefaultProps as IAutoCompleteProps} from "components/core/autoComplete";
-import {ROLES_OPTIONS} from "constants/autocompleteOptions";
-import {useDropdownDefaultValue} from "hooks/useDropdownDefaultValue";
+import { FormikProps } from "formik";
+import { IDefaultProps as IAutoCompleteProps } from "components/core/autoComplete";
+import { ROLES_OPTIONS } from "constants/autocompleteOptions";
+import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
 import FormAutoComplete from "components/form/formAutoComplete";
-import {ManBold} from "components/icon";
-import {getFormikFieldProps} from "utils/form";
+import { getFormikFieldProps } from "utils/form";
 
 export interface IRolesProps<T> {
   formik: FormikProps<T>;
@@ -35,7 +34,7 @@ export function Roles<T extends { [key: string]: any }>({
   return (
     <FormAutoComplete
       noPadding={noPadding}
-      rootProps={{ icon: ManBold, placeholder: "نقش", ...rootProps }}
+      rootProps={{ placeholder: "نقش", ...rootProps }}
       options={ROLES_OPTIONS}
       {...getFormikFieldProps(fieldName, "نقش", formik)}
     />

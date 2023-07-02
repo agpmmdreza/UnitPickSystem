@@ -1,5 +1,4 @@
 import FormInput from "components/form/formInput";
-import { UserBold } from "components/icon";
 import { useFormik } from "formik";
 import { getFormikFieldProps } from "utils/form";
 import Button from "components/core/button";
@@ -52,7 +51,6 @@ const EditProfileForm = ({ initialValues }: IEditProfileFormProps) => {
             {...getFormikFieldProps("firstName", "نام", formik)}
             rootProps={{
               placeholder: "نام",
-              icon: UserBold,
             }}
           />
 
@@ -60,7 +58,6 @@ const EditProfileForm = ({ initialValues }: IEditProfileFormProps) => {
             {...getFormikFieldProps("lastName", "نام خانوادگی", formik)}
             rootProps={{
               placeholder: "نام خانوادگی",
-              icon: UserBold,
             }}
           />
 
@@ -68,7 +65,6 @@ const EditProfileForm = ({ initialValues }: IEditProfileFormProps) => {
             {...getFormikFieldProps("code", "نام کاربری", formik)}
             rootProps={{
               placeholder: "نام کاربری",
-              icon: UserBold,
             }}
           />
         </Grid>

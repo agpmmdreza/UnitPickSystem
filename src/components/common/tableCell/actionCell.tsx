@@ -2,7 +2,6 @@ import { IResponse } from "api";
 import Button from "components/core/button";
 import { Dropdown } from "components/core/dropdown";
 import { DropdownMenu } from "components/core/dropdownMenu";
-import { ActionMenuBold } from "components/icon";
 import { useState } from "react";
 import { generateUUIDv4 } from "utils/uuid";
 import { DeleteMenuItem } from "./deleteMenuItem";
@@ -14,6 +13,7 @@ import NotificationAlert from "components/core/notificationAlert";
 import { AddBranchMenuItem } from "./addBranchMenuItem";
 import { SendMessageMenuItem } from "./sendMessageMenuItem";
 import AddRoleMenuItem from "./addRole";
+import { Bars2Icon } from "@heroicons/react/24/outline";
 
 interface IActionProps {
   cellProps: any;
@@ -74,7 +74,7 @@ function ActionCell({
             rootAttributes={{ id: toggleBtnId }}
             size="small"
             variant="text"
-            icon={ActionMenuBold}
+            icon={Bars2Icon}
           ></Button>
           <DropdownMenu
             className={classes.actionCellDropdownMenu}

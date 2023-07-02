@@ -3,7 +3,6 @@ import { IDefaultProps as IAutoCompleteProps } from "components/core/autoComplet
 import { YEARS_OPTIONS } from "constants/autocompleteOptions";
 import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
 import FormAutoComplete from "components/form/formAutoComplete";
-import { ManBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 
 export interface IYearsProps<T> {
@@ -35,7 +34,7 @@ export function Years<T extends { [key: string]: any }>({
   return (
     <FormAutoComplete
       noPadding={noPadding}
-      rootProps={{ icon: ManBold, placeholder: "سال ورود", ...rootProps }}
+      rootProps={{ placeholder: "سال ورود", ...rootProps }}
       options={YEARS_OPTIONS}
       {...getFormikFieldProps(fieldName, "سال ورود", formik)}
     />

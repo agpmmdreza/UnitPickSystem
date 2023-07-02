@@ -1,13 +1,11 @@
-import { GPSBold, ManBold } from "components/icon";
 import { useQuery } from "react-query";
 import { getFormikFieldProps } from "utils/form";
 import { FormikProps } from "formik";
 import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
-import FormMultiSelect from "components/form/formMultiSelect";
-import { ISelectDefaultProps } from "components/core/multiSelect";
 import { getBellsList } from "api/bells";
 import { IDefaultProps } from "components/core/autoComplete";
 import FormAutoComplete from "components/form/formAutoComplete";
+import { BellAlertIcon } from "@heroicons/react/24/outline";
 
 export interface IStateProps<T> {
   formik: FormikProps<T>;
@@ -62,7 +60,7 @@ export function Bells<T extends { [key: string]: any }>({
     <FormAutoComplete
       noPadding={noPadding}
       rootProps={{
-        icon: ManBold,
+        icon: BellAlertIcon,
         placeholder: label,
         disabled: isError || isLoading || disabled,
         ...rootProps,

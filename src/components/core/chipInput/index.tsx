@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import {CloseLinear} from "components/icon";
 import classes from "./styles.module.scss";
-import React, {HTMLProps, useMemo, useState} from "react";
+import React, { HTMLProps, useMemo, useState } from "react";
 import Chip from "../chip";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 export interface IInputDefaultProps {
   name?: string;
@@ -81,7 +81,7 @@ const ChipInput = React.forwardRef<HTMLInputElement, IInputDefaultProps>(
                       onChange?.(values.filter((item) => item !== valueItem))
                     }
                   >
-                    <CloseLinear />
+                    <XMarkIcon />
                   </span>
                 }
                 color={`#${randColor}`}

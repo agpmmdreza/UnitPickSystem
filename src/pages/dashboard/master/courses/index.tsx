@@ -13,7 +13,6 @@ import DropdownItem from "components/core/dropdownItem";
 import { DropdownMenu } from "components/core/dropdownMenu";
 import Table from "components/core/table";
 import { notify } from "components/core/toast";
-import { ActionMenuBold } from "components/icon";
 import Page from "components/layout/page";
 import usePagination from "hooks/usePagination";
 import { useMutation, useQuery } from "react-query";
@@ -23,6 +22,7 @@ import { generateUUIDv4 } from "utils/uuid";
 import OnlineClass from "./components/onlineClass";
 import { io, Socket } from "socket.io-client";
 import { useEffect, useState } from "react";
+import { Bars2Icon } from "@heroicons/react/24/outline";
 
 const getChipColor = (v: string) => {
   switch (v) {
@@ -146,7 +146,7 @@ const Courses = () => {
     return (
       <Dropdown anchor={"top"}>
         <div id={id}>
-          <ActionMenuBold />
+          <Bars2Icon />
         </div>
 
         <DropdownMenu anchor={"bottom-end"} toggleId={id}>

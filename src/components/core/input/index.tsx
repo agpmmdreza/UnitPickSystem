@@ -1,7 +1,13 @@
 import clsx from "clsx";
-import {ArrowDownBold, ErrorBold, SearchLinear, SuccessBold, WarningBold,} from "components/icon";
 import classes from "./styles.module.scss";
-import React, {HTMLProps} from "react";
+import React, { HTMLProps } from "react";
+import {
+  ArrowDownIcon,
+  CheckCircleIcon,
+  ExclamationCircleIcon,
+  ExclamationTriangleIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 
 export interface IInputDefaultProps {
   name?: string;
@@ -57,7 +63,7 @@ const Input = React.forwardRef<HTMLInputElement, IInputDefaultProps>(
         )}
         {type === "search" && (
           <div className="d-inline-flex align-items-center">
-            <SearchLinear className={classes.inputHeadIcon} />
+            <MagnifyingGlassIcon className={classes.inputHeadIcon} />
           </div>
         )}
         <input
@@ -77,20 +83,20 @@ const Input = React.forwardRef<HTMLInputElement, IInputDefaultProps>(
         {type !== "search" &&
           "validation" in props &&
           props.validation === "success" && (
-            <SuccessBold className={classes.inputTailIcon} />
+            <CheckCircleIcon className={classes.inputTailIcon} />
           )}
         {type !== "search" &&
           "validation" in props &&
           props.validation === "error" && (
-            <ErrorBold className={classes.inputTailIcon} />
+            <ExclamationTriangleIcon className={classes.inputTailIcon} />
           )}
         {type !== "search" &&
           "validation" in props &&
           props.validation === "warning" && (
-            <WarningBold className={classes.inputTailIcon} />
+            <ExclamationCircleIcon className={classes.inputTailIcon} />
           )}
         {forDate ? (
-          <ArrowDownBold
+          <ArrowDownIcon
             className={clsx([
               classes.inputTailIcon,
               /*    isMenuOpen ? classes.rotate : "",*/

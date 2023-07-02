@@ -4,11 +4,11 @@ import { useFormik } from "formik";
 import { useHistory } from "react-router";
 import Button from "components/core/button";
 import FormInput from "components/form/formInput";
-import { UserBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 import { IMenuOption } from "interfaces";
 import FormNumberInput from "components/form/formNumberInput";
 import { IBellData } from "api/bells";
+import { UsersIcon } from "@heroicons/react/24/outline";
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
 export interface IAddUserFields {
@@ -52,7 +52,7 @@ const BellForm = ({ onSumbit, initialValues }: IBellFormProps) => {
       <Grid flowDense>
         <FormInput
           {...getFormikFieldProps("label", "نام زنگ", formik)}
-          rootProps={{ placeholder: "نام زنگ", icon: UserBold }}
+          rootProps={{ placeholder: "نام زنگ", icon: UsersIcon }}
         />
 
         <FormNumberInput

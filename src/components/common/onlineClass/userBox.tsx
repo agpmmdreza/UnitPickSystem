@@ -1,4 +1,4 @@
-import { UserBold } from "components/icon";
+import { UserIcon } from "@heroicons/react/24/outline";
 
 interface Props {
   users: string[] | undefined;
@@ -13,7 +13,7 @@ const UserBox = ({ users }: Props) => {
         {users?.map((user) => {
           return (
             <div className="w-full m-1 h-fit pt-2 pb-1 flex justify-start gap-2">
-              <UserBold />
+              <UserIcon fontSize={5} />
               <p className=" text-lg text-slate-800">{user}</p>
             </div>
           );

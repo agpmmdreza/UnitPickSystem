@@ -1,6 +1,5 @@
 import Button from "components/core/button";
 import Input from "components/core/input";
-import { UserBold } from "components/icon";
 import { useState } from "react";
 
 interface Props {

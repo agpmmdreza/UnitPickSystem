@@ -4,11 +4,11 @@ import { useFormik } from "formik";
 import { useHistory } from "react-router";
 import Button from "components/core/button";
 import FormInput from "components/form/formInput";
-import { UserBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 import { IMenuOption } from "interfaces";
 import { IDayData } from "api/days";
 import FormNumberInput from "components/form/formNumberInput";
+import { UserIcon } from "@heroicons/react/24/outline";
 
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
@@ -53,7 +53,7 @@ const DayForm = ({ onSumbit, initialValues }: IDayFormProps) => {
       <Grid flowDense>
         <FormInput
           {...getFormikFieldProps("label", "نام روز", formik)}
-          rootProps={{ placeholder: "نام روز", icon: UserBold }}
+          rootProps={{ placeholder: "نام روز", icon: UserIcon }}
         />
 
         <FormNumberInput

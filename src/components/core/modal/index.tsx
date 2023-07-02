@@ -1,9 +1,9 @@
-import {CloseLinear} from "components/icon";
 import useDraggable from "hooks/useDraggable";
-import {PropsWithChildren, useEffect, useState} from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import IconButton from "../iconButton";
 import classes from "./styles.module.scss";
 import clsx from "clsx";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 /** Modal Component Props */
 export interface IModalProps extends PropsWithChildren<any> {
@@ -91,7 +91,7 @@ function Modal({
           <div className={classes.modal__header}>
             <span className={classes.modal__title}> {title}</span>
 
-            <IconButton variant="text" icon={CloseLinear} onClick={onClose} />
+            <IconButton variant="text" icon={XMarkIcon} onClick={onClose} />
           </div>
           <div className={classes.modal__content}>{children}</div>
         </div>

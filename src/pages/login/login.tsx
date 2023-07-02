@@ -2,7 +2,6 @@ import clsx from "clsx";
 import Button from "components/core/button";
 import FormInput from "components/form/formInput";
 import FormPassword from "components/form/password";
-import { FrameBold } from "components/icon";
 import { useFormik } from "formik";
 import { Link, useHistory } from "react-router-dom";
 import { getFormikFieldProps } from "utils/form";
@@ -90,7 +89,6 @@ export default function LoginPage() {
       <form onSubmit={formik.handleSubmit}>
         <FormInput
           rootProps={{
-            icon: FrameBold,
             placeholder: "نام کاربری",
             disabled: isLoading,
           }}

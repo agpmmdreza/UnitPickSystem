@@ -1,10 +1,5 @@
-import { FinancialBold, FinancialDuotone } from "components/icon";
 import { ISidebarItem } from "components/layout/sidebar";
-import { SummaryDuotone } from "components/icon/summary";
-import { UsersDuotone } from "components/icon/users";
-import { UsersBold } from "components/icon/usersBold";
-import { IntakeFormDuotone } from "components/icon/intakeForm";
-import { IntakeFormBold } from "components/icon/intakeFormBold";
+
 import {
   ArrowDownOnSquareIcon,
   BellIcon,

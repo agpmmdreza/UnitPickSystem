@@ -4,7 +4,6 @@ import { useFormik } from "formik";
 import { useHistory } from "react-router";
 import Button from "components/core/button";
 import FormInput from "components/form/formInput";
-import { UserBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 import { IMenuOption } from "interfaces";
 import { ITimeTableBellData } from "api/timeTableBells";
@@ -86,7 +85,7 @@ const TimeTableForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
 
         <FormInput
           {...getFormikFieldProps("roomNumber", "شماره اتاق", formik)}
-          rootProps={{ placeholder: "شماره اتاق", icon: UserBold }}
+          rootProps={{ placeholder: "شماره اتاق" }}
         />
 
         <WeekType

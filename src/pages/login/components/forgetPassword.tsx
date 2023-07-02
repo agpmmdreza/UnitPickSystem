@@ -1,17 +1,16 @@
 import clsx from "clsx";
 import Button from "components/core/button";
 import FormInput from "components/form/formInput";
-import {DirectboxReceiveBold} from "components/icon";
-import {FormikErrors, useFormik} from "formik";
-import {useContext} from "react";
-import {Link} from "react-router-dom";
-import {getFormikFieldProps} from "utils/form";
+import { FormikErrors, useFormik } from "formik";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { getFormikFieldProps } from "utils/form";
 import LoginLayout from "./loginLayout";
 import classes from "./styles.module.scss";
-import {PasswordRecoveryContext} from "../passwordRecovery";
-import {useMutation} from "react-query";
-import {submitForgetPassword} from "api/auth";
-import {notify} from "components/core/toast";
+import { PasswordRecoveryContext } from "../passwordRecovery";
+import { useMutation } from "react-query";
+import { submitForgetPassword } from "api/auth";
+import { notify } from "components/core/toast";
 import BeatLoader from "react-spinners/BeatLoader";
 import yup from "utils/yupExtended";
 
@@ -74,7 +73,6 @@ export default function ForgetPasswordPage() {
       <form onSubmit={formik.handleSubmit}>
         <FormInput
           rootProps={{
-            icon: DirectboxReceiveBold,
             placeholder: "Email",
           }}
           className="p-0"

@@ -1,4 +1,3 @@
-import { GPSBold } from "components/icon";
 import { useQuery } from "react-query";
 import { getFormikFieldProps } from "utils/form";
 import { FormikProps } from "formik";
@@ -60,7 +59,6 @@ export function TimeTableBellMultiSelect<T extends { [key: string]: any }>({
     <FormMultiSelect
       noPadding={noPadding}
       rootProps={{
-        icon: GPSBold,
         placeholder: label,
         disabled: isError || isLoading || disabled,
         ...rootProps,

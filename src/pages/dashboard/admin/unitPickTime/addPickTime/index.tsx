@@ -4,7 +4,6 @@ import Button from "components/core/button";
 import Grid from "components/core/Grid";
 import { notify } from "components/core/toast";
 import FormDatePicker from "components/form/formDatePicker";
-import { CalendarBold } from "components/icon";
 import Page from "components/layout/page";
 import { useFormik } from "formik";
 import { IMenuOption } from "interfaces";
@@ -60,14 +59,12 @@ const AddPickTime = () => {
           <FormDatePicker
             noPadding
             {...getFormikFieldProps("pickTime", "زمان انتخاب واحد", formik)}
-            icon={CalendarBold}
             placeholder={"زمان انتخاب واحد"}
             //   rootProps={{readOnly: isViewingProfile}}
           />
           <FormDatePicker
             noPadding
             {...getFormikFieldProps("modifyTime", "زمان حذف و اضافه", formik)}
-            icon={CalendarBold}
             placeholder="زمان حذف و اضافه"
             //   rootProps={{readOnly: isViewingProfile}}
           />

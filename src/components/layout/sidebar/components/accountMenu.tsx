@@ -3,7 +3,6 @@ import Avatar from "components/core/avatar";
 import { Dropdown } from "components/core/dropdown";
 import DropdownItem from "components/core/dropdownItem";
 import { DropdownMenu } from "components/core/dropdownMenu";
-import { PasswordCheckLinear, VerifyBold, VerifyLinear } from "components/icon";
 import { useContext } from "react";
 import { SidebarContext } from "..";
 import classes from "./styles.module.scss";
@@ -43,9 +42,6 @@ export function AccountMenu() {
                 <div className={classes.profileName}>
                   {`${profile.data?.data.data?.firstName} ${profile.data?.data.data?.lastName}`}
                 </div>
-                <div className={classes.verifyImage}>
-                  <VerifyBold />
-                </div>
               </div>
               <div className={classes.profileRole}>
                 {roles?.find((item) => item.role === role)?.roleName}
@@ -68,7 +64,6 @@ export function AccountMenu() {
               className={classes.accountMenuItem}
             >
               <div className="d-flex">
-                <PasswordCheckLinear />
                 <div className="ms-2">Change Password</div>
               </div>
             </DropdownItem>
@@ -78,7 +73,6 @@ export function AccountMenu() {
                 className={classes.accountMenuItem}
               >
                 <div className="d-flex">
-                  <VerifyLinear />
                   <div className="ms-2">Switch Account</div>
                 </div>
               </DropdownItem>

@@ -1,8 +1,7 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./styles.module.scss";
 import clsx from "clsx";
 import Button from "components/core/button";
-import {CloseSquareLinear} from "components/icon";
 
 interface IPopupProps extends React.HTMLAttributes<HTMLElement> {
   open: boolean;
@@ -57,15 +56,6 @@ const Popup = ({
             ref={ref}
             {...rest}
           >
-            <div className="d-flex justify-content-end">
-              <CloseSquareLinear
-                className={classes.closeIcon}
-                onClick={() => {
-                  onClose();
-                }}
-                data-testid="test-alert-close"
-              />
-            </div>
             <div className="d-flex ">
               <div
                 className={clsx(["d-flex flex-column", classes.confirmText])}

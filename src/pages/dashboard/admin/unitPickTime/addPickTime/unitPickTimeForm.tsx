@@ -3,7 +3,6 @@ import Grid from "components/core/Grid";
 import { useFormik } from "formik";
 import { useHistory } from "react-router";
 import Button from "components/core/button";
-import { CalendarBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 import { Years } from "components/common/dropdownField/years";
 import FormDatePicker from "components/form/formDatePicker";
@@ -67,7 +66,6 @@ const UnitPickTimeForm = ({
         <FormDatePicker
           noPadding
           {...getFormikFieldProps("pickTime", "زمان انتخاب واحد", formik)}
-          icon={CalendarBold}
           placeholder={"زمان انتخاب واحد"}
 
           //   rootProps={{readOnly: isViewingProfile}}
@@ -75,7 +73,6 @@ const UnitPickTimeForm = ({
         <FormDatePicker
           noPadding
           {...getFormikFieldProps("modifyTime", "زمان حذف و اضافه", formik)}
-          icon={CalendarBold}
           placeholder="زمان حذف و اضافه"
           //   rootProps={{readOnly: isViewingProfile}}
         />

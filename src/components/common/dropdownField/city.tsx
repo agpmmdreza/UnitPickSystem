@@ -1,12 +1,12 @@
-import {getCities} from "api/dropdown";
+import { getCities } from "api/dropdown";
 import FormAutoComplete from "components/form/formAutoComplete";
-import {GPSBold} from "components/icon";
-import {useQuery} from "react-query";
-import {getFormikFieldProps} from "utils/form";
-import {IDefaultProps as IAutoCompleteProps} from "components/core/autoComplete";
-import {FormikProps} from "formik";
-import {useDropdownDefaultValue} from "hooks/useDropdownDefaultValue";
-import {useDropdownsOptions} from "hooks/useOptions";
+import { useQuery } from "react-query";
+import { getFormikFieldProps } from "utils/form";
+import { IDefaultProps as IAutoCompleteProps } from "components/core/autoComplete";
+import { FormikProps } from "formik";
+import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
+import { useDropdownsOptions } from "hooks/useOptions";
+import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 
 export interface ICityProps<T> {
   formik: FormikProps<T>;
@@ -78,7 +78,7 @@ export function City<T extends { [key: string]: any }>({
     <FormAutoComplete
       noPadding={noPadding}
       rootProps={{
-        icon: GPSBold,
+        icon: ArrowLeftOnRectangleIcon,
         placeholder: "City",
         disabled:
           !formik.values[stateFieldName] ||

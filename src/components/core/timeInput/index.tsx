@@ -1,7 +1,7 @@
+import { ArrowDownIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import {ArrowDownLinear} from "components/icon/arrowDown";
-import {ITime, TRange} from "interfaces";
-import {FocusEvent, HTMLProps, useEffect, useRef, useState} from "react";
+import { ITime, TRange } from "interfaces";
+import { FocusEvent, HTMLProps, useEffect, useRef, useState } from "react";
 import classes from "./styles.module.scss";
 
 export interface ITimeInputProps {
@@ -152,13 +152,13 @@ function TimeInput({
         {period}
       </div>
       <div className={classes.arrowsContainer}>
-        <ArrowDownLinear
+        <ArrowDownIcon
           className={clsx([classes.arrowUp, classes.arrow])}
           data-disabled={disable.up && !readOnly}
           data-testid="test-arrow-up"
           onClick={() => !disable.up && !readOnly && handleArrowChange(+1)}
         />
-        <ArrowDownLinear
+        <ArrowDownIcon
           className={classes.arrow}
           data-disabled={disable.down && !readOnly}
           data-testid="test-arrow-down"

@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import { ArrowDownLinear } from "components/icon/arrowDown";
 
 import classes from "./styles.module.scss";
 import { HTMLProps } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export interface INumberInputProps {
   name: string;
@@ -61,12 +61,12 @@ function NumberInput({
 
       {!readOnly && (
         <div className={classes.arrowsContainer}>
-          <ArrowDownLinear
+          <ChevronDownIcon
             className={clsx([classes.arrowUp, classes.arrow])}
             data-testid="test-arrow-up"
             onClick={() => value && value < max && handleArrowChange(+1)}
           />
-          <ArrowDownLinear
+          <ChevronDownIcon
             className={classes.arrow}
             data-disabled={value === 0}
             data-testid="test-arrow-down"

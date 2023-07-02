@@ -1,7 +1,7 @@
-import CardContainer, {cardThemeType, cardType} from "../cardContainer";
+import CardContainer, { cardThemeType, cardType } from "../cardContainer";
 import classes from "./styles.module.scss";
-import {GarbageLinear} from "../../icon";
 import Avatar from "components/core/avatar";
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 interface props {
   type?: cardType;
@@ -62,7 +62,7 @@ const ListCard = ({
               }
             }}
           >
-            <GarbageLinear />
+            <TrashIcon />
           </div>
         )}
       </div>

@@ -1,8 +1,7 @@
+import { TrashIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import IconButton from "components/core/iconButton";
-import { TrashLinear } from "components/icon";
 import { ReactNode } from "react";
-import ItemNumberLabel from "./itemNumberLabel";
 import classes from "./styles.module.scss";
 
 /**
@@ -74,7 +73,7 @@ const ListItem = ({
               className={classes.deleteIcon}
               onClick={onDeleteItem}
               variant="text"
-              icon={TrashLinear}
+              icon={TrashIcon}
             />
           </div>
         )}

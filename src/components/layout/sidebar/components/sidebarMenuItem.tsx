@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { ArrowDownLinear } from "components/icon/arrowDown";
 import { PropsWithChildren, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ChildItemsContainer } from "./childItemContainer";
@@ -7,6 +6,7 @@ import classes from "./styles.module.scss";
 import { ISidebarItem, SidebarContext } from "..";
 import { useLocation } from "react-router";
 import { closeSidebar } from "./helperFunctions";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 interface ILinkProducerProps extends PropsWithChildren<any> {
   children?: any;
@@ -130,7 +130,7 @@ export function SidebarMenuItem({ item }: ISidebarMenuItemProps) {
                     !collapse ? classes.rotateDown : null,
                   ])}
                 >
-                  <ArrowDownLinear />
+                  <ChevronDownIcon />
                 </div>
               )}
             </div>

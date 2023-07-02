@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from "./styles.module.scss";
 import clsx from "clsx";
-import {ArrowDownBold, CloseLinear} from "components/icon";
-import {BounceLoader} from "react-spinners";
+import { BounceLoader } from "react-spinners";
+import { ArrowDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export interface IMenuOption {
   key: string;
@@ -302,7 +302,7 @@ function AutoComplete({
             className={classes.simpleButton}
             onClick={!disabled ? handleClearDropDown : undefined}
           >
-            <CloseLinear className={classes.clearIcon} />
+            <XMarkIcon className={classes.clearIcon} />
           </button>
         )}
         {!value?.key && !readOnly && (
@@ -310,7 +310,7 @@ function AutoComplete({
             {isLoading ? (
               <BounceLoader size={18} color={"#29A9E14D"} loading={true} />
             ) : (
-              <ArrowDownBold
+              <ArrowDownIcon
                 onClick={() => {
                   if (!readOnly && !disabled)
                     setIsMenuOpen((prevState) => !prevState);

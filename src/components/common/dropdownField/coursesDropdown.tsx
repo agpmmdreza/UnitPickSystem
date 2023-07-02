@@ -1,4 +1,3 @@
-import { GPSBold, ManBold } from "components/icon";
 import { useQuery } from "react-query";
 import { getFormikFieldProps } from "utils/form";
 import { FormikProps } from "formik";
@@ -8,6 +7,7 @@ import FormMultiSelect from "components/form/formMultiSelect";
 import { ISelectDefaultProps } from "components/core/multiSelect";
 import FormAutoComplete from "components/form/formAutoComplete";
 import { IDefaultProps } from "components/core/autoComplete";
+import { KeyIcon } from "@heroicons/react/24/outline";
 
 export interface IStateProps<T> {
   formik: FormikProps<T>;
@@ -62,7 +62,7 @@ export function CoursesDropdown<T extends { [key: string]: any }>({
     <FormAutoComplete
       noPadding={noPadding}
       rootProps={{
-        icon: ManBold,
+        icon: KeyIcon,
         placeholder: label,
         disabled: isError || isLoading || disabled,
         ...rootProps,

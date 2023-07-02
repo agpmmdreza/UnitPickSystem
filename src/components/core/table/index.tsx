@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { ArrowLeftLinear, ArrowRightLinear } from "components/icon";
 import { PropsWithChildren, ReactNode } from "react";
 import IconButton from "../iconButton";
 import classes from "./styles.module.scss";
@@ -7,9 +6,9 @@ import Loader from "components/common/loader";
 import SimpleTable from "./components/simpleTable";
 import Filter, { IFilterDefaultProps } from "../filter";
 import clsx from "clsx";
-import { ListInfo } from "../../icon/listInfo";
 import SearchInput from "./components/searchInput";
 import Input from "../input";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 // import { IPaginationTableList } from "api/types/paginationType";
 
 /** Table types
@@ -196,13 +195,13 @@ function Table({
           <div className="d-flex align-items-center">
             <IconButton
               variant="text"
-              icon={ArrowRightLinear}
+              icon={ChevronRightIcon}
               onClick={() => onPreviousPage()}
               disabled={fetchedData.currentPage === 1}
             />
             <IconButton
               variant="text"
-              icon={ArrowLeftLinear}
+              icon={ChevronLeftIcon}
               onClick={() => onNextPage()}
               disabled={fetchedData.currentPage === fetchedData.maxPage}
             />

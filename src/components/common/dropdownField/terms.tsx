@@ -3,7 +3,6 @@ import { IDefaultProps as IAutoCompleteProps } from "components/core/autoComplet
 import { GENDER_OPTIONS } from "constants/autocompleteOptions";
 import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
 import FormAutoComplete from "components/form/formAutoComplete";
-import { ManBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 
 export interface IGenderProps<T> {
@@ -50,7 +49,7 @@ export function Terms<T extends { [key: string]: any }>({
   return (
     <FormAutoComplete
       noPadding={noPadding}
-      rootProps={{ icon: ManBold, placeholder: "ترم", ...rootProps }}
+      rootProps={{ placeholder: "ترم", ...rootProps }}
       options={TERM_OPTIONS}
       {...getFormikFieldProps(termFieldName, "ترم", formik)}
     />

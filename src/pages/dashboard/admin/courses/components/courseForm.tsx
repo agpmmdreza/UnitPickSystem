@@ -4,12 +4,12 @@ import { useFormik } from "formik";
 import { useHistory } from "react-router";
 import Button from "components/core/button";
 import FormInput from "components/form/formInput";
-import { UserBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 import { ICourseData } from "api/courses";
 import FormNumberInput from "components/form/formNumberInput";
 import { Courses } from "components/common/dropdownField/courses";
 import { IMenuOption } from "interfaces";
+import { UsersIcon } from "@heroicons/react/24/outline";
 
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
 
@@ -66,7 +66,7 @@ const CourseForm = ({ onSumbit, initialValues }: ICourseFormProps) => {
       <Grid flowDense>
         <FormInput
           {...getFormikFieldProps("title", "عنوان درس", formik)}
-          rootProps={{ placeholder: "عنوان درس", icon: UserBold }}
+          rootProps={{ placeholder: "عنوان درس", icon: UsersIcon }}
         />
 
         <FormNumberInput

@@ -1,12 +1,15 @@
-import Calendar, {CalendarProps, ViewCallbackProperties,} from "react-calendar";
-import React, {Dispatch, SetStateAction, useEffect, useState} from "react";
+import Calendar, {
+  CalendarProps,
+  ViewCallbackProperties,
+} from "react-calendar";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import clsx from "clsx";
 import classes from "./styles.module.scss";
-import {ArrowLeftLinear, ArrowRightLinear} from "../../icon";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {FreeMode} from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode } from "swiper";
 import "swiper/css/free-mode";
 import "swiper/css";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 interface ISwiperItem {
   label: string;
@@ -118,8 +121,8 @@ const TimePicker = ({
           navigationLabel={({ label }) => {
             return label.replace(" ", ", ").replace(", –", " - ");
           }}
-          nextLabel={<ArrowRightLinear />}
-          prevLabel={<ArrowLeftLinear />}
+          nextLabel={<ChevronRightIcon />}
+          prevLabel={<ChevronLeftIcon />}
           activeStartDate={localActiveDate}
           onActiveStartDateChange={onActiveDateChange}
           {...props}

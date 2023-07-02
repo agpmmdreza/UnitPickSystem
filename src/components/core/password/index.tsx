@@ -1,6 +1,6 @@
+import { EyeIcon, EyeSlashIcon, KeyIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import {EyeBold, KeyBold, UnhideBold} from "components/icon";
-import {HTMLProps, useState} from "react";
+import { HTMLProps, useState } from "react";
 import classes from "./styles.module.scss";
 
 export interface IPasswordProps {
@@ -49,11 +49,11 @@ function Password({
       />
       {visible ? (
         <div onClick={() => setVisible((prev) => !prev)}>
-          <UnhideBold className={classes.passwordTailIcon} />
+          <EyeSlashIcon className={classes.passwordTailIcon} />
         </div>
       ) : (
         <div onClick={() => setVisible((prev) => !prev)}>
-          <EyeBold className={classes.passwordTailIcon} />
+          <EyeIcon className={classes.passwordTailIcon} />
         </div>
       )}
     </div>
@@ -62,7 +62,7 @@ function Password({
 
 Password.defaultProps = {
   validation: "none",
-  icon: KeyBold,
+  icon: KeyIcon,
   onChange: () => {},
 };
 

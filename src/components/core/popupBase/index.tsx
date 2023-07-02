@@ -1,7 +1,6 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./styles.module.scss";
 import clsx from "clsx";
-import {CloseLinear, ErrorLinear, SuccessLinear, WarningLinear,} from "components/icon";
 
 export type TPopupColor = "info" | "success" | "warning" | "error";
 
@@ -15,19 +14,7 @@ interface IPopupProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 // function to return proper element based on type of alert
-const getAlertIcon = (color: TPopupColor) => {
-  switch (color) {
-    case "success":
-      return <SuccessLinear className={classes.popupIcon} />;
-    case "error":
-      return <ErrorLinear className={classes.popupIcon} />;
-    case "warning":
-      return <WarningLinear className={classes.popupIcon} />;
 
-    default:
-      break;
-  }
-};
 // popup component for showing popup with message inside
 const PopupBase = ({
   open,
@@ -67,24 +54,12 @@ const PopupBase = ({
         {...rest}
       >
         <div className="d-flex align-items-center">
-          {color !== "info" && (
-            <div className="me-3">{getAlertIcon(color)}</div>
-          )}
           <div className="d-flex flex-column">
             {color === "info" && <span className={classes.infoNews}>NEWS</span>}
 
             <span className={classes.title}>{title}</span>
             <span className={classes.text}>{text}</span>
           </div>
-        </div>
-        <div>
-          <CloseLinear
-            className={classes.closeIcon}
-            onClick={() => {
-              onClose();
-            }}
-            data-testid="test-alert-close"
-          />
         </div>
       </div>
     </div>

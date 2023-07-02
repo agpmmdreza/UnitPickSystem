@@ -1,7 +1,6 @@
 import clsx from "clsx";
-import {ErrorBold, SuccessBold, WarningBold} from "components/icon";
 import classes from "./styles.module.scss";
-import React, {HTMLProps} from "react";
+import React, { HTMLProps } from "react";
 
 export interface ITextAreaDefaultProps {
   name?: string;
@@ -51,17 +50,6 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, ITextAreaDefaultProps>(
           {...htmlProps}
           ref={ref}
         />
-        <div className="position-relative">
-          {"validation" in props && props.validation === "success" && (
-            <SuccessBold className={classes.inputTailIcon} />
-          )}
-          {"validation" in props && props.validation === "error" && (
-            <ErrorBold className={classes.inputTailIcon} />
-          )}
-          {"validation" in props && props.validation === "warning" && (
-            <WarningBold className={classes.inputTailIcon} />
-          )}
-        </div>
       </div>
     );
   }

@@ -3,7 +3,6 @@ import { MasterCourses } from "components/common/dropdownField/masterCourses";
 import Grid from "components/core/Grid";
 import Button from "components/core/button";
 import FormTextarea from "components/form/formTextarea";
-import { UserBold } from "components/icon";
 import { useFormik } from "formik";
 import { IMenuOption } from "interfaces";
 import { useHistory } from "react-router";
@@ -64,7 +63,7 @@ const AnnouncementForm = ({ onSumbit, initialValues }: ITimeTableFormProps) => {
 
         <FormTextarea
           {...getFormikFieldProps("message", "پیام", formik)}
-          rootProps={{ placeholder: "پیام خود را وارد کنید", icon: UserBold }}
+          rootProps={{ placeholder: "پیام خود را وارد کنید" }}
         />
       </Grid>
       <div className="d-flex gap-2 justify-content-end mt-5 pt-5">

@@ -1,6 +1,6 @@
+import { CheckIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import {CheckLinear} from "components/icon";
-import {HTMLProps} from "react";
+import { HTMLProps } from "react";
 import classes from "./styles.module.scss";
 
 export interface ICheckboxProps {
@@ -37,7 +37,7 @@ function Checkbox({
       data-checked={checked}
       data-disabled={!!disabled}
     >
-      {checked && <CheckLinear className={classes.icon} />}
+      {checked && <CheckIcon className={classes.icon} />}
     </div>
   );
 }

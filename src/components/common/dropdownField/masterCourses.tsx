@@ -1,8 +1,7 @@
-import { getBellsList } from "api/bells";
+import { HomeIcon } from "@heroicons/react/24/outline";
 import { masterTimeList } from "api/timeTable";
 import { IDefaultProps } from "components/core/autoComplete";
 import FormAutoComplete from "components/form/formAutoComplete";
-import { ManBold } from "components/icon";
 import { FormikProps } from "formik";
 import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
 import { useQuery } from "react-query";
@@ -57,7 +56,7 @@ export function MasterCourses<T extends { [key: string]: any }>({
     <FormAutoComplete
       noPadding={noPadding}
       rootProps={{
-        icon: ManBold,
+        icon: HomeIcon,
         placeholder: label,
         disabled: isError || isLoading || disabled,
         ...rootProps,

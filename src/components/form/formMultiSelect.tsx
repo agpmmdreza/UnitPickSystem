@@ -1,7 +1,8 @@
-import MultiSelect, {ISelectDefaultProps as IMultiSelectProps,} from "components/core/multiSelect";
-import {IMenuOption} from "interfaces";
-import FormBaseElement, {IBaseProps, IFormikFieldProps} from "./base";
-import {DepartmentBold} from "../icon";
+import MultiSelect, {
+  ISelectDefaultProps as IMultiSelectProps,
+} from "components/core/multiSelect";
+import { IMenuOption } from "interfaces";
+import FormBaseElement, { IBaseProps, IFormikFieldProps } from "./base";
 
 interface IFormAutoCompleteProps {
   options: IMenuOption[];
@@ -22,7 +23,6 @@ function FormMultiSelect({
     // add icon and placeholder of department
     <FormBaseElement {...props}>
       <MultiSelect
-        icon={DepartmentBold}
         options={options}
         value={value}
         onItemSelect={(v) => onChange(v)}

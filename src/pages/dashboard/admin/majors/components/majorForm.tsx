@@ -4,7 +4,6 @@ import { useFormik } from "formik";
 import { useHistory } from "react-router";
 import Button from "components/core/button";
 import FormInput from "components/form/formInput";
-import { UserBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 
 const REQUIRED_FIELD_MESSAGE = "This field is required.";
@@ -42,7 +41,7 @@ const MajorForm = ({ onSumbit, initialValues }: IMajorFormProps) => {
       <Grid flowDense>
         <FormInput
           {...getFormikFieldProps("majorName", "عنوان رشته", formik)}
-          rootProps={{ placeholder: "عنوان رشته", icon: UserBold }}
+          rootProps={{ placeholder: "عنوان رشته" }}
         />
       </Grid>
       <div className="d-flex gap-2 justify-content-end mt-5 pt-5">

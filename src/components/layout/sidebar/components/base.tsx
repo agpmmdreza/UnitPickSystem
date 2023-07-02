@@ -14,8 +14,7 @@ import {
 } from "constants/sidebarItems";
 import { useQuery } from "react-query";
 import { getStudentDetail } from "api/auth";
-import { IntakeFormDuotone } from "components/icon/intakeForm";
-import { IntakeFormBold } from "components/icon/intakeFormBold";
+import { ArrowDownOnSquareIcon } from "@heroicons/react/24/outline";
 
 function isDateWithinRange(
   targetDate: Date,
@@ -68,8 +67,8 @@ export function SidebarBase() {
                 ? {
                     id: "1",
                     name: "انتخاب واحد",
-                    icon: IntakeFormDuotone,
-                    selectedIcon: IntakeFormBold,
+                    icon: ArrowDownOnSquareIcon,
+                    selectedIcon: ArrowDownOnSquareIcon,
                     child: [
                       {
                         id: "1",
@@ -111,8 +110,8 @@ export function SidebarBase() {
                   ? {
                       id: "1",
                       name: "انتخاب واحد",
-                      icon: IntakeFormDuotone,
-                      selectedIcon: IntakeFormBold,
+                      icon: ArrowDownOnSquareIcon,
+                      selectedIcon: ArrowDownOnSquareIcon,
                       child: [
                         {
                           id: "1",

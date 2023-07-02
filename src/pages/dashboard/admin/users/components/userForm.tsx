@@ -4,7 +4,6 @@ import { useFormik } from "formik";
 import { useHistory } from "react-router";
 import Button from "components/core/button";
 import FormInput from "components/form/formInput";
-import { IdBold, MailTrackingBold, UserBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 import { Roles } from "components/common/dropdownField/roles";
 import { IMenuOption } from "interfaces";
@@ -70,11 +69,11 @@ const UserForm = ({ onSumbit, initialValues }: IUserFormProps) => {
       <Grid flowDense>
         <FormInput
           {...getFormikFieldProps("firstName", "نام", formik)}
-          rootProps={{ placeholder: "نام", icon: UserBold }}
+          rootProps={{ placeholder: "نام" }}
         />
         <FormInput
           {...getFormikFieldProps("lastName", "نام خانوادگی", formik)}
-          rootProps={{ placeholder: "نام خانوادگی", icon: UserBold }}
+          rootProps={{ placeholder: "نام خانوادگی" }}
         />
 
         <Roles
@@ -85,7 +84,7 @@ const UserForm = ({ onSumbit, initialValues }: IUserFormProps) => {
 
         <FormInput
           {...getFormikFieldProps("code", "نام کاربری", formik)}
-          rootProps={{ placeholder: "نام کاربری", icon: IdBold }}
+          rootProps={{ placeholder: "نام کاربری" }}
         />
 
         {/* <FormInput
@@ -99,7 +98,6 @@ const UserForm = ({ onSumbit, initialValues }: IUserFormProps) => {
           formik={formik}
           majorFieldName="major"
           rootProps={{
-            icon: MailTrackingBold,
             placeholder: "رشته تحصیلی",
           }}
           majorName={initialValues?.major.value}
@@ -108,17 +106,9 @@ const UserForm = ({ onSumbit, initialValues }: IUserFormProps) => {
 
         <Years formik={formik} fieldName="entranceYear" />
 
-        {/* <FormInput
-          rootProps={{
-            icon: MailTrackingBold,
-            placeholder: "سال ورودی",
-          }}
-          {...getFormikFieldProps("entranceYear", "سال ورود", formik)}
-        /> */}
-
         <FormInput
           {...getFormikFieldProps("password", "رمز عبور", formik)}
-          rootProps={{ placeholder: "رمز عبور", icon: IdBold }}
+          rootProps={{ placeholder: "رمز عبور" }}
         />
       </Grid>
       <div className="d-flex gap-2 justify-content-end mt-5 pt-5">

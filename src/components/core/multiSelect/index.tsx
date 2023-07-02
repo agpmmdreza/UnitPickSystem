@@ -2,11 +2,11 @@
 import React, { HTMLAttributes, useEffect, useRef, useState } from "react";
 import classes from "./styles.module.scss";
 import clsx from "clsx";
-import { ArrowDownBold } from "components/icon";
 import Input from "components/core/input";
 import Checkbox from "components/core/checkbox";
 import Chip from "components/core/chip";
 import { TChipColor } from "interfaces";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export interface IMenuOption {
   key: string;
@@ -124,7 +124,7 @@ const MultiSelect = ({
           )}
         </div>
 
-        <ArrowDownBold
+        <ChevronDownIcon
           className={clsx([
             classes.inputTailIcon,
             isMenuOpen ? classes.rotate : "",

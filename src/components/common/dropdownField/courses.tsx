@@ -1,12 +1,11 @@
-import { GPSBold } from "components/icon";
 import { useQuery } from "react-query";
 import { getFormikFieldProps } from "utils/form";
 import { FormikProps } from "formik";
-import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
 import { getCoursesList } from "api/courses";
 import FormMultiSelect from "components/form/formMultiSelect";
 import { ISelectDefaultProps } from "components/core/multiSelect";
 import { useMultiSelectDefaultValue } from "hooks/useMultiSelecetDefaultValue";
+import { MapIcon } from "@heroicons/react/24/outline";
 
 export interface IStateProps<T> {
   formik: FormikProps<T>;
@@ -61,7 +60,7 @@ export function Courses<T extends { [key: string]: any }>({
     <FormMultiSelect
       noPadding={noPadding}
       rootProps={{
-        icon: GPSBold,
+        icon: MapIcon,
         placeholder: label,
         disabled: isError || isLoading || disabled,
         ...rootProps,

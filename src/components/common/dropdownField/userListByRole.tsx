@@ -1,10 +1,7 @@
-import { GPSBold, ManBold } from "components/icon";
 import { useQuery } from "react-query";
 import { getFormikFieldProps } from "utils/form";
 import { FormikProps } from "formik";
 import { useDropdownDefaultValue } from "hooks/useDropdownDefaultValue";
-import FormMultiSelect from "components/form/formMultiSelect";
-import { ISelectDefaultProps } from "components/core/multiSelect";
 import FormAutoComplete from "components/form/formAutoComplete";
 import { IDefaultProps } from "components/core/autoComplete";
 import { getUserList } from "api/users";
@@ -66,7 +63,6 @@ export function UsersByRole<T extends { [key: string]: any }>({
     <FormAutoComplete
       noPadding={noPadding}
       rootProps={{
-        icon: ManBold,
         placeholder: label,
         disabled: isError || isLoading || disabled,
         ...rootProps,

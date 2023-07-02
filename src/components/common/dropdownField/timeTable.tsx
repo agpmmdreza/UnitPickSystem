@@ -1,4 +1,3 @@
-import { ManBold } from "components/icon";
 import { useQuery } from "react-query";
 import { getFormikFieldProps } from "utils/form";
 import { FormikProps } from "formik";
@@ -79,7 +78,6 @@ export function TimeTables<T extends { [key: string]: any }>({
     <FormAutoComplete
       noPadding={noPadding}
       rootProps={{
-        icon: ManBold,
         placeholder: label,
         disabled: isError || isLoading || disabled,
         ...rootProps,

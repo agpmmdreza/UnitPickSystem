@@ -1,13 +1,10 @@
 import clsx from "clsx";
 import Avatar from "components/core/avatar";
-// import Button from "components/core/button/index";
 import classes from "./styles.module.scss";
-// import { CanceledLinear, Finished, Timer } from "components/icon";
-// import { ReactComponent as EditIcon } from "assets/icons/linear/edit-linear.svg";
 import BasicTable from "components/core/basicTable";
-import {ReactNode} from "react";
+import { ReactNode } from "react";
 import CountryFlag from "../countryFlag";
-import {RobotTypeChip} from "../tableCell";
+import { RobotTypeChip } from "../tableCell";
 
 //? Returns required columns for table
 const APPOINTMENT_COLUMNS = [

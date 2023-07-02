@@ -1,5 +1,4 @@
 import { getUsersByRole, IUsersByRoleParams } from "api/dropdown";
-import { UserBold } from "components/icon";
 import { useDropdownsOptions } from "hooks/useOptions";
 import { useMemo } from "react";
 import { useQuery } from "react-query";
@@ -39,7 +38,6 @@ function UserByRoleName<T extends { [key: string]: any }>(props: IProps<T>) {
     <Dropdown
       {...props}
       {...{ isError, isLoading }}
-      icon={UserBold}
       options={OPTIONS ? OPTIONS : []}
     />
   );

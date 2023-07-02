@@ -1,9 +1,9 @@
-import {PropsWithChildren, useMemo} from "react";
+import { PropsWithChildren, useMemo } from "react";
 import classes from "./styles.module.scss";
-import {IPagination} from "hooks/usePagination";
-import {ArrowLeftLinear, ArrowRightLinear} from "components/icon";
-import {MoonLoader} from "react-spinners";
-import {useMediaQuery} from "@react-hook/media-query";
+import { IPagination } from "hooks/usePagination";
+import { MoonLoader } from "react-spinners";
+import { useMediaQuery } from "@react-hook/media-query";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 interface IPItemProps extends PropsWithChildren<any> {
   id?: number;
@@ -99,7 +99,7 @@ function Pagination({
   return (
     <div className={classes.container}>
       <PItem onClick={currentPage > 1 ? onPreviousPage : undefined}>
-        <ArrowLeftLinear />
+        <ChevronLeftIcon />
       </PItem>
 
       {items.map((pageNumber: number) => (
@@ -121,7 +121,7 @@ function Pagination({
         </PItem>
       ))}
       <PItem onClick={currentPage < maxPage ? onNextPage : undefined}>
-        <ArrowRightLinear />
+        <ChevronRightIcon />
       </PItem>
 
       <PItem>

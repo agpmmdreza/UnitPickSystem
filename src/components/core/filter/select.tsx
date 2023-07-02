@@ -2,13 +2,10 @@ import { useState } from "react";
 import { IFilter, IFilterOption, IFilterValue } from ".";
 import classes from "./styles.module.scss";
 import clsx from "clsx";
-import { AmountBold, ArrowRightLinear } from "components/icon";
 import FilterCheckbox from "../filterCheckbox";
 import TimespanFilter from "../timespanFilter";
-import AmountInput from "../amountInput";
-import { convertToString } from "utils/form";
-import Button from "../button";
 import AutoComplete, { IMenuOption } from "../autoComplete";
+import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 
 interface IFilterSelectProps {
   content: IFilter;
@@ -150,7 +147,7 @@ const FilterSelect = ({
         className={classes.filterSelectBtn}
       >
         <span className={classes.optionTitle}>{content.title}</span>
-        <ArrowRightLinear
+        <ArrowSmallRightIcon
           className={clsx([
             classes.inputTailIcon,
             isMenuOpen ? classes.rotate : "",
@@ -210,121 +207,6 @@ const FilterSelect = ({
                       }}
                       {...f.dropdownProps}
                     />
-                  </div>
-                </div>
-              );
-            } else if (f.variant === "cost") {
-              const selectedFrom = value[number].filters[0]
-                ? convertToString(value[number].filters[0].costFrom)
-                : "0";
-              const selectedTo = value[number].filters[0]
-                ? convertToString(value[number].filters[0].costTo)
-                : "0";
-              return (
-                <div key={idx} className={classes.childOption}>
-                  <div
-                    onClick={handleClickFilterOption(
-                      f,
-                      !value[number].filters
-                        .map((x) => x.value)
-                        .includes(f.value)
-                    )}
-                    className={classes.filterSelectOption}
-                    data-testid={`test-filter-option-${f.key}`}
-                  >
-                    {" "}
-                    <FilterCheckbox
-                      checked={value[number].filters
-                        .map((x) => x.value)
-                        .includes(f.value)}
-                    />
-                    <span className="op">{f.value}</span>
-                  </div>
-                  <div className={classes.child}>
-                    <div key={idx} className={classes.cost}>
-                      <label htmlFor="costFrom">From</label>
-                      <AmountInput
-                        icon={AmountBold}
-                        type={"USD"}
-                        placeholder={"From"}
-                        className="mt-1"
-                        name="costFrom"
-                        value={costFromValue}
-                        onChange={(event) => {
-                          setCostFromValue(event.target.value);
-                          // handleCostSpanUpdate(
-                          //   f,
-                          //   event.target.value,
-                          //   costToValue
-                          // );
-                        }}
-                        disabled={
-                          !value[number].filters
-                            .map((x) => x.value)
-                            .includes(f.value)
-                        }
-                      />
-                      <label htmlFor="costTo" className="mt-2">
-                        To
-                      </label>
-                      <AmountInput
-                        icon={AmountBold}
-                        type={"USD"}
-                        placeholder={"To"}
-                        className="mt-1"
-                        name="costTo"
-                        value={costToValue}
-                        onChange={(event) => {
-                          setCostToValue(event.target.value);
-                          // handleCostSpanUpdate(
-                          //   f,
-                          //   costFromValue,
-                          //   event.target.value
-                          // );
-                        }}
-                        disabled={
-                          !value[number].filters
-                            .map((x) => x.value)
-                            .includes(f.value)
-                        }
-                        // onBlur={() => {
-                        //   // because if the the cost range is not valid then the filter value will not updated, so we have to update the input value to last valid value
-                        //   const cloneValues = [...value];
-                        //   if (
-                        //     cloneValues[number].filters.length > 0 && [
-                        //       "costTo" in cloneValues[number].filters[0],
-                        //     ]
-                        //   ) {
-                        //     setCostToValue(
-                        //       convertToString(
-                        //         cloneValues[number].filters[0].costTo
-                        //       )
-                        //     );
-                        //   }
-                        // }}
-                      />
-                      {!isCostRangeValid(costFromValue, costToValue) && (
-                        <span className={classes.cost__invalid}>
-                          Invalid cost range!
-                        </span>
-                      )}
-                      <Button
-                        className="mt-3"
-                        size="small"
-                        variant={"outlined"}
-                        disabled={!isCostRangeValid(costFromValue, costToValue)}
-                        onClick={() =>
-                          handleCostSpanUpdate(f, costFromValue, costToValue)
-                        }
-                      >
-                        OK
-                      </Button>
-                      <span
-                        className={classes.cost__selectedRange}
-                      >{`Your selected range is: ${Number(
-                        selectedFrom
-                      )}$ to ${Number(selectedTo)}$`}</span>
-                    </div>
                   </div>
                 </div>
               );

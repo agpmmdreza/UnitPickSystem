@@ -1,7 +1,6 @@
-import {PropsWithChildren} from "react";
+import { PropsWithChildren } from "react";
 import clsx from "clsx";
 import classes from "./styles.module.scss";
-import {ArrowUpBold} from "../../icon";
 
 export interface IHoverToolbox extends PropsWithChildren<any> {
   text: string;
@@ -15,9 +14,7 @@ const HoverToolbox = ({ text, children, pos }: IHoverToolbox) => {
       <div className={clsx(classes.label, pos === "right" && classes.right)}>
         <div
           className={clsx(classes.icon, pos === "right" && classes.rightIcon)}
-        >
-          <ArrowUpBold />
-        </div>
+        ></div>
         <div>{text}</div>
       </div>
     </div>

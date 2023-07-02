@@ -4,7 +4,6 @@ import { useFormik } from "formik";
 import { useHistory } from "react-router";
 import Button from "components/core/button";
 import FormInput from "components/form/formInput";
-import { UserBold } from "components/icon";
 import { getFormikFieldProps } from "utils/form";
 import { ICourseData } from "api/courses";
 import FormNumberInput from "components/form/formNumberInput";
@@ -66,7 +65,7 @@ const CourseForm = ({ onSumbit, initialValues }: ICourseFormProps) => {
       <Grid flowDense>
         <FormInput
           {...getFormikFieldProps("title", "عنوان درس", formik)}
-          rootProps={{ placeholder: "عنوان درس", icon: UserBold }}
+          rootProps={{ placeholder: "عنوان درس" }}
         />
 
         <FormNumberInput
