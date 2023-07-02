@@ -3,7 +3,6 @@ import { IFilter, IFilterOption, IFilterValue } from ".";
 import classes from "./styles.module.scss";
 import clsx from "clsx";
 import FilterCheckbox from "../filterCheckbox";
-import TimespanFilter from "../timespanFilter";
 import AutoComplete, { IMenuOption } from "../autoComplete";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 
@@ -231,25 +230,7 @@ const FilterSelect = ({
                     />
                     <span className="op">{f.value}</span>
                   </div>
-                  <div className={classes.child}>
-                    <TimespanFilter
-                      disabled={
-                        !value[number].filters
-                          .map((x) => x.value)
-                          .includes(f.value)
-                      }
-                      from={from}
-                      to={to}
-                      setFrom={(i) => {
-                        handleTimeSpanUpdate(f, i, to);
-                        setFrom(i);
-                      }}
-                      setTo={(t) => {
-                        handleTimeSpanUpdate(f, from, t);
-                        setTo(t);
-                      }}
-                    />
-                  </div>
+                  <div className={classes.child}></div>
                 </div>
               );
             }
